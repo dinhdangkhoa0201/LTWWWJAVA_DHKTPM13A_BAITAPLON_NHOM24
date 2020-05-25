@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <!-- Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" rel="stylesheet" />
+  <!-- Custom style -->
+  <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+    th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"
+    th:src="@{webjars/jquery.validate/1.13.1/jquery.validate.min.js}"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <form action="" th:action="@{/verify-code}" th:object="${verifyCodeDTO}" method="POST">
+      <span>Verify Code</span>
+      <div>
+        <span>Enter code verifycation</span>
+        <input type="text" th:field="*{token}" placeholder="Code verification" />
+        <span th:each="error : ${#field.errors('token')}" th:text="${error}"></span>
+      </div>
+
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+
+      <div>
+        <a href="#" th:href="${/sign-up}">Sign up</a>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
