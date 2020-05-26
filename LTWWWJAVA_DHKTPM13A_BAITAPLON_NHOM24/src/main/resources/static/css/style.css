@@ -1,0 +1,9 @@
+@charset "UTF-8";
+input.error {
+  font-size: 15px;
+}
+
+label.error {
+  color: red;
+  font-size: 13px;
+}
