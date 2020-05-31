@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="../../js/index.js"></script>
+</head>
+
+<body>
+  <div id="page-content">
+    <div id="header" class="">
+
+    </div>
+    <div id="navigation" class="">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-primary fix-top">
+        <div class="d-flex flex-grow-1">
+          <a id="btn-menunav" href="javascript:void(0)" class="navbar-brand" onclick="openNav()"><i
+              class="fa fa-bars fa-2x"></i></a>
+          <form class="mr-2 my-auto w-50 d-inline-block order-1">
+            <div class="input-group">
+              <input type="text" class="form-control border border-right-0 border-success" placeholder="Search...">
+              <span class="input-group-append">
+                <button class="btn btn-success border border-left-0" type="button">
+                  <i class="fa fa-search" style="color: #fff;"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <ul id="dropdownUserMenu" class="navbar-nav float-right">
+          <li class="nav-item dropdown">
+            <a href="" class="navlink dropdown " id="navbarDropdownUserMenu" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="fa fa-user fa-2x"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right animate__animated animate__fadeInUp"
+              aria-labelledby="#navbarDropdownUserMenu">
+              <div class="dropdown-header">Welcome!</div>
+              <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+              <a class="dropdown-item" href=""><i class="fa fa-cog"></i> Setting</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href=""><i class="fa fa-sign-out"></i> Log out</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div id="left-sidebar" class="left-sidebar bg-dark">
+      <nav class="navbar">
+        <div>
+          <img class="nav-brand" src="../../static/image/logo.jpg" width="50px" alt="">
+        </div>
+      </nav>
+      <ul class="list-group list-group-flush">
+        <li class="menu-title">Menu</li>
+        <li id="trangchu" class="list-group-item bg-dark">
+          <div>
+            <a href="#" class="nav-link">
+              <i class="fa fa-tachometer fa-lg"></i>
+              <span>Trang chủ</span>
+            </a>
+          </div>
+        </li>
+        <li id="khohang" class="list-group-item bg-dark">
+          <div>
+            <a href="#collapseKhoHang" class="nav-link" data-toggle="collapse" aria-expanded="false">
+              <i class="fa fa-shopping-cart fa-lg"></i>
+              <span>Kho hàng</span>
+            </a>
+          </div>
+          <div id="collapseKhoHang" class="collapse" data-parent="#left-sidebar">
+            <ul>
+              <li>
+                <a href="" class="nav-link"><span>Nhập kho - Mua hàng</span></a>
+              </li>
+              <li>
+                <a href="" class="nav-link"><span>Xuất kho - Bán hàng</span></a>
+              </li>
+              <li>
+                <a href="" class="nav-link"><span>Báo cáo Nhập - Xuất - Tồn</span></a>
+              </li>
+              <li>
+                <a href="" class="nav-link"><span>Sổ chi tiết Hàng hoá</span></a>
+              </li>
+              <li>
+                <a href="" class="nav-link"><span>Sổ chi tiết mua hàng</span></a>
+              </li>
+              <li>
+                <a href="" class="nav-link"><span>Sổ chi tiết bán hàng</span></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li id="thuchi" class="list-group-item bg-dark">
+          <div>
+            <a href="#" class="nav-link">
+              <i class="fa fa-dollar fa-lg"></i>
+              <span>Thu chi</span>
+            </a>
+          </div>
+        </li>
+        <li id="baocao-danhmuc" class="list-group-item bg-dark">
+          <div>
+            <a href="#" class="nav-link">
+              <i class="fa fa-cog"></i>
+              <span>Báo cáo - Thống kê</span>
+            </a>
+          </div>
+        </li>
+        <li id="danhmuc" class="list-group-item bg-dark">
+          <div>
+            <a href="#collapseDanhMuc" class="nav-link" data-toggle="collapse" aria-expanded="false">
+              <i class="fa fa-clone fa-lg"></i>
+              <span>Danh muc</span>
+            </a>
+          </div>
+          <div id="collapseDanhMuc" class="collapse" data-parent="#left-sidebar">
+            <ul>
+              <li>
+                <a href="" class="nav-link"><span>DM Khách hàng</span></a>
+              </li>
+              <li>
+                <a href="" class="nav-link"><span>DM Nhóm hàng hoá</span></a>
+              </li>
+              <li>
+                <a href="" class="nav-link"><span>DM Hàng hoá</span></a>
+              </li>
+              <li>
+                <a href="" class="nav-link"><span>DM Nhà cung cấp</span></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
