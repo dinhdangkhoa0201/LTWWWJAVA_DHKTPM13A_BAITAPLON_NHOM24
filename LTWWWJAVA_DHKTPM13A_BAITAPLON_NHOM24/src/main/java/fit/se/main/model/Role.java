@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,7 +35,7 @@ public class Role implements Serializable {
 	
 	private LocalDateTime modifiedDate;
 	
-	@OneToMany(mappedBy = "roles")
+	@ManyToMany(mappedBy = "roles")
 	private List<Account> accountRoles;
 
 	public Role() {

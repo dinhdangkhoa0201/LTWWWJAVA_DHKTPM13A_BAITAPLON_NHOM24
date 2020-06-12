@@ -38,6 +38,12 @@ public class Product implements Serializable{
 	@Column(name = "price")
 	private double price;
 	
+	@Column(name = "selling_price")
+	private double sellingPrice;
+	
+	@Column(name = "quantity")
+	private int quantity;
+	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "category_id")
 	private Category category;
@@ -57,12 +63,23 @@ public class Product implements Serializable{
 	@JoinColumn(name = "unit_id")
 	private UnitMeasure unitMeasure;
 	
+	@Column(columnDefinition = "nvarchar(100)")
+	private String note;
+	
+	private String image;
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
+	private List<ProductImage> productImages;
+	
 	private LocalDateTime modifiedDate;
 	
-	public Product(int productId, String productName, double price, Category category) {
+	public Product(int productId, String productName, double price, double sellingPrice, int quantity, Category category) {
 		this.productId = productId;
 		this.productName = productName;
 		this.price = price;
+		this.sellingPrice = sellingPrice;
+		this.quantity = quantity;
 		this.category = category;
 		this.modifiedDate = LocalDateTime.now();
 	}
@@ -93,8 +110,24 @@ public class Product implements Serializable{
 		return price;
 	}
 
+	public double getSellingPrice() {
+		return sellingPrice;
+	}
+
+	public void setSellingPrice(double sellingPrice) {
+		this.sellingPrice = sellingPrice;
+	}
+
 	public Category getCategory() {
 		return category;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public void setProductId(int productId) {
@@ -157,6 +190,22 @@ public class Product implements Serializable{
 
 	public void setModifiedDate(LocalDateTime modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 	
 	

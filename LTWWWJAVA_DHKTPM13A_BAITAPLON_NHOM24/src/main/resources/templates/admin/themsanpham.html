@@ -50,8 +50,17 @@
       cursor: pointer;
     }
   </style>
-  <script type="text/javascript">
+  <script type="text/javascript" th:inline="javascript">
     $(document).ready(function () {
+      $('#modalDanhMucSanPham').on('hidden.bs.modal', function () {
+        window.location.href = window.location.href.replace('#modalDanhMucSanPham', '');
+      });
+      $('#modalNhaSanXuat').on('hidden.bs.modal', function () {
+        window.location.href = window.location.href.replace('#modalNhaSanXuat', '');
+      });
+      $('#modalDonViTinh').on('hidden.bs.modal', function () {
+        window.location.href = window.location.href.replace('#modalDonViTinh', '');
+      })
       $('#themAnh').click(function () {
         $('#danhSachAnh').append('<li><input type="file" name="anh" /></li>');
       });
@@ -76,6 +85,67 @@
         reader.readAsDataURL(this.files[0]);
       })
 
+      /* - Form Danh muc San pham - */
+      $('#btnLuuDanhmucSanpham').on('click', function () {
+        $('#formDanhMucSanPham').attr('action', '/admin/themsanpham/themDanhMucSanPhamLuu');
+      });
+
+      $('#btnLuuvaTieptucDanhmucSanPham').on('click', function () {
+        $('#formDanhMucSanPham').attr('action', '/admin/themsanpham/themDanhMucSanPhamLuuVaTiepTuc');
+      });
+
+      /* - Form Don Vi Tinh - */
+      $('#btnLuuDonViTinh').on('click', function () {
+        $('#formDonViTinh').attr('action', '/admin/themsanpham/themDonViTinhLuu');
+      })
+      $('#btnLuuVaTiepTucDonViTinh').on('click', function () {
+        $('#formDonViTinh').attr('action', '/admin/themsanpham/themDonViTinhLuuVaTiepTuc');
+      })
+
+      /* - Form Nha san xuat - */
+      $('#btnLuuNhaSanXuat').on('click', function () {
+        $('#formNhaSanXuat').attr('action', '/admin/themsanpham/themNhaSanXuatLuu');
+      });
+      $('#btnLuuVaTiepTucNhaSanXuat').on('click', function () {
+        $('#formNhaSanXuat').attr('action', '/admin/themsanpham/themNhaSanXuatLuuVaTiepTuc');
+      });
+
+
+      if (window.location.href.indexOf('#modalNhaSanXuat') != -1) {
+        $('#linkDanhSachNhasanxuat').removeClass('active');
+        $('#linkTaoNhasanxuat').addClass('active');
+
+        $('#danhSachNhasanxuat').addClass('fade');
+        $('#danhSachNhasanxuat').removeClass('active');
+        $('#danhSachNhasanxuat').removeClass('show');
+
+        $('#taoNhasanxuat').addClass('show active');
+
+        $('#modalNhaSanXuat').modal('show');
+      } else if (window.location.href.indexOf('#modalDonViTinh') != -1) {
+        $('#linkDanhSachDonvitinh').removeClass('active');
+        $('#linkTaoDonvitinh').addClass('active');
+
+        $('#danhSachDonvitinh').addClass('fade');
+        $('#danhSachDonvitinh').removeClass('active');
+        $('#danhSachDonvitinh').removeClass('show');
+
+        $('#taoDonvitinh').addClass('show active');
+
+        $('#modalDonViTinh').modal('show');
+      } else if (window.location.href.indexOf('#modalDanhMucSanPham') != -1) {
+        $('#linkDanhSachDanhmucSanpham').removeClass('active');
+        $('#linkTaoDanhmucSanPham').addClass('active');
+
+        $('#danhSachDanhmucSanpham').addClass('fade');
+        $('#danhSachDanhmucSanpham').removeClass('active');
+        $('#danhSachDanhmucSanpham').removeClass('show');
+
+        $('#taoDanhmucSanPham').addClass('show active');
+
+        $('#modalDanhMucSanPham').modal('show');
+      }
+
     });
   </script>
   <script type="text/javascript">
@@ -86,7 +156,7 @@
 <body>
   <div class="container-fluid">
     <div class="content mt-5">
-      <form action="">
+      <form action="" th:action="@{#}" th:object="${product}">
         <!-- Row 1 -->
         <div class="row">
           <div class="col-lg-4 col-md-6 align-content-center">
@@ -118,27 +188,30 @@
           <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="form-group">
               <label for="tenSanPham">Tên sản phẩm</label>
-              <input class="form-control" type="text" name="tenSanPham" id="tenSanPham"
-                placeholder="Nhập tên Sản phẩm" />
+              <input class="form-control" type="text" name="tenSanPham" id="tenSanPham" th:field="*{productName}"
+                placeholder="Nhập tên Sản phẩm" required />
             </div>
             <div class="form-group">
               <label for="soLuong">Số lượng</label>
-              <input class="form-control" type="number" name="soLuong" id="soLuong" />
+              <input class="form-control" type="number" name="soLuong" id="soLuong" th:field="*{quantity}"
+                placeholder="Số lượng" required />
             </div>
             <div class="form-group">
               <label for="giaVon">Giá vốn</label>
-              <input class="form-control" type="text" name="giaVon" id="giaVo" placeholder="Nhập Giá vốn" />
+              <input class="form-control" type="text" name="giaVon" id="giaVo" th:field="*{price}"
+                placeholder="Nhập Giá vốn" required />
             </div>
             <div class="form-group">
               <label for="giaBanLe">Giá bán lẻ</label>
-              <input class="form-control" type="text" name="giaBanLe" id="giaBanLe" placeholder="Nhập giá Bán lẻ" />
+              <input class="form-control" type="text" name="giaBanLe" id="giaBanLe" th:field="*{sellingPrice}"
+                placeholder="Nhập giá Bán lẻ" required />
             </div>
             <div class="form-group">
               <label for="danhMucSanPham">Danh mục Sản phẩm</label>
               <div class="input-group">
-                <select class="form-control" name="danhMucSanPham" id="danhMucSanPham">
+                <select class="form-control" name="danhMucSanPham" id="danhMucSanPham" th:field="*{category}" required>
                   <option value="">Danh mục Sản phẩm</option>
-                  <option value="1">1</option>
+                  <option th:each="category : ${categories}" th:value="${category.categoryId}"><span th:text="${category.categoryName}"></span></option>
                 </select>
                 <!-- Open model Danh muc San Pham -->
                 <div class="input-group-append">
@@ -153,9 +226,9 @@
             <div class="form-group">
               <label for="donViTinh">Đơn vị tính</label>
               <div class="input-group">
-                <select class="form-control" name="donViTinh" id="donViTinh">
+                <select class="form-control" name="donViTinh" id="donViTinh" th:field="*{unitMeasure}" required>
                   <option value="">Đơn vị tính</option>
-                  <option value="1">1</option>
+                  <option th:each="unitmeasure : ${unitmeasures}" th:value="unitmeasure.unitId"><span th:text="${unitmeasure.unitName}"></span></option>
                 </select>
                 <!-- Open model Don vi tinh -->
                 <div class="input-group-append">
@@ -169,19 +242,17 @@
               <textarea class="form-control" name="thongTinThem" id="thongTinThem" cols="30" rows="5"></textarea>
             </div>
             <div class="form-group">
-              <label for="giaBanSi">Giá bán sỉ</label>
-              <input class="form-control" type="text" name="giaBanSi" id="giaBanSi">
-            </div>
-            <div class="form-group">
               <label for="nhaSanXuat">Nhà sản xuất</label>
               <div class="input-group">
-                <select class="form-control" name="nhaSanXuat" id="nhaSanXuat">
+                <select class="form-control" name="nhaSanXuat" id="nhaSanXuat" th:field="*{supplier}" required>
                   <option value="">Nhà sản xuất</option>
+                  <option th:each="supplier : ${suppliers}" th:value="supplier.supplierId"><span th:text="${supplier.supplierName}"></span></option>
                 </select>
                 <!-- Ope model Nha san xuat -->
                 <div class="input-group-append">
-                  <button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                    data-target="#modalNhaSanXuat"><i class="fa fa-plus"></i></button>
+                  <a class="btn btn-outline-primary" id="linkThemNhaSanXuat" href="#modalNhaSanXuat" data-toggle="modal" data-target="">
+                    <i class="fa fa-plus"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -208,7 +279,7 @@
                 </div>
               </div>
               <div class="mt-5">
-                <img class="mx-auto d-block" src="#" alt="" id="imgShow" style="width: 50%; height: 50%;" />
+                <img class="mx-auto d-block" src="#" alt="" id="imgShow" style="width: 20%; height: 20%;" />
               </div>
               <hr>
               <!-- <h4>Các ảnh chi tiết về sản phẩm</h4>
@@ -232,15 +303,14 @@
             <h4>Quản lý Danh mục Sản phẩm</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-
           <div class="modal-body">
             <ul class="nav nav-tabs nav-justified">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#danhSachDanhmucSanpham"><i class="fa fa-list"></i>
+                <a id="linkDanhSachDanhmucSanpham" class="nav-link active" data-toggle="tab" href="#danhSachDanhmucSanpham"><i class="fa fa-list"></i>
                   Danh sách Danh mục</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#taoDanhmucSanPham"><i class="fa fa-plus"></i> Thêm mới
+                <a id="linkTaoDanhmucSanPham" class="nav-link" data-toggle="tab" href="#taoDanhmucSanPham"><i class="fa fa-plus"></i> Thêm mới
                   Danh mục</a>
               </li>
             </ul>
@@ -255,29 +325,29 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                    <tr th:each="category : ${categories}">
+                      <td><span th:text="${category.categoryId}"></span></td>
+                      <td><span th:text="${category.categoryName}"></span></td>
+                      <td><a href=""><i class="fa fa-trash"></i></a></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div id="taoDanhmucSanPham" class="tab-pane fade">
-                <form action="">
+                <form id="formDanhMucSanPham" th:action="@{'#'}" th:object="${category}" method="POST">
                   <div class="form-group">
                     <label for="tenDanhmucSanPham">Tên Danh mục Sản phẩm</label>
                     <input class="form-control" type="text" name="tenDanhmucSanpham" id="tenDanhmucSanPham"
-                      placeholder="Nhập tên Danh mục Sản phẩm" />
+                      th:field="*{categoryName}" placeholder="Nhập tên Danh mục Sản phẩm" />
                   </div>
                   <hr>
-                  <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Lưu</button>
-                  <button type="submit" class="btn btn-outline-success"><i class="fa fa-save"></i> Lưu và tiếp
-                    tục</button>
+                  <button id="btnLuuDanhmucSanpham" type="submit" class="btn btn-success"><i class="fa fa-check"></i> Lưu</button>
+                  <button id="btnLuuvaTieptucDanhmucSanPham" type="submit" class="btn btn-outline-success"><i class="fa fa-save"></i> Lưu và tiếp tục</button>
                 </form>
               </div>
             </div>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Đóng</button>
           </div>
@@ -296,11 +366,11 @@
           <div class="modal-body">
             <ul class="nav nav-tabs nav-justified">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#danhSachDonvitinh"><i class="fa fa-list"></i> Danh
+                <a id="linkDanhSachDonvitinh" class="nav-link active" data-toggle="tab" href="#danhSachDonvitinh"><i class="fa fa-list"></i> Danh
                   sách Đơn vị tính</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#taoDonvitinh"><i class="fa fa-plus"></i> Thêm Đơn vị
+                <a id="linkTaoDonvitinh" class="nav-link" data-toggle="tab" href="#taoDonvitinh"><i class="fa fa-plus"></i> Thêm Đơn vị
                   tính</a>
               </li>
             </ul>
@@ -315,24 +385,26 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                    <tr th:each="unitmeasure : ${unitmeasures}">
+                      <td><span th:text="${unitmeasure.unitId}"></span></td>
+                      <td><span th:text="${unitmeasure.unitName}"></span></td>
+                      <td>
+                        <a href=""><i class="fa fa-trash"></i></a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div id="taoDonvitinh" class="tab-pane fade">
-                <form action="">
+                <form id="formDonViTinh" th:action="${'#'}" th:object="${unitmeasure}" method="POST">
                   <div class="form-group">
                     <label for="tenDanhmucSanPham">Tên Đơn vị tính</label>
-                    <input class="form-control" type="text" name="tenDanhmucSanpham" id="tenDanhmucSanPham"
-                      placeholder="Nhập tên Đơn vị tính" />
+                    <input class="form-control" type="text" name="tenDanhmucSanpham" id="tenDanhmucSanPham" th:field="*{unitName}"
+                      placeholder="Nhập tên Đơn vị tính" required />
                   </div>
                   <hr>
-                  <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Lưu</button>
-                  <button type="submit" class="btn btn-outline-success"><i class="fa fa-save"></i> Lưu và tiếp
+                  <button id="btnLuuDonViTinh" type="submit" class="btn btn-success"><i class="fa fa-check"></i> Lưu</button>
+                  <button id="btnLuuVaTiepTucDonViTinh" type="submit" class="btn btn-outline-success"><i class="fa fa-save"></i> Lưu và tiếp
                     tục</button>
                 </form>
               </div>
@@ -357,11 +429,11 @@
           <div class="modal-body">
             <ul class="nav nav-tabs nav-justified">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#danhSachNhasanxuat"><i class="fa fa-list"></i> Danh
+                <a id="linkDanhSachNhasanxuat" class="nav-link active" data-toggle="tab" href="#danhSachNhasanxuat"><i class="fa fa-list"></i> Danh
                   sách Nhà sản xuất</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#taoNhasanxuat"><i class="fa fa-plus"></i> Thêm Nhà sản
+                <a id="linkTaoNhasanxuat" class="nav-link" data-toggle="tab" href="#taoNhasanxuat"><i class="fa fa-plus"></i> Thêm Nhà sản
                   xuất</a>
               </li>
             </ul>
@@ -376,24 +448,24 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                    <tr th:each="supplier : ${suppliers}">
+                      <td><span th:text="${supplier.supplierId}"></span></td>
+                      <td><span th:text="${supplier.supplierName}"></span></td>
+                      <td><a href="#"><i class="fa fa-trash"></i></a></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div id="taoNhasanxuat" class="tab-pane fade">
-                <form action="">
+                <form id="formNhaSanXuat" th:action="@{'#'}" th:object="${supplier}" method="POST">
                   <div class="form-group">
                     <label for="tenNhasanxuat">Tên Nhà sản xuất</label>
-                    <input class="form-control" type="text" name="tenNhasanxuat" id="tenNhasanxuat"
+                    <input class="form-control" type="text" name="tenNhasanxuat" id="tenNhasanxuat" th:field="*{supplierName}"
                       placeholder="Nhập tên Nhà sản xuất" />
                   </div>
                   <hr>
-                  <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Lưu</button>
-                  <button type="submit" class="btn btn-outline-success"><i class="fa fa-save"></i> Lưu và tiếp
+                  <button id="btnLuuNhaSanXuat" type="submit" class="btn btn-success"><i class="fa fa-check"></i> Lưu</button>
+                  <button id="btnLuuVaTiepTucNhaSanXuat" type="submit" class="btn btn-outline-success"><i class="fa fa-save"></i> Lưu và tiếp
                     tục</button>
                 </form>
               </div>
