@@ -338,11 +338,7 @@
 					}
 				}
 			});
-			$("#xoaKhachHang").click(function () {
-				if (!confirm("Do you want to delete")) {
-					return false;
-				}
-			});
+
 		});
 
 
@@ -528,7 +524,9 @@
 									<a id="editKhachHang" href="#" data-toggle="modal" data-target="#modalEditKhachHang"
 										title="Cập nhật"><i class="fa fa-edit fa-lg"></i></a>
 									<a id="xoaKhachHang" href="#" th:href="@{/admin/xoaKhachHang(accountId=${account.accountId})}"
-										title="Xoá Khách hàng"><i class="fa fa-trash fa-lg"></i></a>
+										title="Xoá Khách hàng"
+										onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><i
+											class="fa fa-trash fa-lg"></i></a>
 								</td>
 							</tr>
 						</tbody>
