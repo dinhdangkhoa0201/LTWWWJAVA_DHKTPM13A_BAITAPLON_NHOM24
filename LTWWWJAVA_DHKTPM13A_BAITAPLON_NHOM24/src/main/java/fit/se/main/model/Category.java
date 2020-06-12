@@ -1,7 +1,7 @@
 package fit.se.main.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,29 +26,40 @@ public class Category implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
-	private Long categoryId;
+	private int categoryId;
 	
-	@Column(name = "categoryname", nullable = false)
+	@Column(name = "category_name", nullable = false, columnDefinition = "nvarchar(50)")
 	private String categoryName;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
 	private List<Product> products;
+	
+	private LocalDateTime modifiedDate;
 
-	public Category(Long categoryId, String categoryName, List<Product> products) {
+	public Category(int categoryId, String categoryName, List<Product> products) {
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 		this.products = products;
+		this.modifiedDate = LocalDateTime.now();
 	}
 
 	public Category(String categoryName) {
 		this.categoryName = categoryName;
-		products = new ArrayList<Product>();
+		this.modifiedDate = LocalDateTime.now();
+	}
+
+	public LocalDateTime getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(LocalDateTime modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 	public Category() {
 	}
 
-	public Long getCategoryId() {
+	public int getCategoryId() {
 		return categoryId;
 	}
 
@@ -60,7 +71,7 @@ public class Category implements Serializable{
 		return products;
 	}
 
-	public void setCategoryId(Long categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 

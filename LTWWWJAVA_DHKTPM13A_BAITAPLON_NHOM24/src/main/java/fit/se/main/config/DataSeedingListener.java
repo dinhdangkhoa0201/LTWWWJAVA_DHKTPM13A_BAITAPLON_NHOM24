@@ -1,8 +1,5 @@
 package fit.se.main.config;
 
-import java.util.Arrays;
-import java.util.HashSet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -11,9 +8,7 @@ import org.springframework.stereotype.Component;
 
 import fit.se.main.dao.role.RoleDAO;
 import fit.se.main.dto.AccountCreateDTO;
-import fit.se.main.model.Account;
 import fit.se.main.model.Role;
-import fit.se.main.repository.AccountRepository;
 import fit.se.main.repository.RoleRepository;
 import fit.se.main.service.account.AccountService;
 

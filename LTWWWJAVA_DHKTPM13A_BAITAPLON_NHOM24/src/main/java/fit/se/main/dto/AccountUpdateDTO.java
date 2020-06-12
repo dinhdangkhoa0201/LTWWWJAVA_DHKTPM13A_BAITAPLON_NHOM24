@@ -3,29 +3,27 @@ package fit.se.main.dto;
 import java.time.LocalDate;
 
 import fit.se.main.validator.account.ValidCreateEmail;
-import fit.se.main.validator.account.ValidCreatePhone;
-import fit.se.main.validator.account.ValidCreateUserName;
 import fit.se.main.validator.account.ValidEmail;
 import fit.se.main.validator.account.ValidPassword;
 import fit.se.main.validator.account.ValidPhone;
 import fit.se.main.validator.account.ValidUserName;
 
 public class AccountUpdateDTO {
-	@ValidUserName
+	
 	private String accountName;
 	
 	private LocalDate birthday;
 	
 	private String gender;
 	
-	@ValidPhone
 	private String phone;
 	
-	@ValidEmail
-	@ValidCreateEmail
 	private String email;
 	
-	@ValidPassword
+	private String address;
+	
+	private String note;
+	
 	private String password;
 	
 	private String repeatpassword;
@@ -84,6 +82,22 @@ public class AccountUpdateDTO {
 
 	public void setRepeatpassword(String repeatpassword) {
 		this.repeatpassword = repeatpassword;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	@Override

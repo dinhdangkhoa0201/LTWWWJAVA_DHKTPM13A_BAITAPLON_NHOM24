@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import fit.se.main.dao.role.RoleDAO;
 import fit.se.main.model.Role;
-import fit.se.main.repository.RoleRepository;
 
 @Service
 public class RoleServiceImpl implements RoleService{
@@ -15,7 +14,7 @@ public class RoleServiceImpl implements RoleService{
 	private RoleDAO roleDAO;
 
 	@Override
-	public Optional<Role> findById(Long id) {
+	public Role findById(int id) {
 		return roleDAO.findById(id);
 	}
 

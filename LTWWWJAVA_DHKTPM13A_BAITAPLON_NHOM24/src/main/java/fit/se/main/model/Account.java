@@ -1,11 +1,9 @@
 package fit.se.main.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,15 +29,15 @@ public class Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = 	GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "account_id", nullable = false)
-	private Long accountId;
+	private int accountId;
 
-	@Column(name = "accountname", nullable = false)
+	@Column(name = "account_name", nullable = false, columnDefinition = "nvarchar(50)")
 	private String accountName;
 
 	@Column(name = "birthday")
-	private LocalDate birthday;
+	private String birthday;
 
 	@Column(name = "gender")
 	private String gender;
@@ -50,42 +48,79 @@ public class Account implements Serializable {
 	@Column(name = "phone", nullable = false)
 	private String phone;
 
+	@Column(name = "address", columnDefinition = "nvarchar(100)")
+	private String address;
+
 	@Column(name = "password", nullable = false)
 	private String password;
 
+	@Column(name = "note", columnDefinition = "nvarchar(255)")
+	private String note;
+
 	@JsonIgnore
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "account_role", joinColumns = {
-			@JoinColumn(name = "account_id")},
-			inverseJoinColumns = 
-			@JoinColumn(name = "role_id"))
-	private Set<Role> roles;
+			@JoinColumn(name = "account_id")}, inverseJoinColumns = @JoinColumn(name = "role_id")
+	)
+	private List<Role> roles;
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
 	private List<VerifyAccount> verificationTokens;
-	
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
+	private List<SaleOrderHeader> orders;
+
 	private boolean isEnabled;
-	
-	public Account(String userName, String email, String phone, String password) {
+
+	private LocalDateTime modifiedDate;
+
+	public Account(int accountId, String accountName, String birthday, String gender, String email, String phone,
+			String address, String password, String note) {
+		this.accountId = accountId;
+		this.accountName = accountName;
+		this.birthday = birthday;
+		this.gender = gender;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.password = password;
+		this.note = note;
+		this.modifiedDate = LocalDateTime.now();
+	}
+
+	public Account(String accountName, String email, String phone, String address, String password) {
+		this.accountName = accountName;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.password = password;
+		this.modifiedDate = LocalDateTime.now();
+	}
+
+	public Account(String userName, String email, String phone, String address, String password, String note) {
 		this.accountName = userName;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
+		this.address = address;
+		this.note = note;
+		this.modifiedDate = LocalDateTime.now();
 	}
 
-	public Account(Long accountId) {
+	public Account(int accountId) {
 		this.accountId = accountId;
 	}
 
 	public Account() {
 	}
-	
-	public Long getAccountId() {
+
+	public int getAccountId() {
 		return accountId;
 	}
 
-	public void setAccountId(Long accountId) {
+	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
 
@@ -97,11 +132,11 @@ public class Account implements Serializable {
 		this.accountName = accountName;
 	}
 
-	public LocalDate getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(LocalDate birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
@@ -129,20 +164,16 @@ public class Account implements Serializable {
 		this.phone = phone;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
 	}
 
 	public List<VerifyAccount> getVerificationTokens() {
@@ -161,19 +192,81 @@ public class Account implements Serializable {
 		this.isEnabled = isEnabled;
 	}
 
-	public Set<Role> addRole(Role role){
-		if(this.roles == null) {
-			this.roles = new HashSet<Role>();
+	public List<SaleOrderHeader> getOrders() {
+		return orders;
+	}
+
+	public LocalDateTime getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setOrders(List<SaleOrderHeader> orders) {
+		this.orders = orders;
+	}
+
+	public void setModifiedDate(LocalDateTime modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+	public void setAddress(String addres) {
+		this.address = addres;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public void addRole(Role role) {
+		if(roles == null) {
+			roles = new ArrayList<Role>();
 		}
 		roles.add(role);
+	}
+	
+	public void clearRole() {
+		roles.clear();
+	}
+
+	public List<Role> getRoles() {
 		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + accountId;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Account other = (Account) obj;
+		if (accountId != other.accountId)
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "KhachHang [khachhangId=" + accountId + ", hoTen=" + accountName + ", ngaySinh=" + birthday + ", gioiTinh="
-				+ gender + ", email=" + email + ", soDT=" + phone + ", matKhau=" + password + ", roles=" + roles
-				+ ", verificationTokens=" + verificationTokens + ", isEnabled=" + isEnabled + "]";
+		return "Account [accountId=" + accountId + ", accountName=" + accountName + ", birthday=" + birthday
+				+ ", gender=" + gender + ", email=" + email + ", phone=" + phone + ", address=" + address
+				+ ", password=" + password + ", note=" + note + ", isEnabled=" + isEnabled + ", modifiedDate="
+				+ modifiedDate + "]";
 	}
-	
+
 }

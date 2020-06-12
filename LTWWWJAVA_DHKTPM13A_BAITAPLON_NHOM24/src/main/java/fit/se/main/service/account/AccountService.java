@@ -1,5 +1,6 @@
 package fit.se.main.service.account;
 
+import java.util.List;
 import java.util.Optional;
 
 import fit.se.main.dto.AccountCreateDTO;
@@ -11,13 +12,22 @@ public interface AccountService {
 	
 	public Account createAdmin(AccountCreateDTO dto) throws Exception;
 	
+	List<Account> findAll();
+	
+	public void updateAccount(Account account) throws Exception;
+	
+
 	Optional<Account> findByEmail(String email);
 	
 	Optional<Account> findByAccountname(String accountName);
 	
-	Optional<Account> findById(Long accountId);
+	Account findById(int accountId);
 	
 	Optional<Account> findByPhone(String phone);
 	
 	public void verifyCode(VerifyCodeDTO dto);
+	
+	public void deteleById(int id);
+	
+	Optional<String> findAllEmail();
 }

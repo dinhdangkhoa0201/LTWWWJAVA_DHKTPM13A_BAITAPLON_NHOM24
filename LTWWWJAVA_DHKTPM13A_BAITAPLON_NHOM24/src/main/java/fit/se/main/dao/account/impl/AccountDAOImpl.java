@@ -14,49 +14,55 @@ import fit.se.main.repository.AccountRepository;
 public class AccountDAOImpl implements AccountDAO{
 
 	@Autowired
-	private AccountRepository khachHangRepository;
-	@Override
-	public Optional<Account> findById(long id) {
-		return khachHangRepository.findById(id);
-	}
-
+	private AccountRepository accountRepository;
+	
 	@Override
 	public List<Account> findAll() {
-		return khachHangRepository.findAll();
+		return accountRepository.findAll();
 	}
 
 	@Override
 	public Account create(Account entity) {
-		return khachHangRepository.save(entity);
+		return accountRepository.save(entity);
 	}
 
 	@Override
 	public Account update(Account entity) {
-		return khachHangRepository.save(entity);
+		return accountRepository.save(entity);
 	}
 
 	@Override
 	public void delete(Account entity) {
-		khachHangRepository.delete(entity);
+		accountRepository.delete(entity);
 	}
 
 	@Override
-	public void deleteById(long entityId) {
-		khachHangRepository.deleteById(entityId);
+	public void deleteById(int entityId) {
+		accountRepository.deleteById(entityId);
 	}
 
 	@Override
 	public Optional<Account> findByEmail(String email) {
-		return khachHangRepository.findByEmail(email);
+		return accountRepository.findByEmail(email);
 	}
 
 	@Override
-	public Optional<Account> findByHoten(String accountName) {
-		return khachHangRepository.findByAccountname(accountName);
+	public Optional<Account> findByAccountname(String accountName) {
+		return accountRepository.findByAccountname(accountName);
 	}
 
 	@Override
 	public Optional<Account> findByPhone(String phone) {
-		return khachHangRepository.findByPhone(phone);
+		return accountRepository.findByPhone(phone);
+	}
+
+	@Override
+	public Account findById(int id) {
+		return accountRepository.getOne(id);
+	}
+
+	@Override
+	public Optional<String> findAllEmail() {
+		return accountRepository.findAllEmail();
 	}
 }

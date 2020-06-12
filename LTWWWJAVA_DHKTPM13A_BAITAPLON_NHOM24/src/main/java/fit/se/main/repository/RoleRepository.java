@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import fit.se.main.model.Role;
 
-public interface RoleRepository extends JpaRepository<Role, Long>{
+public interface RoleRepository extends JpaRepository<Role, Integer>{
 	@Query(value = "select * from role where rolename = ?1", nativeQuery = true)
 	Optional<Role> findByName(String roleName);
 }

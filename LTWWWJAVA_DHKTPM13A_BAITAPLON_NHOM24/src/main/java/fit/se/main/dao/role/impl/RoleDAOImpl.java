@@ -17,8 +17,8 @@ public class RoleDAOImpl implements RoleDAO{
 	private RoleRepository roleRepository;
 	
 	@Override
-	public Optional<Role> findById(long id) {
-		return roleRepository.findById(id);
+	public Role findById(int id) {
+		return roleRepository.getOne(id);
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class RoleDAOImpl implements RoleDAO{
 	}
 
 	@Override
-	public void deleteById(long entityId) {
+	public void deleteById(int entityId) {
 		roleRepository.deleteById(entityId);
 	}
 

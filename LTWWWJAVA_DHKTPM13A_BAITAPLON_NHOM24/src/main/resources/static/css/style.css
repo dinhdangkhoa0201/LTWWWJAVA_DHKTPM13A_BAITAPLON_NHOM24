@@ -7,58 +7,24 @@ label.error {
   color: red;
   font-size: 13px;
 }
-/* .dropdown-menu li {
-  padding-left: 40px;
-  cursor: pointer;
-  margin-right: 20px;
+#page-content {
+  margin-left: 300px;
 }
-
-.dropdown-menu li.checkbox-row {
-  display: block;
-  clear: both;
-  font-weight: normal;
-  line-height: 20px;
-  color: #333;
-  white-space: nowrap;
-}
-.dropdown-menu li.checkbox-row label {
-  font-weight: normal;
-}
-.dropdown-menu li.checkbox-row:hover,
-.dropdown-menu li.checkbox-row input:hover,
-.dropdown-menu li.checkbox-row label:hover {
-  cursor: pointer;
-}
-.no-touch .dropdown-menu > .checkbox-row:hover,
-.no-touch .dropdown-menu > .checkbox-row:active {
-  text-decoration: none;
-  color: #262626;
-  background-color: #f5f5f5;
-}
-
-#list-users_filter label input {
-  width: 500px !important;
-} */
-/* admin/index.html */
 .left-sidebar {
   height: 100%;
-  width: 0px;
+  width: 300px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   overflow-x: hidden;
-  transition: 0.5s;
   /* padding-top: 60px; */
-}
-
-.left-sidebar > ul {
 }
 
 .left-sidebar > ul > li:first-child {
   font-weight: 600;
   font-style: italic;
-  font-size: 25px;
+  font-size: 20px;
   color: #586781;
   margin-left: 20px;
   list-style-type: none;
@@ -75,7 +41,7 @@ label.error {
 
 .left-sidebar > ul > li > div > a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   border-left: 5px solid #007bff;
 }
 

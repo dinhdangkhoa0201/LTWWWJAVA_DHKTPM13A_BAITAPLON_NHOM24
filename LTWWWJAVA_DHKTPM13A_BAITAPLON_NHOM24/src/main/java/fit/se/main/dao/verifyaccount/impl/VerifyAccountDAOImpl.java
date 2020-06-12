@@ -24,7 +24,7 @@ public class VerifyAccountDAOImpl implements VerifyAccountDAO{
 	}
 
 	@Override
-	public Optional<VerifyAccount> findById(Long id) {
+	public Optional<VerifyAccount> findById(int id) {
 		return verifyAccountRepository.findById(id);
 	}
 

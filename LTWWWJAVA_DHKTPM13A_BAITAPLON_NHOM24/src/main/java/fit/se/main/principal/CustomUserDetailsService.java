@@ -17,6 +17,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Account khachHang = khachHangService.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found with username or email : " + username));
+		System.out.println("Dang Nhap , Account : " + khachHang);
 		if(khachHang != null) {
 			return AccountPricipal.create(khachHang);
 		}

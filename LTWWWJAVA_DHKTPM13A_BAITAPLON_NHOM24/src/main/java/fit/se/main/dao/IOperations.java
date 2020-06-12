@@ -2,10 +2,9 @@ package fit.se.main.dao;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 
 public interface IOperations<T extends Serializable>{
-	Optional<T> findById(final long id);
+	T findById(final int id);
 	
 	List<T> findAll();
 	
@@ -15,6 +14,6 @@ public interface IOperations<T extends Serializable>{
 	
 	void delete(final T entity);
 	
-	void deleteById(final long entityId);
+	void deleteById(final int entityId);
 	
 }

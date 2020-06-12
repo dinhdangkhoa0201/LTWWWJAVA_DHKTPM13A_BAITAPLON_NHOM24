@@ -1,16 +1,16 @@
 package fit.se.main.principal;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import fit.se.main.model.Account;
+import fit.se.main.model.Role;
 
 public class AccountPricipal implements UserDetails{
 
@@ -19,11 +19,11 @@ public class AccountPricipal implements UserDetails{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Long accountId;
+	private int accountId;
 	
 	private String accountName;
 	
-	private LocalDate birthday;
+	private String birthday;
 	
 	private String gender;
 	
@@ -37,7 +37,7 @@ public class AccountPricipal implements UserDetails{
 	
 	}
 	
-	public AccountPricipal(Long accountId, String accountName, LocalDate birthday, String gender, String email, String password,
+	public AccountPricipal(int accountId, String accountName, String birthday, String gender, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.accountId = accountId;
 		this.accountName = accountName;
@@ -49,13 +49,17 @@ public class AccountPricipal implements UserDetails{
 	}
 
 	public static UserDetails create(Account account) {
-		List<GrantedAuthority> authorities = account.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		for(Role role : account.getRoles()) {
+			authorities.add(new SimpleGrantedAuthority(role.getName()));
+		}
+//		for(AccountRole accountRole : account.getAccountRoles()) {
+//			authorities.add(new SimpleGrantedAuthority(accountRole.getRole().getName()));
+//		}
 		return new AccountPricipal(account.getAccountId(), account.getAccountName(), account.getBirthday(), account.getGender(), account.getEmail(), account.getPassword(), authorities);
 	}
-
 	
-
-	public Long getAccountId() {
+	public int getAccountId() {
 		return accountId;
 	}
 
@@ -63,7 +67,7 @@ public class AccountPricipal implements UserDetails{
 		return accountName;
 	}
 
-	public LocalDate getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
@@ -112,7 +116,10 @@ public class AccountPricipal implements UserDetails{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(accountId);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + accountId;
+		return result;
 	}
 
 	@Override
@@ -124,13 +131,18 @@ public class AccountPricipal implements UserDetails{
 		if (getClass() != obj.getClass())
 			return false;
 		AccountPricipal other = (AccountPricipal) obj;
-		if (accountId == null) {
-			if (other.accountId != null)
-				return false;
-		} else if (!accountId.equals(other.accountId))
+		if (accountId != other.accountId)
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "AccountPricipal [accountId=" + accountId + ", accountName=" + accountName + ", birthday=" + birthday
+				+ ", gender=" + gender + ", email=" + email + ", password=" + password + ", authorities=" + authorities
+				+ "]";
+	}
+	
 	
 	
 }

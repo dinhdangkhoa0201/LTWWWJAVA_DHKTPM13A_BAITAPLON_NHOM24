@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Khách Hàng</title>
+
+	<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+	<!-- Font awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Animate -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.jqueryui.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+	<!-- Datatable -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+	<!-- Datatable button -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
+	<!-- Datatable select -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap4.min.css">
+	<!-- Datatable responsive model -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+	<!-- CSS fix header -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css">
+
+	<!-- ****************************************************************** -->
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+		th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"
+		th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.js}"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+		th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+	<!-- ****************************************************************** -->
+
+	<!-- JQuery Datatable -->
+	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<!-- JQuery Datatable bootstrap 4 -->
+	<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+	<!-- JQuery Datatable JQueryUI -->
+	<script src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script>
+	<!-- JQuery Fixed Header -->
+	<script src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+	<!-- JQuery Button -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+	<!-- JQuery Button bootstrap 4 -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+	<!-- JQuery Button JQueryUI -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.jqueryui.min.js"></script>
+	<!-- JQuery Button HTML5 -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+	<!-- JQuery Button Print -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+	<!-- JQuery Button Colvi -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
+	<!-- JQuery JSzip -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<!-- JQuery PDF Maker -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<!-- JQuery PDF fonts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<!-- JQuery Select -->
+	<script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+
+	<script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>
+
+	<style>
+	</style>
+
+	<script type="text/javascript" th:inline="javascript">
+		$(document).ready(function () {
+			/*<![CDATA[*/
+			const emails = /*[[${emails}]]*/[];
+			const phones = /*[[${phones}]]*/[];
+
+			var tempEmails = /*[[${emails}]]*/[];
+			var tempPhones = /*[[${phones}]]*/[];
+			/*]]>*/
+
+			$('#btnSua').click(function () {
+				$('#accountName').prop('disabled', false);
+				$('#phone').prop('disabled', false);
+				$('#genderNam').prop('disabled', false);
+				$('#genderNu').prop('disabled', false);
+				$('#address').prop('disabled', false);
+				$('#email').prop('disabled', false);
+				$('#birthday').prop('disabled', false);
+				$('#note').prop('disabled', false);
+
+				$('#btnLuu').show();
+				$('#btnHuy').show();
+				$('#btnSua').hide();
+				$('#btnTroVe').hide();
+			});
+			$('#btnHuy').click(function () {
+				$('#accountName').prop('disabled', true);
+				$('#phone').prop('disabled', true);
+				$('#genderNam').prop('disabled', true);
+				$('#genderNu').prop('disabled', true);
+				$('#address').prop('disabled', true);
+				$('#email').prop('disabled', true);
+				$('#birthday').prop('disabled', true);
+				$('#note').prop('disabled', true);
+
+				$('#btnLuu').hide();
+				$('#btnHuy').hide();
+				$('#btnSua').show();
+				$('#btnTroVe').show();
+
+				$("label.error").hide();
+				$(".error").removeClass("error");
+
+
+			});
+
+			$('#modalEditKhachHang').on('hidden.bs.modal', function () {
+				tempEmails = /*[[${emails}]]*/[];
+				tempPhones = /*[[${phones}]]*/[];
+				console.log("Temp emails : " + tempEmails);
+				console.log("Temp phones : " + tempPhones);
+			});
+
+			$("input").on("change", function () {
+				this.setAttribute(
+					"data-date",
+					moment(this.value, "YYYY-MM-DD")
+						.format(this.getAttribute("data-date-format"))
+				)
+			});
+
+			var table = $('#tableKhachHang').DataTable({
+				lengthChange: false,
+				autoWidth: true,
+				buttons: [
+					{
+						extend: 'excelHtml5',
+						text: '<i class="fa fa-file-excel-o" style="color:green"; width: 100px></i>',
+						titleAttr: 'Xuất File Excel'
+					},
+					{
+						extend: 'pdfHtml5',
+						text: '<i class="fa fa-file-pdf-o" style="color:orange"; width: 100px !important></i>',
+						titleAttr: 'Xuất File PDF'
+					}
+				],
+			});
+			table.buttons().container().insertBefore('#tableKhachHang_filter');
+
+			$('#tableKhachHang').on('click', '#editKhachHang', function (e) {
+				e.stopPropagation();
+				var data = [];
+				$(this).closest('tr').find('span').each(function () {
+					data.push($(this).text());
+				});
+				console.log(data);
+
+				$('#accountId').val(data[1]);
+				$('#accountName').val(data[0]);
+				if (data[2] == 'Nam') {
+					$('#genderNam').prop('checked', true);
+				} else if (data[2] == 'Nu') {
+					$('#genderNu').prop('checked', true);
+				}
+				$('#birthday').val(data[3]);
+				$('#email').val(data[4]);
+				$('#phone').val(data[5]);
+
+				var emailIndex = emails.indexOf(data[4]);
+				var phoneIndex = phones.indexOf(data[5]);
+
+				if (emailIndex > -1) {
+					tempEmails.splice(emailIndex, 1);
+				}
+				if (phoneIndex > -1) {
+					tempPhones.splice(phoneIndex, 1);
+				}
+				console.log("Temp emails : " + tempEmails);
+				console.log("Temp phones : " + tempPhones);
+				$("#modalEditKhachHang").modal('show');
+
+			});
+			/* - Min Age -*/
+			$.validator.addMethod("minAge", function (value, element, min) {
+				var today = new Date().getTime();
+				var birthday = new Date(value).getTime();
+				var temp = today - birthday;
+				var age = Math.floor(temp / 1000 / 60 / 60 / 24 / 365.25);
+
+				if (age >= 18) {
+					return true;
+				}
+				return false;
+			}, "Khách hàng phải trên 18 tuổi");
+
+			/* - Unique Email -*/
+			$.validator.addMethod("uniqueEmail", function (value, element) {
+				if (tempEmails.includes(value)) {
+					return false;
+				}
+				return true;
+			}, "Email này đã được sử dụng");
+
+			/* - Unique Phone -*/
+			$.validator.addMethod("uniquePhone", function (value, element) {
+				if (tempPhones.includes(value)) {
+					return false;
+				}
+				return true;
+			}, "Số điện thoại này đã được sử dụng");
+			/* - Regex Email - */
+			$.validator.addMethod("regexEmail", function (value, element) {
+				var regex = new RegExp('^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$');
+				if (regex.test(value)) {
+					return true;
+				}
+				return false;
+			}, "Email is invalid");
+			/* - Regex Phone -*/
+			$.validator.addMethod("regexPhone", function (value, element) {
+				var regex = new RegExp('(09|01[2|6|8|9])+([0-9]{8})\b');
+				if (regex.test(value)) {
+					return false;
+				}
+				return true;
+			}, "Phone is invalid");
+			/* - Regex Password -*/
+			$.validator.addMethod("regexPassword", function (value, element) {
+				var regex = new RegExp('^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+				if (regex.test(value)) {
+					return false;
+				}
+				return true;
+			}, "Password is invalid")
+
+			var formEditKhachHang = $('#formEditKhachHang').validate({
+				rules: {
+					accountName: "required",
+					gender: "required",
+					birthday: {
+						required: true,
+						minAge: 18,
+					},
+					email: {
+						required: true,
+						regexEmail: true,
+						uniqueEmail: true,
+					},
+					phone: {
+						required: true,
+						regexPhone: true,
+						uniquePhone: true,
+					},
+				},
+				messages: {
+					accountName: "Bạn chưa nhập Họ và tên",
+					gender: "Bạn chưa chọn Giới tính",
+					birthday: {
+						required: "Bạn chưa nhập Ngày sinh",
+						minAge: "Khách hàng phải trên 18 tuổi",
+					},
+					email: {
+						required: "Bạn chưa nhập Email",
+						regexEmail: "Email không hợp lệ",
+						uniqueEmail: "Email này đã được sử dụng",
+					},
+					phone: {
+						required: "Bạn chưa nhập Số điện thoại",
+						regexPhone: "Số điện thoại không hợp lệ",
+						uniquePhone: "Số điện thoại này đã được sử dụng",
+					},
+				}
+			});
+
+			var formThemKhachHang = $('#formThemKhachHang').validate({
+				rules: {
+					accountName: "required",
+					gender: "required",
+					birthday: {
+						required: true,
+						minAge: 18,
+					},
+					email: {
+						required: true,
+						regexEmail: true,
+						uniqueEmail: true,
+					},
+					phone: {
+						required: true,
+						regexPhone: true,
+						uniquePhone: true,
+					},
+					password: {
+						required: true,
+						regexPassword: true,
+						minlength: 8,
+					}
+				},
+				messages: {
+					accountName: "Bạn chưa nhập Họ và tên",
+					gender: "Bạn chưa chọn Giới tính",
+					birthday: {
+						required: "Bạn chưa nhập Ngày sinh",
+						minAge: "Khách hàng phải trên 18 tuổi",
+					},
+					email: {
+						required: "Bạn chưa nhập Email",
+						regexEmail: "Email không hợp lệ",
+						uniqueEmail: "Email này đã được sử dụng",
+					},
+					phone: {
+						required: "Bạn chưa nhập Số điện thoại",
+						regexPhone: "Số điện thoại không hợp lệ",
+						uniquePhone: "Số điện thoại này đã được sử dụng",
+					},
+					password: {
+						required: "Bạn chưa nhập Mật khẩu",
+						regexPassword: "Mật Khẩu phải chứa ký tự Chữ Thường [a-z], ký tự chữ Số [0-9] và ký tự In Hoa [A-Z]",
+						minlength: "Mật khẩu phải chứa ít nhất 8 kí tự",
+					}
+				}
+			});
+			$("#xoaKhachHang").click(function () {
+				if (!confirm("Do you want to delete")) {
+					return false;
+				}
+			});
+		});
+
+
+	</script>
+
+</head>
+
+<body>
+	<div id="left-sidebar" class="left-sidebar bg-dark">
+		<nav class="navbar">
+			<div>
+				<!-- <img class="nav-brand" src="../../static/image/logo.jpg" width="50px" alt=""> -->
+			</div>
+		</nav>
+		<ul class="list-group list-group-flush">
+			<li class="menu-title">Menu</li>
+			<li id="trangchu" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link"> <i class="fa fa-tachometer fa-lg"></i> <span>Trang chủ</span>
+					</a>
+				</div>
+			</li>
+			<li id="banhang" class="list-group-item bg-dark">
+				<div>
+					<a href="#" id="linkBanHang" class="nav-link"> <i class="fa fa-clipboard fa-lg"></i> <span>Bán hàng</span>
+					</a>
+				</div>
+			</li>
+			<li id="khohang" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link" data-toggle="collapse" data-target="#collapseKhoHang" aria-expanded="false"> <i
+							class="fa fa-shopping-cart fa-lg"></i>
+						<span>Kho hàng</span>
+					</a>
+				</div>
+				<div id="collapseKhoHang" class="collapse" data-parent="#left-sidebar">
+					<ul>
+						<li><a href="" class="nav-link"><span>Nhập kho -
+									Mua hàng</span></a></li>
+						<li><a href="" class="nav-link"><span>Xuất kho -
+									Bán hàng</span></a></li>
+						<li><a href="" class="nav-link"><span>Báo cáo
+									Nhập - Xuất - Tồn</span></a></li>
+						<li><a href="" class="nav-link"><span>Sổ chi
+									tiết Hàng hoá</span></a></li>
+						<li><a href="" class="nav-link"><span>Sổ chi
+									tiết mua hàng</span></a></li>
+						<li><a href="" class="nav-link"><span>Sổ chi
+									tiết bán hàng</span></a></li>
+					</ul>
+				</div>
+			</li>
+			<li id="thuchi" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link"> <i class="fa fa-dollar fa-lg"></i>
+						<span>Thu chi</span>
+					</a>
+				</div>
+			</li>
+			<li id="baocao-danhmuc" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link"> <i class="fa fa-cog"></i> <span>Báo
+							cáo - Thống kê</span>
+					</a>
+				</div>
+			</li>
+			<li id="danhmuc" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link" data-toggle="collapse" data-target="#collapseDanhMuc" aria-expanded="false"> <i
+							class="fa fa-clone fa-lg"></i> <span>Danh
+							muc</span>
+					</a>
+				</div>
+				<div id="collapseDanhMuc" class="collapse show" data-parent="#left-sidebar">
+					<ul>
+						<li>
+							<a th:href="@{/admin/khachhang}" id="linkDMKhachHang" class="nav-link active">
+								<span>DM Khách hàng</span>
+							</a>
+						</li>
+						<li><a th:href="@{#}" href="#" id="linkDMNhomHangHoa" class="nav-link"><span>DM Nhóm hàng
+									hoá</span></a></li>
+						<li><a th:href="@{/admin/hanghoa}" href="#" id="linkDMHangHoa" class="nav-link"><span>DM Hàng hoá</span></a></li>
+						<li><a th:href="@{#}" href="#" id="linkDMNhaCungCap" class="nav-link"><span>DM Nhà cung cấp</span></a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div id="page-content">
+		<div id="header" class=""></div>
+		<div id="navigation" class="">
+			<nav class="navbar navbar-expand-sm navbar-dark bg-primary fix-top">
+				<div class="d-flex flex-grow-1">
+					<a id="btn-menunav" href="javascript:void(0)" class="navbar-brand" onclick="openNav()"><i
+							class="fa fa-bars fa-2x"></i></a>
+					<form class="mr-2 my-auto w-50 d-inline-block order-1">
+						<div class="input-group">
+							<input type="text" class="form-control border border-right-0 border-success" placeholder="Search...">
+							<span class="input-group-append">
+								<button class="btn btn-success border border-left-0" type="button">
+									<i class="fa fa-search" style="color: #fff;"></i>
+								</button>
+							</span>
+						</div>
+					</form>
+				</div>
+				<ul id="dropdownUserMenu" class="navbar-nav float-right">
+					<li class="nav-item dropdown"><a href="" class="navlink dropdown " id="navbarDropdownUserMenu"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-user fa-2x"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right animate__animated animate__fadeInUp"
+							aria-labelledby="#navbarDropdownUserMenu">
+							<div class="dropdown-header">Welcome!</div>
+							<a class="dropdown-item" href="#"><i class="fa fa-user"></i>
+								Profile</a> <a class="dropdown-item" href=""><i class="fa fa-cog"></i> Setting</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href=""><i class="fa fa-sign-out"></i>
+								Log out</a>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div id="content"></div>
+		<div class="container-fluid">
+			<div class="header">
+				<h4 class="page-header">Danh mục Khách hàng</h4>
+				<div class="row">
+					<div class="col-lg-auto page-title">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+							<li class="breadcrumb-item"><a href="#">DM Khách hàng</a></li>
+						</ol>
+					</div>
+					<div class="col-lg-8">
+						<div class="float-right">
+							<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalThemKhachHang">Thêm Khách
+								hàng</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content">
+				<div class="table-responsive">
+					<table id="tableKhachHang" class="table table-bordered table-hover table-sm" style="width: 100%;">
+						<thead class="thead-light">
+							<tr id="list-header">
+								<th scope="col" data-priority="1"><input type="checkbox" onclick="checkAll(this)" /></th>
+								<th scope="col">Họ và tên</th>
+								<th scope="col">Mã Khách hàng</th>
+								<th scope="col">Giới tính</th>
+								<th scope="col">Ngày sinh</th>
+								<th scope="col">Email</th>
+								<th scope="col">Số điện thoại</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="account : ${accounts}">
+								<td></td>
+								<td>
+									<a th:href="@{/admin/thongtinkhachhang(accountId=${account.accountId})}" href="#">
+										<span th:text="${account.accountName}"></span>
+									</a>
+								</td>
+								<td>
+									<a th:href="@{/admin/thongtinkhachhang(accountId=${account.accountId})}" href="">
+										<span th:text="${account.accountId}"></span>
+									</a>
+								</td>
+								<td><span th:text="${account.gender}"></span></td=>
+								<td><span class="date-format" th:text="${account.birthday}"></span></td>
+								<td><span th:text="${account.email}"></span></td>
+								<td><span th:text="${account.phone}"></span></td>
+								<td style="text-align: center;">
+									<!-- <button type="button" class="btn btn-outline-warning"><i class="fa fa-edit"></i></button> -->
+									<!-- <a href=""><i class="fa fa-edit"></i></a> -->
+									<!-- <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i></button> -->
+									<a id="editKhachHang" href="#" data-toggle="modal" data-target="#modalEditKhachHang"
+										title="Cập nhật"><i class="fa fa-edit fa-lg"></i></a>
+									<a id="xoaKhachHang" href="#" th:href="@{/admin/xoaKhachHang(accountId=${account.accountId})}"
+										title="Xoá Khách hàng"><i class="fa fa-trash fa-lg"></i></a>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- Model -->
+		<div id="modalEditKhachHang" class="modal fade">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<form id="formEditKhachHang" th:action="@{/admin/khachhang}" th:object="${account}" method="POST">
+						<!-- Modal header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Thông tin Khách hàng</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+
+							<div class="form-group">
+								<label for="accountId">Mã Khách hàng</label>
+								<input class="form-control" type="number" name="accountId" id="accountId" th:field="*{accountId}"
+									placeholder="Mã Khách hàng" readonly />
+							</div>
+							<div class="form-group">
+								<label for="accountName">Họ và tên</label>
+								<input class="form-control" type="text" name="accountName" id="accountName" th:field="*{accountName}"
+									placeholder="Họ và tên" disabled required />
+							</div>
+							<div class="form-group">
+								<label for="gender">Giới tính</label>
+								<div id="gender" class="ml-5">
+									<div class="form-check-inline">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" name="gender" id="genderNam" th:value="Nam"
+												th:field="*{gender}" disabled required /> Name
+										</label>
+									</div>
+									<div class="form-check-inline">
+										<label class="form-check-label">
+											<input type="radio" class="form-check-input" name="gender" id="genderNu" th:value="Nu"
+												th:field="*{gender}" disabled required />
+											Nữ
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="birthday">Ngày sinh</label>
+								<input class="form-control" type="date" name="birthday" data-date-format="dd/MM/yyyy" id="birthday"
+									th:field="*{birthday}" disabled required />
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input class="form-control" type="email" name="email" id="email" th:field="*{email}" disabled
+									required />
+							</div>
+							<div class="form-group">
+								<label for="phone">Số điện thoại</label>
+								<input class="form-control" type="tel" name="phone" id="phone" th:field="*{phone}" disabled required />
+							</div>
+
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-success" id="btnSua">Sửa</button>
+							<button type="submit" class="btn btn-success" style="display: none;" id="btnLuu">Lưu</button>
+							<button type="button" class="btn btn-warning" style="display: none;" id="btnHuy">Huỷ</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal"><i
+									class="fa fa-close"></i>Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="modalThemKhachHang" class="modal fade">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form id="formThemKhachHang" th:action="@{/admin/themKhachHang}" th:object="${accountCreateDTO}" method="POST">
+					<!-- Modal header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Thêm Khách hàng</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<!-- <div class="form-group">
+							<label for="accountId">Mã Khách hàng</label>
+							<input class="form-control" type="number" name="" id="accountId" th:field="*{accountId}"
+								placeholder="Mã Khách hàng" readonly />
+						</div> -->
+						<div class="form-group">
+							<label for="addAccountName">Họ và tên</label>
+							<input class="form-control" type="text" name="accountName" id="addAccountName" th:field="*{accountName}"
+								placeholder="Họ và tên" required />
+						</div>
+						<div class="form-group">
+							<label for="gender">Giới tính</label>
+							<div id="gender" class="ml-5">
+								<div class="form-check-inline">
+									<label class="form-check-label">
+										<input type="radio" class="form-check-input" name="gender" id="addGenderNam" th:value="Nam"
+											th:field="*{gender}" required /> Nam
+									</label>
+								</div>
+								<div class="form-check-inline">
+									<label class="form-check-label">
+										<input type="radio" class="form-check-input" name="gender" id="addGenderNu" th:value="Nu"
+											th:field="*{gender}" /> Nữ
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="addBirthday">Ngày sinh</label>
+							<input class="form-control" type="date" name="birthday" data-date-format="dd/MM/yyyy" id="addBirthday"
+								th:field="*{birthday}" required />
+						</div>
+						<div class="form-group">
+							<label for="addEmail">Email</label>
+							<input class="form-control" type="email" name="email" id="addEmail" th:field="*{email}" required />
+						</div>
+						<div class="form-group">
+							<label for="addPhone">Số điện thoại</label>
+							<input class="form-control" type="tel" name="phone" id="addPhone" th:field="*{phone}" required />
+						</div>
+						<div class="form-group">
+							<label for="addPassword">Mật khẩu</label>
+							<input class="form-control" type="password" name="password" id="addPassword" th:field="*{password}"
+								pattern="[a-zA-Z0-9]+" required />
+						</div>
+
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-success">Thêm Khách hàng</button>
+						<button type="reset" class="btn btn-outline-danger">Reset</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

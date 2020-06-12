@@ -9,7 +9,9 @@ public interface AccountDAO extends IOperations<Account>{
 	
 	Optional<Account> findByEmail(String email);
 	
-	Optional<Account> findByHoten(String accountname);
+	Optional<Account> findByAccountname(String accountname);
 	
 	Optional<Account> findByPhone(String phone);
+
+	Optional<String> findAllEmail();
 }

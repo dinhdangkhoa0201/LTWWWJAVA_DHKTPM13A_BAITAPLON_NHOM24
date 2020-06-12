@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<!-- ****************************************************************** -->
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!-- ****************************************************************** -->
+<style>
+label {
+	font-weight: 600;
+	font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="header"></div>
+		<div class="content mt-5 mb-5">
+			<div class="row">
+				<div id="orderDetail" class="col-lg-8 col-md-12">
+					<div class="">
+						<form action="" class="mb-3">
+							<label for="search">Tìm kiếm Sản phẩm</label> <input
+								type="text" class="form-control" name="" id="search"
+								placeholder="Nhập mã hoặc tên sản phấm" />
+						</form>
+						<table class="table table-bordered table-hover table-striped">
+							<thead>
+								<tr>
+									<td>STT</td>
+									<td>Mã hàng</td>
+									<td>Tên sản phẩm</td>
+									<td>Ảnh</td>
+									<td>Số lượng</td>
+									<td>ĐVT</td>
+									<td>Giá bán</td>
+									<td>Thành tiền</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="alert alert-success my-4">
+						<strong>Tips!</strong> Gõ mã hoặc tên sản phẩm vào hộp tìm kiếm để
+						thêm hàng vào đơn hàng
+					</div>
+				</div>
+				<!-- Start Order -->
+				<div id="order" class="col-lg-4 col-md-12">
+					<form action="">
+						<label for="khachhang"><span>Khách hàng</span></label>
+						<div class="input-group mb-3" id="khachhang">
+							<input class="form-control" type="text" name="khachhang" id=""
+								placeholder="Nhập tên Khách hàng" required />
+							<div class="input-group-prepend">
+								<button type="button" class="btn btn-success">
+									<i class="fa fa-plus"></i>
+								</button>
+							</div>
+						</div>
+						<label for="nhanvien">NV bán hàng</label>
+						<div id="nhanvien" class="mb-3">
+							<select class="form-control">
+								<option value="">Nhân viên</option>
+							</select>
+						</div>
+						<label for="ghichu">Ghi chú</label>
+						<div id="ghichu" class="mb-3">
+							<textarea class="form-control" name="ghichu" id="ghichu"
+								cols="30" rows="5"></textarea>
+						</div>
+						<hr>
+						<label for="thongtinthanhtoan" style="font-size: 20px;"><span
+							class="fa fa-info-circle" style="color: #00f;"></span> Thông tin
+							thánh toán</label>
+						<div id="thongtinthanhtoan" class="mb-3">
+							<label for="hinhthuc">Hình thức</label>
+							<div id="hinhthuc">
+								<div class="form-check-inline">
+									<label class="form-check-label"> <input type="radio"
+										name="hinhthucTT" id="" /> Tiền mặt
+									</label>
+								</div>
+								<div class="form-check-inline">
+									<label class="form-check-label"> <input type="radio"
+										name="hinhthucTT" id="" /> Thẻ
+									</label>
+								</div>
+								<div class="form-check-inline">
+									<label class="form-check-label"> <input type="radio"
+										name="hinhthucTT" id="" /> Chuyển khoảng
+									</label>
+								</div>
+							</div>
+						</div>
+						<label for="vat">VAT</label>
+						<div id="vat" class="mb-3">
+							<select name="vat" id="" class="form-control">
+								<option value="0%">0%</option>
+								<option value="5%">5%</option>
+								<option value="10%">10%</option>
+							</select>
+						</div>
+						<label for="lbltienhang">Tiền hàng</label>
+						<div id="lbltienhang" class="mb-3">
+							<input class="form-control" type="text" name="tienhang"
+								id="tienhang" readonly />
+						</div>
+						<hr>
+						<label for="thanhtien">Thành tiền</label>
+						<div class="mb-3" id="thanhtien">
+							<output class="float-right">VND</output>
+						</div>
+						<div style="clear: both;"></div>
+						<hr>
+						<div class="float-right mt-1">
+							<button class="btn btn-primary">
+								<i class="fa fa-check"></i> Lưu
+							</button>
+							<button class="btn btn-warning">
+								<i class="fa fa-print"></i> Lưu và in
+							</button>
+						</div>
+						<div style="clear: both;"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

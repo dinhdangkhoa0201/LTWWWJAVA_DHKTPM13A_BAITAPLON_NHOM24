@@ -1,58 +1,61 @@
 package fit.se.main.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "role")
-public class Role implements Serializable{
+public class Role implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "role_id")
-	private Long roleId;
-	
-	@Column(name = "rolename", nullable = false)
+	private int roleId;
+
+	@Column(name = "rolename", nullable = false, columnDefinition = "nvarchar(50)")
 	private String roleName;
-	
+
 	@Lob
 	private String description;
 	
-	@ManyToMany(mappedBy = "roles")
-	private List<Account> accounts;
+	private LocalDateTime modifiedDate;
+	
+	@OneToMany(mappedBy = "roles")
+	private List<Account> accountRoles;
 
 	public Role() {
 	}
-	
+
 	public Role(String rolename, String description) {
 		this.roleName = rolename;
 		this.description = description;
-		accounts = new ArrayList<Account>();
+		this.modifiedDate = LocalDateTime.now();
 	}
-	
-	public Role(Long roleId) {
+
+	public Role(int roleId) {
 		this.roleId = roleId;
 	}
 
-	public Long getRoleId() {
+	public int getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(Long roleId) {
+	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
 
@@ -64,14 +67,6 @@ public class Role implements Serializable{
 		this.description = description;
 	}
 
-	public List<Account> getKhachHangs() {
-		return accounts;
-	}
-
-	public void setKhachHangs(List<Account> khachHangs) {
-		this.accounts = khachHangs;
-	}
-
 	public String getName() {
 		return roleName;
 	}
@@ -79,12 +74,36 @@ public class Role implements Serializable{
 	public void setName(String name) {
 		this.roleName = name;
 	}
+	
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public LocalDateTime getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public void setModifiedDate(LocalDateTime modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+	
+	public List<Account> getAccountRoles() {
+		return accountRoles;
+	}
+
+	public void setAccountRoles(List<Account> accountRoles) {
+		this.accountRoles = accountRoles;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (roleId ^ (roleId >>> 32));
+		result = prime * result + roleId;
 		return result;
 	}
 
@@ -101,4 +120,12 @@ public class Role implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Role [roleId=" + roleId + ", roleName=" + roleName + ", description=" + description + "]";
+	}
+	
+	
+	
 }

@@ -27,15 +27,9 @@ public class AccountController {
 	@PostMapping("sign-up")
 	public String signUp(@Valid AccountCreateDTO accountCreateDTO, BindingResult result) throws Exception {
 		if(result.hasErrors()) {
-			System.out.println(result.toString());
-			System.out.println("Error Account Controller");
 			return "sign-up";
 		}
-		
-		System.out.println("AccountDTO " + accountCreateDTO);
-		
 		Account account = khachHangService.createMember(accountCreateDTO);
-		System.out.println("Account : " + account);
 		accountCreateDTO.setId(account.getAccountId());
 		return "redirect:/verify-code";
 	}
@@ -48,12 +42,9 @@ public class AccountController {
 	@PostMapping("verify-code")
 	public String verifyCodeAction(Model model, @Valid VerifyCodeDTO verifyCodeDTO, BindingResult result){
 		if(result.hasErrors()) {
-			System.out.println("Error");
 			return "verify-code";
 		}
-		
 		khachHangService.verifyCode(verifyCodeDTO);
-		
 		return "redirect:/sign-in";
 	}
 }
