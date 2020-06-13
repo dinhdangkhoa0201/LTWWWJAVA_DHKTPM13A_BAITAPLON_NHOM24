@@ -39,6 +39,7 @@ public class Role implements Serializable {
 	private List<Account> accountRoles;
 
 	public Role() {
+		this.modifiedDate = LocalDateTime.now();
 	}
 
 	public Role(String rolename, String description) {

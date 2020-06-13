@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,57 +30,72 @@ public class Product implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private int productId;
-	
+
 	@Column(name = "product_name", nullable = false, columnDefinition = "nvarchar(50)")
 	private String productName;
-	
+
 	@Column(name = "price")
 	private double price;
-	
+
 	@Column(name = "selling_price")
 	private double sellingPrice;
-	
+
 	@Column(name = "quantity")
 	private int quantity;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "category_id")
 	private Category category;
-	
+
 	@OneToMany(mappedBy = "product")
 	private List<ProductInventory> productInventories;
-	
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
 	private List<SaleOrderDetail> orderDetails;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "supplier_id")
 	private Supplier supplier;
-	
-	@OneToOne(cascade = CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "unit_id")
 	private UnitMeasure unitMeasure;
-	
+
 	@Column(columnDefinition = "nvarchar(100)")
 	private String note;
-	
+
+	@Column(name = "image")
 	private String image;
-	
+
+	private boolean enable;
+
+	public List<ProductImage> getProductImages() {
+		return productImages;
+	}
+
+	public void setProductImages(List<ProductImage> productImages) {
+		this.productImages = productImages;
+	}
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
 	private List<ProductImage> productImages;
-	
+
 	private LocalDateTime modifiedDate;
-	
-	public Product(int productId, String productName, double price, double sellingPrice, int quantity, Category category) {
-		this.productId = productId;
+
+	public Product(String productName, double price, double sellingPrice, int quantity,
+			List<SaleOrderDetail> orderDetails, Supplier supplier, String note, String image) {
 		this.productName = productName;
 		this.price = price;
 		this.sellingPrice = sellingPrice;
 		this.quantity = quantity;
-		this.category = category;
+		this.orderDetails = orderDetails;
+		this.supplier = supplier;
+		this.note = note;
+		this.image = image;
 		this.modifiedDate = LocalDateTime.now();
+		this.enable = true;
 	}
 
 	public Product(String productName, double price) {
@@ -94,8 +108,9 @@ public class Product implements Serializable{
 	public Product(int productId) {
 		this.productId = productId;
 	}
-	
+
 	public Product() {
+		this.modifiedDate = LocalDateTime.now();
 	}
 
 	public int getProductId() {
@@ -178,12 +193,6 @@ public class Product implements Serializable{
 		this.unitMeasure = unitMeasure;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price + ", category="
-				+ category + "]";
-	}
-
 	public LocalDateTime getModifiedDate() {
 		return modifiedDate;
 	}
@@ -207,8 +216,22 @@ public class Product implements Serializable{
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
-	
-	
-	
+
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price
+				+ ", sellingPrice=" + sellingPrice + ", quantity=" + quantity
+				+ ", note=" + note + ", image=" + image + ", enable=" + enable + ", productImages=" + productImages
+				+ ", modifiedDate=" + modifiedDate + "]";
+	}
+
+
 }

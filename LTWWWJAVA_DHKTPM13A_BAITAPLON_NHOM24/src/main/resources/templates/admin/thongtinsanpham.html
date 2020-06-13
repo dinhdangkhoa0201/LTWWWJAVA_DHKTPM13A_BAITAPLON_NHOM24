@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tạo Sản phẩm</title>
+  <title>Thông tin sản phẩm</title>
   <!-- ****************************************************************** -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -104,38 +104,40 @@
         reader.readAsDataURL(this.files[0]);
       })
 
-      /* - Button Luu - */
-      $('#btnLuu').on('click', function () {
-        $('#formSanPham').attr('action', '/admin/themsanpham/themSanPhamLuu');
-      });
-      /* - Button Luu va Tiep tuc - */
-      $('#btnLuuVaTiepTuc').on('click', function () {
-        $('#formSanPham').attr('action', '/admin/themsanpham/themSanPhamLuuVaTiepTuc');
-      });
+      // /* - Button Luu - */
+      // $('#btnLuu').on('click', function () {
+      //   $('#formSanPham').attr('action', '/admin/sanpham/capNhatThongTinSanPham');
+      // });
+      // /* - Button Luu va Tiep tuc - */
+      // $('#btnLuuVaTiepTuc').on('click', function () {
+      //   $('#formSanPham').attr('action', '/admin/sanpham/thongtinsanpham/themSanPhamLuuVaTiepTuc');
+      // });
 
       /* - Form Danh muc San pham - */
       $('#btnLuuDanhmucSanpham').on('click', function () {
-        $('#formDanhMucSanPham').attr('action', '/admin/themsanpham/themDanhMucSanPhamLuu');
+        $('#formDanhMucSanPham').attr('action', '/admin/sanpham/thongtinsanpham/themDanhMucSanPhamLuu');
+        // $('#_formDanhMucSanPham').attr('action', '/admin/sanpham/thongtinsanpham/themDanhMucSanPhamLuu');
       });
 
       $('#btnLuuvaTieptucDanhmucSanPham').on('click', function () {
-        $('#formDanhMucSanPham').attr('action', '/admin/themsanpham/themDanhMucSanPhamLuuVaTiepTuc');
+        $('#formDanhMucSanPham').attr('action', '/admin/sanpham/thongtinsanpham/themDanhMucSanPhamLuuVaTiepTuc');
+        // $('#_formDanhMucSanPham').attr('action', '/admin/sanpham/thongtinsanpham/themDanhMucSanPhamLuuVaTiepTuc');
       });
 
       /* - Form Don Vi Tinh - */
       $('#btnLuuDonViTinh').on('click', function () {
-        $('#formDonViTinh').attr('action', '/admin/themsanpham/themDonViTinhLuu');
+        $('#formDonViTinh').attr('action', '/admin/sanpham/thongtinsanpham/themDonViTinhLuu');
       })
       $('#btnLuuVaTiepTucDonViTinh').on('click', function () {
-        $('#formDonViTinh').attr('action', '/admin/themsanpham/themDonViTinhLuuVaTiepTuc');
+        $('#formDonViTinh').attr('action', '/admin/sanpham/thongtinsanpham/themDonViTinhLuuVaTiepTuc');
       })
 
       /* - Form Nha san xuat - */
       $('#btnLuuNhaSanXuat').on('click', function () {
-        $('#formNhaSanXuat').attr('action', '/admin/themsanpham/themNhaSanXuatLuu');
+        $('#formNhaSanXuat').attr('action', '/admin/sanpham/thongtinsanpham/themNhaSanXuatLuu');
       });
       $('#btnLuuVaTiepTucNhaSanXuat').on('click', function () {
-        $('#formNhaSanXuat').attr('action', '/admin/themsanpham/themNhaSanXuatLuuVaTiepTuc');
+        $('#formNhaSanXuat').attr('action', '/admin/sanpham/thongtinsanpham/themNhaSanXuatLuuVaTiepTuc');
       });
 
       /* - Href Nha san xuat - */
@@ -194,7 +196,38 @@
         $('#modalDanhMucSanPham').modal('show');
         alert('Danh mục Sản phẩm này có chứa Sản phẩm. Không thể xoá!');
       }
+      $('#btnSua').click(function () {
+        $('#productName').prop('disabled', false);
+        $('#quantity').prop('disabled', false);
+        $('#price').prop('disabled', false);
+        $('#sellingPrice').prop('disabled', false);
+        $('#category').prop('disabled', false);
+        $('#productId').prop('disabled', false);
+        $('#unitmeasure').prop('disabled', false);
+        $('#note').prop('disabled', false);
+        $('#supplier').prop('disabled', false);
 
+        $('#btnLuu').show();
+        $('#btnHuy').show();
+        $('#btnSua').hide();
+        $('#btnTroVe').hide();
+      });
+      $('#btnHuy').click(function () {
+        $('#productName').prop('disabled', true);
+        $('#quantity').prop('disabled', true);
+        $('#price').prop('disabled', true);
+        $('#sellingPrice').prop('disabled', true);
+        $('#category').prop('disabled', true);
+        $('#productId').prop('disabled', true);
+        $('#unitmeasure').prop('disabled', true);
+        $('#note').prop('disabled', true);
+        $('#supplier').prop('disabled', true);
+
+        $('#btnLuu').hide();
+        $('#btnHuy').hide();
+        $('#btnSua').show();
+        $('#btnTroVe').show();
+      });
     });
   </script>
   <script type="text/javascript">
@@ -205,17 +238,17 @@
 <body>
   <div class="container-fluid">
     <div class="content mt-5">
-      <form id="formSanPham" th:action="@{'#'}" th:object="${productCreateDTO}" method="POST">
+      <form id="formSanPham" th:action="@{/admin/sanpham/capNhatSanPham}" th:object="${product}" method="POST">
         <!-- Row 1 -->
         <div class="row">
           <div class="col-lg-4 col-md-6 align-content-center">
-            <h2>Tạo sản phẩm mới</h2>
+            <h2>Thông tin sản phẩm</h2>
           </div>
           <div class="col-lg-4 col-md-0 col-sm-12">
 
           </div>
           <div class="col-lg-4 col-md-12 col-sm-12">
-            <div class="float-right">
+            <!-- <div class="float-right">
               <button id="btnLuu" type="submit" class="btn btn-success"><i class="fa fa-flag-checkered"></i>
                 Lưu</button>
               <button id="btnLuuVaTiepTuc" type="submit" class="btn btn-outline-success">
@@ -226,6 +259,22 @@
                 Reset</button>
               <button type="button" class="btn btn-outline-danger"><a class="text-reset" href="#"
                   th:href="@{/admin/hanghoa}"><i class="fa fa-arrow-left"></i> Trở về</a></button>
+            </div> -->
+            <div class="float-right">
+              <button style="display: none;" id="btnLuu" type="submit" class="btn btn-success">
+                <i class="fa fa-save"></i> Lưu
+              </button>
+              <button style="display: none;" id="btnHuy" type="button" class="btn btn-danger">
+                <i class="fa fa-close"></i> Huỷ
+              </button>
+              <button id="btnSua" type="button" class="btn btn-outline-success">
+                <i class="fa fa-edit"></i> Sửa
+              </button>
+              <button id="btnTroVe" type="button" class="btn btn-outline-danger">
+                <a style="text-decoration: none;" class="text-reset" th:href="@{/admin/hanghoa}">
+                  <i class="fa fa-arrow-left"></i> Trở về
+                </a>
+              </button>
             </div>
           </div>
         </div>
@@ -238,32 +287,33 @@
           <!-- Center -->
           <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="form-group">
-              <label for="tenSanPham">Tên sản phẩm</label>
-              <input class="form-control" type="text" name="tenSanPham" id="tenSanPham" th:field="*{productName}"
-                placeholder="Nhập tên Sản phẩm" required />
+              <label for="productName">Tên sản phẩm</label>
+              <input class="form-control" type="text" name="productName" id="productName" th:field="*{productName}"
+                th:value="${product.productName}" placeholder="Nhập tên Sản phẩm" required disabled />
             </div>
             <div class="form-group">
-              <label for="soLuong">Số lượng</label>
-              <input class="form-control" type="number" name="soLuong" id="soLuong" th:field="*{quantity}"
-                placeholder="Số lượng" required />
+              <label for="quantity">Số lượng</label>
+              <input class="form-control" type="number" name="quantity" id="quantity" th:field="*{quantity}"
+                th:value="${product.quantity}" placeholder="Số lượng" required disabled />
             </div>
             <div class="form-group">
-              <label for="giaVon">Giá vốn</label>
-              <input class="form-control" type="text" name="giaVon" id="giaVo" th:field="*{price}"
-                placeholder="Nhập Giá vốn" required />
+              <label for="price">Giá vốn</label>
+              <input class="form-control" type="number" name="price" id="price" th:field="*{price}"
+                th:value="${product.price}" placeholder="Nhập Giá vốn" required disabled />
             </div>
             <div class="form-group">
-              <label for="giaBanLe">Giá bán lẻ</label>
-              <input class="form-control" type="text" name="giaBanLe" id="giaBanLe" th:field="*{sellingPrice}"
-                placeholder="Nhập giá Bán lẻ" required />
+              <label for="sellingPrice">Giá bán lẻ</label>
+              <input class="form-control" type="text" name="sellingPrice" id="sellingPrice" th:field="*{sellingPrice}"
+                placeholder="Nhập giá Bán lẻ" required disabled />
             </div>
             <div class="form-group">
-              <label for="danhMucSanPham">Danh mục Sản phẩm</label>
+              <label for="category">Danh mục Sản phẩm</label>
               <div class="input-group">
-                <select class="form-control" name="danhMucSanPham" id="danhMucSanPham" th:field="*{category}" required>
+                <select class="form-control" name="category" id="category" th:field="*{category}" required disabled>
                   <option value="0">Danh mục Sản phẩm</option>
-                  <option th:each="category : ${categories}" th:value="${category.categoryId}"><span
-                      th:text="${category.categoryName}"></span></option>
+                  <option th:each="category : ${categories}" th:value="${category.categoryId}"
+                    th:selected="(${category.categoryId} == ${product.category.categoryId})"><span
+                      th:text=" ${category.categoryName}"></span></option>
                 </select>
                 <!-- Open model Danh muc San Pham -->
                 <div class="input-group-append">
@@ -276,11 +326,18 @@
           <!-- Right -->
           <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="form-group">
-              <label for="donViTinh">Đơn vị tính</label>
+              <label for="productId">Mã sản phẩm</label>
+              <input class="form-control" type="text" name="productId" id="productId" th:field="*{productId}"
+                th:value="${product.productId}" readonly disabled />
+            </div>
+            <div class="form-group">
+              <label for="unitmeasure">Đơn vị tính</label>
               <div class="input-group">
-                <select class="form-control" name="donViTinh" id="donViTinh" th:field="*{unitmeasure}" required>
+                <select class="form-control" name="unitmeasure" id="unitmeasure" th:field="*{unitMeasure}" required
+                  disabled>
                   <option value="0">Đơn vị tính</option>
-                  <option th:each="unitmeasure : ${unitmeasures}" th:value="${unitmeasure.unitId}"><span
+                  <option th:each="unitmeasure : ${unitmeasures}" th:value="${unitmeasure.unitId}"
+                    th:selected="(${unitmeasure.unitId} == ${product.unitMeasure.unitId})"><span
                       th:text="${unitmeasure.unitName}"></span></option>
                 </select>
                 <!-- Open model Don vi tinh -->
@@ -291,16 +348,17 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="thongTinThem">Thông tin thêm</label>
-              <textarea class="form-control" name="thongTinThem" id="thongTinThem" cols="30" rows="5"
-                th:field="*{note}"></textarea>
+              <label for="note">Thông tin thêm</label>
+              <textarea class="form-control" name="note" id="note" cols="30" rows="5" th:value="${product.note}"
+                th:field="*{note}" disabled></textarea>
             </div>
             <div class="form-group">
-              <label for="nhaSanXuat">Nhà sản xuất</label>
+              <label for="supplier">Nhà sản xuất</label>
               <div class="input-group">
-                <select class="form-control" name="nhaSanXuat" id="nhaSanXuat" th:field="*{supplier}" required>
+                <select class="form-control" name="supplier" id="supplier" th:field="*{supplier}" required disabled>
                   <option value="0">Nhà sản xuất</option>
-                  <option th:each="supplier : ${suppliers}" th:value="${supplier.supplierId}"><span
+                  <option th:each="supplier : ${suppliers}" th:value="${supplier.supplierId}"
+                    th:selected="(${supplier.supplierId} == ${product.supplier.supplierId})"><span
                       th:text="${supplier.supplierName}"></span></option>
                 </select>
                 <!-- Ope model Nha san xuat -->
@@ -388,7 +446,7 @@
                       <td><span th:text="${category.categoryId}"></span></td>
                       <td><span th:text="${category.categoryName}"></span></td>
                       <td>
-                        <a th:href="@{/admin/themsanpham/xoaDanhMucSanPham(categoryId=${category.categoryId})}"
+                        <a th:href="@{/admin/sanpham/thongtinsanpham/xoaDanhMucSanPham(categoryId=${category.categoryId}, productId=${product.productId})}"
                           onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
                           <i class="fa fa-trash"></i>
                         </a>
@@ -401,6 +459,7 @@
                 <form id="formDanhMucSanPham" th:action="@{'#'}" th:object="${category}" method="POST">
                   <div class="form-group">
                     <label for="tenDanhmucSanPham">Tên Danh mục Sản phẩm</label>
+                    <input type="hidden" th:field="*{categoryId}" name="" id="">
                     <input class="form-control" type="text" name="tenDanhmucSanpham" id="tenDanhmucSanPham"
                       th:field="*{categoryName}" placeholder="Nhập tên Danh mục Sản phẩm" />
                   </div>
@@ -413,158 +472,161 @@
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Đóng</button>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Đóng</button>
         </div>
       </div>
     </div>
-    <!-- Modal Don vi tinh -->
-    <div class="modal fade" id="modalDonViTinh">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4>Quản lý Đơn vị tính</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
+  </div>
+  <!-- Modal Don vi tinh -->
+  <div class="modal fade" id="modalDonViTinh">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Quản lý Đơn vị tính</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
 
-          <div class="modal-body">
-            <ul class="nav nav-tabs nav-justified">
-              <li class="nav-item">
-                <a id="linkDanhSachDonvitinh" class="nav-link active" data-toggle="tab" href="#danhSachDonvitinh"><i
-                    class="fa fa-list"></i> Danh
-                  sách Đơn vị tính</a>
-              </li>
-              <li class="nav-item">
-                <a id="linkTaoDonvitinh" class="nav-link" data-toggle="tab" href="#taoDonvitinh"><i
-                    class="fa fa-plus"></i> Thêm Đơn vị
-                  tính</a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div id="danhSachDonvitinh" class="tab-pane active">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Tên Đơn vị tính</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr th:each="unitmeasure : ${unitmeasures}">
-                      <td><span th:text="${unitmeasure.unitId}"></span></td>
-                      <td><span th:text="${unitmeasure.unitName}"></span></td>
-                      <td>
-                        <a th:href="@{/admin/themsanpham/xoaDonViTinh(unitId=${unitmeasure.unitId})}"
-                          onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
-                          <i class="fa fa-trash"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div id="taoDonvitinh" class="tab-pane fade">
-                <form id="formDonViTinh" th:action="${'#'}" th:object="${unitmeasure}" method="POST">
-                  <div class="form-group">
-                    <label for="tenDanhmucSanPham">Tên Đơn vị tính</label>
-                    <input class="form-control" type="text" name="tenDanhmucSanpham" id="tenDanhmucSanPham"
-                      th:field="*{unitName}" placeholder="Nhập tên Đơn vị tính" required />
-                  </div>
-                  <hr>
-                  <button id="btnLuuDonViTinh" type="submit" class="btn btn-success"><i class="fa fa-check"></i>
-                    Lưu</button>
-                  <button id="btnLuuVaTiepTucDonViTinh" type="submit" class="btn btn-outline-success"><i
-                      class="fa fa-save"></i> Lưu và tiếp
-                    tục</button>
-                </form>
-              </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs nav-justified">
+            <li class="nav-item">
+              <a id="linkDanhSachDonvitinh" class="nav-link active" data-toggle="tab" href="#danhSachDonvitinh"><i
+                  class="fa fa-list"></i> Danh
+                sách Đơn vị tính</a>
+            </li>
+            <li class="nav-item">
+              <a id="linkTaoDonvitinh" class="nav-link" data-toggle="tab" href="#taoDonvitinh"><i
+                  class="fa fa-plus"></i> Thêm Đơn vị
+                tính</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="danhSachDonvitinh" class="tab-pane active">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên Đơn vị tính</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="unitmeasure : ${unitmeasures}">
+                    <td><span th:text="${unitmeasure.unitId}"></span></td>
+                    <td><span th:text="${unitmeasure.unitName}"></span></td>
+                    <td>
+                      <a th:href="@{/admin/sanpham/thongtinsanpham/xoaDonViTinh(unitId=${unitmeasure.unitId}, productId=${product.productId})}"
+                        onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="taoDonvitinh" class="tab-pane fade">
+              <form id="formDonViTinh" th:action="${'#'}" th:object="${unitmeasure}" method="POST">
+                <div class="form-group">
+                  <label for="tenDanhmucSanPham">Tên Đơn vị tính</label>
+                  <input type="hidden" th:field="*{unitId}" name="" id="">
+                  <input class="form-control" type="text" name="tenDanhmucSanpham" id="tenDanhmucSanPham"
+                    th:field="*{unitName}" placeholder="Nhập tên Đơn vị tính" required />
+                </div>
+                <hr>
+                <button id="btnLuuDonViTinh" type="submit" class="btn btn-success"><i class="fa fa-check"></i>
+                  Lưu</button>
+                <button id="btnLuuVaTiepTucDonViTinh" type="submit" class="btn btn-outline-success"><i
+                    class="fa fa-save"></i> Lưu và tiếp
+                  tục</button>
+              </form>
             </div>
           </div>
+        </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Đóng</button>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Đóng</button>
         </div>
       </div>
     </div>
-    <!-- Modal Nha san xuat -->
-    <div class="modal fade" id="modalNhaSanXuat">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4>Quản lý Nhà sản xuất</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
+  </div>
+  <!-- Modal Nha san xuat -->
+  <div class="modal fade" id="modalNhaSanXuat">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Quản lý Nhà sản xuất</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
 
-          <div class="modal-body">
-            <ul class="nav nav-tabs nav-justified">
-              <li class="nav-item">
-                <a id="linkDanhSachNhasanxuat" class="nav-link active" data-toggle="tab" href="#danhSachNhasanxuat"><i
-                    class="fa fa-list"></i> Danh
-                  sách Nhà sản xuất</a>
-              </li>
-              <li class="nav-item">
-                <a id="linkTaoNhasanxuat" class="nav-link" data-toggle="tab" href="#taoNhasanxuat"><i
-                    class="fa fa-plus"></i> Thêm Nhà sản
-                  xuất</a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div id="danhSachNhasanxuat" class="tab-pane active">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Tên Nhà sản xuất</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr th:each="supplier : ${suppliers}">
-                      <td><span th:text="${supplier.supplierId}"></span></td>
-                      <td><span th:text="${supplier.supplierName}"></span></td>
-                      <td>
-                        <a th:href="@{/admin/themsanpham/xoaNhaSanXuat(supplierId=${supplier.supplierId})}"
-                          onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
-                          <i class="fa fa-trash"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div id="taoNhasanxuat" class="tab-pane fade">
-                <form id="formNhaSanXuat" th:action="@{'#'}" th:object="${supplier}" method="POST">
-                  <div class="form-group">
-                    <label for="tenNhasanxuat">Tên Nhà sản xuất</label>
-                    <input class="form-control" type="text" name="tenNhasanxuat" id="tenNhasanxuat"
-                      th:field="*{supplierName}" placeholder="Nhập tên Nhà sản xuất" />
-                  </div>
-                  <hr>
-                  <button id="btnLuuNhaSanXuat" type="submit" class="btn btn-success"><i class="fa fa-check"></i>
-                    Lưu</button>
-                  <button id="btnLuuVaTiepTucNhaSanXuat" type="submit" class="btn btn-outline-success"><i
-                      class="fa fa-save"></i> Lưu và tiếp
-                    tục</button>
-                </form>
-              </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs nav-justified">
+            <li class="nav-item">
+              <a id="linkDanhSachNhasanxuat" class="nav-link active" data-toggle="tab" href="#danhSachNhasanxuat"><i
+                  class="fa fa-list"></i> Danh
+                sách Nhà sản xuất</a>
+            </li>
+            <li class="nav-item">
+              <a id="linkTaoNhasanxuat" class="nav-link" data-toggle="tab" href="#taoNhasanxuat"><i
+                  class="fa fa-plus"></i> Thêm Nhà sản
+                xuất</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="danhSachNhasanxuat" class="tab-pane active">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên Nhà sản xuất</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="supplier : ${suppliers}">
+                    <td><span th:text="${supplier.supplierId}"></span></td>
+                    <td><span th:text="${supplier.supplierName}"></span></td>
+                    <td>
+                      <a th:href="@{/admin/sanpham/thongtinsanpham/xoaNhaSanXuat(supplierId=${supplier.supplierId}, productId=${product.productId})}"
+                        onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="taoNhasanxuat" class="tab-pane fade">
+              <form id="formNhaSanXuat" th:action="@{'#'}" th:object="${supplier}" method="POST">
+                <div class="form-group">
+                  <label for="tenNhasanxuat">Tên Nhà sản xuất</label>
+                  <input type="hidden" th:field="*{supplierId}" name="" id="">
+                  <input class="form-control" type="text" name="tenNhasanxuat" id="tenNhasanxuat"
+                    th:field="*{supplierName}" placeholder="Nhập tên Nhà sản xuất" />
+                </div>
+                <hr>
+                <button id="btnLuuNhaSanXuat" type="submit" class="btn btn-success"><i class="fa fa-check"></i>
+                  Lưu</button>
+                <button id="btnLuuVaTiepTucNhaSanXuat" type="submit" class="btn btn-outline-success"><i
+                    class="fa fa-save"></i> Lưu và tiếp
+                  tục</button>
+              </form>
             </div>
           </div>
+        </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Đóng</button>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Đóng</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Modal Anh dai dien -->
-    <div class="modal fade" id="modalAnhDaiDien">
+  <!-- Modal Anh dai dien -->
+  <div class="modal fade" id="modalAnhDaiDien">
 
-    </div>
+  </div>
   </div>
 </body>
 

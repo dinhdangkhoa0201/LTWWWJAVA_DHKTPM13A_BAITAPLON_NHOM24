@@ -301,8 +301,9 @@
               <thead class="thead-light">
                 <tr>
                   <th scope="col" data-priority="1"><input type="checkbox" name="checkAll" id="checkAll"></th>
-                  <th scope="col">Mã sản phẩm</th>
                   <th scope="col">Tên sản phẩm</th>
+                  <th scope="col">Mã sản phẩm</th>
+
                   <th scope="col">Tồn kho</th>
                   <th scope="col">Giá</th>
                   <th scope="col" class="head">Danh mục</th>
@@ -313,8 +314,8 @@
               <tfoot>
                 <tr>
                   <th></th>
-                  <th class="input">Mã sản phẩm</th>
                   <th class="input">Tên sản phẩm</th>
+                  <th class="input">Mã sản phẩm</th>
                   <th>Tồn kho</th>
                   <th>Giá</th>
                   <th>Danh mục</th>
@@ -323,8 +324,29 @@
                 </tr>
               </tfoot>
               <tbody>
-                <tr>
-
+                <tr th:each="product : ${products}">
+                  <td></td>
+                  <td><a th:href="@{/admin/sanpham/thongtinsanpham(productId=${product.productId})}"><span
+                        th:text="${product.productName}"></span></a></td>
+                  <td><span th:text="${product.productId}"></span></td>
+                  <td><span th:text="${product.quantity}"></span></td>
+                  <td><span th:text="${product.price}"></span></td>
+                  <td><span th:text="${product.category.categoryName}"></span></td>
+                  <td><span th:text="${product.supplier.supplierName}"></span></td>
+                  <td>
+                    <!-- <a id="editSanPham" href="#"><i class="fa fa-edit fa-lg"></i></a> -->
+                    <a th:href="@{/admin/sanpham/stopSelling(productId=${product.productId})}"
+                      th:if="${product.enable == true}"
+                      onclick="if (confirm('Stop selling this product?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
+                      title="Ngưng bán sản phẩm này"><i class="fa fa-pause fa-lg"></i></a>
+                    <a th:href="@{/admin/sanpham/continueToSell(productId=${product.productId})}"
+                      th:if="${product.enable == false}"
+                      onclick="if (confirm('Allow to sell this product?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
+                      title="Cho phép bán sản phẩm này"><i class="fa fa-play fa-lg"></i></a>
+                    <!-- <a id="xoaSanPham" th:href="@{/admin/sanpham/xoaSanPham(productId=${product.productId})}"
+                      onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+                      <i class="fa fa-trash fa-lg"></i></a> -->
+                  </td>
                 </tr>
               </tbody>
 

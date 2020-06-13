@@ -35,8 +35,13 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
-	public Category fingById(int id) {
+	public Category findById(int id) {
 		return categoryDAO.findById(id);
+	}
+
+	@Override
+	public void deleteById(int id) {
+		categoryDAO.deleteById(id);
 	}
 
 }

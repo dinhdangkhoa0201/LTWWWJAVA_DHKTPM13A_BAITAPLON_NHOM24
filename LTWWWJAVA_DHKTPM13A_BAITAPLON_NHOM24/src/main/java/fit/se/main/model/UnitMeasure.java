@@ -2,13 +2,16 @@ package fit.se.main.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class UnitMeasure implements Serializable{
@@ -27,8 +30,8 @@ public class UnitMeasure implements Serializable{
 	
 	private LocalDateTime modifiedDate;
 	
-	@OneToOne(mappedBy = "unitMeasure")
-	private Product product;
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "unitMeasure", cascade = CascadeType.ALL)
+	private List<Product> products;
 
 	public UnitMeasure(int unitId, String unitName, LocalDateTime modifiedDate) {
 		this.unitId = unitId;
@@ -40,8 +43,14 @@ public class UnitMeasure implements Serializable{
 		this.unitName = unitName;
 		this.modifiedDate = LocalDateTime.now();
 	}
+	
+	public UnitMeasure(int unitId) {
+		this.unitId = unitId;
+		this.modifiedDate = LocalDateTime.now();
+	}
 
 	public UnitMeasure() {
+		this.modifiedDate = LocalDateTime.now();
 	}
 
 	public int getUnitId() {
@@ -68,12 +77,12 @@ public class UnitMeasure implements Serializable{
 		this.modifiedDate = modifiedDate;
 	}
 
-	public Product getProduct() {
-		return product;
+	public List<Product> getProduct() {
+		return products;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProduct(List<Product> products) {
+		this.products = products;
 	}
 
 	@Override

@@ -47,6 +47,11 @@ public class Category implements Serializable{
 		this.categoryName = categoryName;
 		this.modifiedDate = LocalDateTime.now();
 	}
+	
+	public Category(int categoryId) {
+		this.categoryId = categoryId;
+		this.modifiedDate = LocalDateTime.now();
+	}
 
 	public LocalDateTime getModifiedDate() {
 		return modifiedDate;
@@ -57,6 +62,7 @@ public class Category implements Serializable{
 	}
 
 	public Category() {
+		this.modifiedDate = LocalDateTime.now();
 	}
 
 	public int getCategoryId() {

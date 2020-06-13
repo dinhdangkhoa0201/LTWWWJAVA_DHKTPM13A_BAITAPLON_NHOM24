@@ -63,7 +63,13 @@ public class Supplier implements Serializable{
 		this.modifiedDate = LocalDateTime.now();
 	}
 
+	public Supplier(int supplierId) {
+		this.supplierId = supplierId;
+		this.modifiedDate = LocalDateTime.now();
+	}
+
 	public Supplier() {
+		this.modifiedDate = LocalDateTime.now();
 	}
 
 	public int getSupplierId() {

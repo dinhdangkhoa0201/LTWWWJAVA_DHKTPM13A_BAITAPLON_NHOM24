@@ -2,8 +2,8 @@ package fit.se.main.service.sale_order_detail;
 
 import java.util.List;
 
-import fit.se.main.model.SaleOrderHeader;
 import fit.se.main.model.SaleOrderDetail;
+import fit.se.main.model.SaleOrderHeader;
 
 public interface SaleOrderDetailService {
 	public SaleOrderDetail createOrderDetail(SaleOrderDetail orderDetail);

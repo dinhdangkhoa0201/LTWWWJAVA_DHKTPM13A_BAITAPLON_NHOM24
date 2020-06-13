@@ -8,4 +8,6 @@ public interface SupplierService {
 	public void createSupplier(Supplier supplier);
 	public void updateSupplier(Supplier supplier);
 	public List<Supplier> findAll();
+	public void deleteById(int supplierId);
+	public Supplier findById(int id);
 }

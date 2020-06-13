@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fit.se.main.dao.unit_measure.UnitMeasureDAO;
+import fit.se.main.dto.UnitMeasureCreateDTO;
 import fit.se.main.model.UnitMeasure;
 
 @Service
 public class UnitMeasureServiceImpl implements UnitMeasureService{
-
+	
 	@Autowired
 	private UnitMeasureDAO unitMeasureDAO;
 	@Override
@@ -42,5 +43,11 @@ public class UnitMeasureServiceImpl implements UnitMeasureService{
 	public UnitMeasure findByName(String name) {
 		return unitMeasureDAO.findByUnitName(name);
 	}
+
+	@Override
+	public void deleteById(int unitId) {
+		unitMeasureDAO.deleteById(unitId);
+	}
+
 
 }

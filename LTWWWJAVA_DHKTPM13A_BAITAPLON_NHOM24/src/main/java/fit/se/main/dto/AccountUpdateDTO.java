@@ -2,12 +2,6 @@ package fit.se.main.dto;
 
 import java.time.LocalDate;
 
-import fit.se.main.validator.account.ValidCreateEmail;
-import fit.se.main.validator.account.ValidEmail;
-import fit.se.main.validator.account.ValidPassword;
-import fit.se.main.validator.account.ValidPhone;
-import fit.se.main.validator.account.ValidUserName;
-
 public class AccountUpdateDTO {
 	
 	private String accountName;

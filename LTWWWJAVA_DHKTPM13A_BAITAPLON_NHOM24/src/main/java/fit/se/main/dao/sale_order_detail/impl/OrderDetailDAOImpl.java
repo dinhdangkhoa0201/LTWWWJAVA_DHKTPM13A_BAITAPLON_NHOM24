@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fit.se.main.model.SaleOrderHeader;
 import fit.se.main.dao.sale_order_detail.OrderDetailDAO;
 import fit.se.main.model.SaleOrderDetail;
+import fit.se.main.model.SaleOrderHeader;
 import fit.se.main.repository.SaleOrderDetailRepository;
 
 @Repository

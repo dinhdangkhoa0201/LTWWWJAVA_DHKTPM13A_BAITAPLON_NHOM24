@@ -1,6 +1,6 @@
 package fit.se.main.dto;
 
-public class ProductCreateDTO {
+public class ProductUpdateDTO {
 	private String productId;
 	
 	private String productName;
@@ -21,22 +21,6 @@ public class ProductCreateDTO {
 	
 	private String image;
 
-	public ProductCreateDTO(String productName, double price, double sellingProce, String quantity, int category,
-			int supplier, int unitmeasure, String note, String image) {
-		this.productName = productName;
-		this.price = price;
-		this.sellingPrice = sellingProce;
-		this.quantity = quantity;
-		this.category = category;
-		this.supplier = supplier;
-		this.unitmeasure = unitmeasure;
-		this.note = note;
-		this.image = image;
-	}
-
-	public ProductCreateDTO() {
-	}
-
 	public String getProductId() {
 		return productId;
 	}
@@ -55,6 +39,18 @@ public class ProductCreateDTO {
 
 	public String getQuantity() {
 		return quantity;
+	}
+
+	public int getCategory() {
+		return category;
+	}
+
+	public int getSupplier() {
+		return supplier;
+	}
+
+	public int getUnitmeasure() {
+		return unitmeasure;
 	}
 
 	public String getNote() {
@@ -77,32 +73,12 @@ public class ProductCreateDTO {
 		this.price = price;
 	}
 
-	public void setSellingPrice(double sellingProce) {
-		this.sellingPrice = sellingProce;
+	public void setSellingPrice(double sellingPrice) {
+		this.sellingPrice = sellingPrice;
 	}
 
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public int getCategory() {
-		return category;
-	}
-
-	public int getSupplier() {
-		return supplier;
-	}
-
-	public int getUnitmeasure() {
-		return unitmeasure;
 	}
 
 	public void setCategory(int category) {
@@ -117,13 +93,12 @@ public class ProductCreateDTO {
 		this.unitmeasure = unitmeasure;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductCreateDTO [productId=" + productId + ", productName=" + productName + ", price=" + price
-				+ ", sellingPrice=" + sellingPrice + ", quantity=" + quantity + ", category=" + category + ", supplier="
-				+ supplier + ", unitmeasure=" + unitmeasure + ", note=" + note + ", image=" + image + "]";
+	public void setNote(String note) {
+		this.note = note;
 	}
 
-	
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
 }

@@ -22,12 +22,16 @@ import fit.se.main.model.Product;
 import fit.se.main.model.Role;
 import fit.se.main.model.SaleOrderDetail;
 import fit.se.main.model.SaleOrderHeader;
+import fit.se.main.model.Supplier;
+import fit.se.main.model.UnitMeasure;
 import fit.se.main.principal.AccountPricipal;
 import fit.se.main.service.account.AccountService;
 import fit.se.main.service.category.CategoryService;
 import fit.se.main.service.product.ProductService;
 import fit.se.main.service.sale_order_detail.SaleOrderDetailService;
 import fit.se.main.service.sale_order_header.SaleOrderHeaderService;
+import fit.se.main.service.supplier.SupplierService;
+import fit.se.main.service.unit_measure.UnitMeasureService;
 
 @Controller
 @RequestMapping("/")
@@ -48,6 +52,11 @@ public class IndexController {
 	@Autowired
 	private CategoryService categoryService;
 	
+	@Autowired
+	private SupplierService supplierService;
+	
+	@Autowired
+	private UnitMeasureService unitMeasureService;
 
 
 	@GetMapping("/sign-in")
@@ -111,12 +120,23 @@ public class IndexController {
 			}
 			Category category = new Category("A");
 			categoryService.createCategory(category);
+			
+			Supplier supplier = new Supplier("A");
+			supplierService.createSupplier(supplier);
+			
+			UnitMeasure unitMeasure = new UnitMeasure("B");
+			unitMeasureService.createUnitMeasure(unitMeasure);
 
 			// List Product
 			Product product1 = new Product("Gạo", 20000);
 			product1.setCategory(category);
+			product1.setSupplier(supplier);
+			product1.setUnitMeasure(unitMeasure);
 			Product product2 = new Product("Sua", 18000);
 			product2.setCategory(category);
+			product2.setSupplier(supplier);
+			product2.setUnitMeasure(unitMeasure);
+			
 			productService.createProduct(product1);
 			productService.createProduct(product2);
 

@@ -8,6 +8,7 @@ public interface CategoryService {
 	public Category createCategory(Category category);
 	public void deleteCategory(Category category);
 	public void updateCategory(Category category);
+	public void deleteById(int id);
 	public List<Category> findAll();
-	public Category fingById(int id);
+	public Category findById(int id);
 }

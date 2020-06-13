@@ -3,7 +3,6 @@ package fit.se.main.dao.supplier.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Repository;
 
 import fit.se.main.dao.supplier.SupplierDAO;
