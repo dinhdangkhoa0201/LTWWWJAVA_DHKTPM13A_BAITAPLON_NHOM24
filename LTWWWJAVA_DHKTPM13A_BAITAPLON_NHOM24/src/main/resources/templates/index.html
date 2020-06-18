@@ -21,8 +21,9 @@
 		<br>
 		<a th:if="${ROLE_ADMIN != null}" th:href="@{/admin/index}" href="">Admin</a>
 	</div>
-
+	
 	<a th:if="${#request.userPrincipal == null}" th:href="@{/sign-in}">Sign in</a>
+	<a th:href="@{/timkiem}"></a>
 	<br>
 
 </body>

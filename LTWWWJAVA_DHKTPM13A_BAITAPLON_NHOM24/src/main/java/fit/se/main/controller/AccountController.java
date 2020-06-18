@@ -18,30 +18,30 @@ import fit.se.main.service.account.AccountService;
 public class AccountController {
 	@Autowired
 	private AccountService khachHangService;
-	
+
 	@GetMapping("sign-up")
 	public String signUp(AccountCreateDTO dto, Model model) {
 		return "sign-up";
 	}
-	
+
 	@PostMapping("sign-up")
 	public String signUp(@Valid AccountCreateDTO accountCreateDTO, BindingResult result) throws Exception {
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return "sign-up";
 		}
 		Account account = khachHangService.createMember(accountCreateDTO);
 		accountCreateDTO.setId(account.getAccountId());
 		return "redirect:/verify-code";
 	}
-	
+
 	@GetMapping("verify-code")
 	public String verifyCode(Model model, VerifyCodeDTO verifyCodeDTO) {
 		return "verify-code";
 	}
-	
+
 	@PostMapping("verify-code")
-	public String verifyCodeAction(Model model, @Valid VerifyCodeDTO verifyCodeDTO, BindingResult result){
-		if(result.hasErrors()) {
+	public String verifyCodeAction(Model model, @Valid VerifyCodeDTO verifyCodeDTO, BindingResult result) {
+		if (result.hasErrors()) {
 			return "verify-code";
 		}
 		khachHangService.verifyCode(verifyCodeDTO);

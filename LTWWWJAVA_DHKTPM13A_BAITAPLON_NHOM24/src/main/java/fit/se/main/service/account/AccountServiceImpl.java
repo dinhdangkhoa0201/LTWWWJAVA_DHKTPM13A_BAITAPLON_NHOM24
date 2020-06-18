@@ -25,20 +25,20 @@ import fit.se.main.util.RandomUtil;
 
 @Service
 
-public class AccountServiceImpl implements AccountService{
-	
+public class AccountServiceImpl implements AccountService {
+
 	@Autowired
 	private AccountDAO accountDAO;
-	
+
 	@Autowired
 	private RoleService roleService;
-	
+
 	@Autowired
 	private MailService mailService;
-	
+
 	@Autowired
 	private VerifyAccountDAO verifyAccountDAO;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -50,7 +50,7 @@ public class AccountServiceImpl implements AccountService{
 		String email = dto.getEmail();
 		String phone = dto.getPhone();
 		String password = dto.getPassword();
-		
+
 		Account account = new Account();
 		account.setAccountName(userName);
 		account.setGender(gender);
@@ -59,46 +59,46 @@ public class AccountServiceImpl implements AccountService{
 		account.setPhone(phone);
 		account.setPassword(passwordEncoder.encode(password));
 		account.setEnabled(false);
-		
+
 		Role roleMember = null;
-		
-		if(roleService.findByName("ROLE_MEMBER").isPresent()){
+
+		if (roleService.findByName("ROLE_MEMBER").isPresent()) {
 			roleMember = roleService.findByName("ROLE_MEMBER").get();
 		} else {
 			roleMember = new Role("ROLE_MEMBER", "You are a member");
 			roleMember = roleService.create(roleMember);
 		}
-		
+
 		String token = RandomUtil.generateRandomStringNumber(10).toUpperCase();
-		
+
 		VerifyAccount verifyAccount = new VerifyAccount();
 		verifyAccount.setAccount(account);
 		verifyAccount.setCreateOn(LocalDateTime.now());
 		verifyAccount.setExpiredDataToken(5);
 		verifyAccount.setToken(token);
 		verifyAccountDAO.create(verifyAccount);
-		
+
 		Map<String, Object> maps = new HashMap<String, Object>();
 		maps.put("account", account);
 		maps.put("token", token);
-		
+
 		Mail mail = new Mail();
 		mail.setFrom("managerhkv0201@gmail.com");
 		mail.setTo(account.getEmail());
 		mail.setSubject("Registration");
 		mail.setModel(maps);
 		mailService.sendMail(mail);
-		
+
 		System.out.println(account);
-		
-		account.addRole(roleMember);;
-		
+
+		account.addRole(roleMember);
+		;
+
 		account = accountDAO.create(account);
-		
+
 		return account;
-		
+
 	}
-	
 
 	@Override
 	public Account createAdmin(AccountCreateDTO dto) throws Exception {
@@ -106,45 +106,46 @@ public class AccountServiceImpl implements AccountService{
 		String username = dto.getAccountName();
 		String password = dto.getPassword();
 		String phone = dto.getPhone();
-		
+
 		Account account = new Account();
 		account.setEmail(email);
 		account.setAccountName(username);
 		account.setPassword(passwordEncoder.encode(password));
 		account.setPhone(phone);
-		
+
 		Role roleAdmin = null;
 		Role roleMember = null;
-		
-		if(roleService.findByName("ROLE_ADMIN").isPresent()) {
+
+		if (roleService.findByName("ROLE_ADMIN").isPresent()) {
 			roleAdmin = roleService.findByName("ROLE_ADMIN").get();
 		} else {
 			roleAdmin = new Role("ROLE_ADMIN", "Admin");
 			roleAdmin = roleService.create(roleAdmin);
 		}
-		
-		if(roleService.findByName("ROLE_MEMBER").isPresent()) {
+
+		if (roleService.findByName("ROLE_MEMBER").isPresent()) {
 			roleMember = roleService.findByName("ROLE_MEMBER").get();
 		} else {
 			roleMember = new Role("ROLE_MEMBER", "Member");
 			roleMember = roleService.create(roleMember);
-		}		
+		}
 		String token = RandomUtil.generateRandomStringNumber(10).toUpperCase();
-		
+
 		VerifyAccount verifyAccount = new VerifyAccount();
 		verifyAccount.setAccount(account);
 		verifyAccount.setCreateOn(LocalDateTime.now());
 		verifyAccount.setExpiredDataToken(5);
 		verifyAccount.setToken(token);
 		verifyAccountDAO.create(verifyAccount);
-		
+
 		account.setEnabled(true);
 
 		account.addRole(roleAdmin);
-		account.addRole(roleMember);;
-		
+		account.addRole(roleMember);
+		;
+
 		account = accountDAO.create(account);
-		
+
 		return account;
 	}
 
@@ -169,12 +170,11 @@ public class AccountServiceImpl implements AccountService{
 		return accountDAO.findByPhone(phone);
 	}
 
-
 	@Override
 	public void verifyCode(VerifyCodeDTO dto) {
 		String token = dto.getToken();
 		VerifyAccount verifyAccount = verifyAccountDAO.findByToken(token).get();
-		
+
 		Account account = verifyAccount.getAccount();
 		account.setEnabled(true);
 		accountDAO.update(account);
@@ -190,12 +190,10 @@ public class AccountServiceImpl implements AccountService{
 		accountDAO.update(account);
 	}
 
-
 	@Override
 	public void deteleById(int id) {
 		accountDAO.deleteById(id);
 	}
-
 
 	@Override
 	public Optional<String> findAllEmail() {

@@ -49,6 +49,48 @@
     .file-input-wrapper>.btn-file-input {
       cursor: pointer;
     }
+
+    #_tourImage {
+      width: 90%;
+      height: auto;
+    }
+
+    .image-avatar {
+      display: inline-block;
+    }
+
+    .image-avatar .file-loading {
+      display: table-cell;
+    }
+
+    #_btnChooseImage {
+      position: absolute;
+      bottom: 0;
+      width: 95%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      height: 10%;
+    }
+
+    #_btnImage {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #tourImage {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      bottom: 0;
+      width: 90%;
+    }
   </style>
   <script type="text/javascript" th:inline="javascript">
     $(document).ready(function () {
@@ -228,6 +270,16 @@
         $('#btnSua').show();
         $('#btnTroVe').show();
       });
+
+      $('#tourImage').on('change', function () {
+        var tourImage = $('#tourImage')[0].files[0];
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#_tourImage').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(this.files[0]);
+      });
     });
   </script>
   <script type="text/javascript">
@@ -282,7 +334,12 @@
         <!-- Row 2 -->
         <div class="row">
           <!-- Left -->
-          <div class="col-lg-4">
+          <div class="col-lg-4 text-center">
+            <img id="_tourImage" th:src="${product.image}" alt="Ảnh sản phẩm" />
+            <div id="_btnChooseImage">
+              <button id="_btnImage" type="button" class="btn btn-light">Thêm ảnh</button>
+              <input type="file" name="image" id="tourImage" th:value="${product.image}" />
+            </div>
           </div>
           <!-- Center -->
           <div class="col-lg-4 col-md-6 col-sm-12">

@@ -49,6 +49,53 @@
     .file-input-wrapper>.btn-file-input {
       cursor: pointer;
     }
+
+    #_tourImage {
+      width: 70%;
+      height: auto;
+    }
+
+    .image-avatar {
+      display: inline-block;
+    }
+
+    .image-avatar .file-loading {
+      display: table-cell;
+    }
+
+    div.text-center {
+      align-items: center;
+      justify-content: center;
+    }
+
+    #_btnChooseImage {
+      position: absolute;
+      bottom: 0;
+      width: 95%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      height: 10%;
+    }
+
+    #_btnImage {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #tourImage {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      bottom: 0;
+      width: 70%;
+    }
   </style>
   <script type="text/javascript" th:inline="javascript">
     $(document).ready(function () {
@@ -90,7 +137,7 @@
       });
 
       $('#anhDaiDien').change(function () {
-        var anhDaiDien = $('#anhDaiDien')[0].files[0]
+        var anhDaiDien = $('#anhDaiDien')[0].files[0];
         console.log('Anh dai dien ' + anhDaiDien);
         if (anhDaiDien != '') {
           $('#xoaAnhDaiDien').show();
@@ -100,9 +147,9 @@
         var reader = new FileReader();
         reader.onload = function (e) {
           $('#imgShow').attr('src', e.target.result);
-        }
+        };
         reader.readAsDataURL(this.files[0]);
-      })
+      });
 
       /* - Button Luu - */
       $('#btnLuu').on('click', function () {
@@ -125,10 +172,10 @@
       /* - Form Don Vi Tinh - */
       $('#btnLuuDonViTinh').on('click', function () {
         $('#formDonViTinh').attr('action', '/admin/themsanpham/themDonViTinhLuu');
-      })
+      });
       $('#btnLuuVaTiepTucDonViTinh').on('click', function () {
         $('#formDonViTinh').attr('action', '/admin/themsanpham/themDonViTinhLuuVaTiepTuc');
-      })
+      });
 
       /* - Form Nha san xuat - */
       $('#btnLuuNhaSanXuat').on('click', function () {
@@ -194,7 +241,15 @@
         $('#modalDanhMucSanPham').modal('show');
         alert('Danh mục Sản phẩm này có chứa Sản phẩm. Không thể xoá!');
       }
+      $('#tourImage').on('change', function () {
+        var tourImage = $('#tourImage')[0].files[0];
 
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#_tourImage').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(this.files[0]);
+      });
     });
   </script>
   <script type="text/javascript">
@@ -205,7 +260,8 @@
 <body>
   <div class="container-fluid">
     <div class="content mt-5">
-      <form id="formSanPham" th:action="@{'#'}" th:object="${productCreateDTO}" method="POST">
+      <form id="formSanPham" th:action="@{'#'}" th:object="${productCreateDTO}" method="POST"
+        enctype="multipart/form-data">
         <!-- Row 1 -->
         <div class="row">
           <div class="col-lg-4 col-md-6 align-content-center">
@@ -233,7 +289,12 @@
         <!-- Row 2 -->
         <div class="row">
           <!-- Left -->
-          <div class="col-lg-4">
+          <div class="col-lg-4 text-center">
+            <img id="_tourImage" th:src="@{/image/no-image.png}" alt="" />
+            <div id="_btnChooseImage">
+              <button id="_btnImage" type="button" class="btn btn-light">Thêm ảnh</button>
+              <input type="file" name="image" id="tourImage" th:field="*{image}" />
+            </div>
           </div>
           <!-- Center -->
           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -325,8 +386,7 @@
                 <div class="file-input-wrapper col">
                   <button id="themAnhDaiDien" type="button" class="btn btn-outline-primary btn-file-input"><i
                       class="fa fa-plus"></i>
-                    Thêm
-                    Ảnh đại diện</button>
+                    Thêm Ảnh đại diện</button>
                   <input class="form-control" style="opacity: 0;" type="file" name="anhDaiDien" id="anhDaiDien"
                     th:field="*{image}" />
                 </div>

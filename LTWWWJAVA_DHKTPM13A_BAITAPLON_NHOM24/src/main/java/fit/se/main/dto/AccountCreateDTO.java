@@ -1,6 +1,7 @@
 package fit.se.main.dto;
 
 public class AccountCreateDTO {
+	
 	private int id;
 	
 	private String accountName;

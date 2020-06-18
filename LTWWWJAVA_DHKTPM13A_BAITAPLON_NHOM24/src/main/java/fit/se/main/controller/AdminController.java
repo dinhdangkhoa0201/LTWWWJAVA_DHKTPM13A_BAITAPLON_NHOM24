@@ -34,7 +34,6 @@ import fit.se.main.service.unit_measure.UnitMeasureService;
 
 @Controller
 @RequestMapping("/admin")
-
 public class AdminController {
 
 	@Autowired
@@ -57,6 +56,7 @@ public class AdminController {
 	public String dashboard(Model model) {
 		return "/admin/index";
 	}
+	
 /* - Danh sách Khách hàng */
 	@GetMapping("/khachhang")
 	public String khachHang(Model model) {
@@ -67,6 +67,7 @@ public class AdminController {
 			emails.add(account.getEmail());
 			phones.add(account.getPhone());
 		}
+		
 		model.addAttribute("accounts", accounts);
 		model.addAttribute("account", new Account());
 		model.addAttribute("accountCreateDTO", new AccountCreateDTO());
@@ -161,7 +162,6 @@ public class AdminController {
 			int id = product.getProductId();
 			
 			model.addAttribute("product", product);
-			
 			model.addAttribute("productId", id);
 			model.addAttribute("productImage", new ProductImage());
 			model.addAttribute("categories", categories);
