@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Bootstrap -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<!-- Custom style -->
+<link href="../static/css/style.css" th:href="@{/css/style.css}"
+	rel="stylesheet" />
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"
+	th:src="@{/webjars/jquery/1.12.4/jquery.min.js}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body>
+	<div class="container-fluid">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Mã Khách Hàng</th>
+					<th>Họ và Tên</th>
+					<th>Giới tính</th>
+					<th>Ngày sinh</th>
+					<th>Email</th>
+					<th>Số điện thoại</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="khachhang, list: ${listKhachHang}">
+					<td th:text="${list.count}"></td>
+					<td th:text="${khachhang.maKH}"></td>
+					<td th:text=${khachhang.hoTen}></td>
+					<td th:text="${khachhang.gioiTinh}"></td>
+					<td th:text="${khachhang.ngaysinh}"></td>
+					<td th:text="${khachhang.email}"></td>
+					<td th:text="${khachhang.sodienthoai}"></td>
+					<td><a th:href="@{/employee/{id}/edit(id=${contact.id})}">
+							<span class="glyphicon glyphicon-pencil"></span>
+					</a></td>
+					<td><a th:href="@{/employee/{id}/delete(id=${contact.id})}">
+							<span class="glyphicon glyphicon-trash"></span>
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

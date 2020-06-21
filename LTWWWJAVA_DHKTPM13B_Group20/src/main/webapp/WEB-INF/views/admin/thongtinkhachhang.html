@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- ****************************************************************** -->
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+    th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+  <!-- ****************************************************************** -->
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#btnSua').click(function () {
+        $('#accountName').prop('disabled', false);
+        $('#phone').prop('disabled', false);
+        $('#genderNam').prop('disabled', false);
+        $('#genderNu').prop('disabled', false);
+        $('#address').prop('disabled', false);
+        $('#email').prop('disabled', false);
+        $('#birthday').prop('disabled', false);
+        $('#note').prop('disabled', false);
+
+        $('#btnLuu').show();
+        $('#btnHuy').show();
+        $('#btnSua').hide();
+        $('#btnTroVe').hide();
+      });
+      $('#btnHuy').click(function () {
+        $('#accountName').prop('disabled', true);
+        $('#phone').prop('disabled', true);
+        $('#genderNam').prop('disabled', true);
+        $('#genderNu').prop('disabled', true);
+        $('#address').prop('disabled', true);
+        $('#email').prop('disabled', true);
+        $('#birthday').prop('disabled', true);
+        $('#note').prop('disabled', true);
+
+        $('#btnLuu').hide();
+        $('#btnHuy').hide();
+        $('#btnSua').show();
+        $('#btnTroVe').show();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="content mt-5">
+      <form action="#" th:object="${account}" th:action="@{/admin/thongtinkhachhang}" method="POST">
+        <div class="header">
+          <!-- Row 1 -->
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
+              <h2>Thông tin Khách hàng</h2>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <div class="float-right">
+                <button style="display: none;" id="btnLuu" type="submit" class="btn btn-success">
+                  <i class="fa fa-save"></i> Lưu
+                </button>
+                <button style="display: none;" id="btnHuy" type="button" class="btn btn-danger">
+                  <i class="fa fa-close"></i> Huỷ
+                </button>
+                <button id="btnSua" type="button" class="btn btn-outline-success">
+                  <i class="fa fa-edit"></i> Sửa
+                </button>
+                <button id="btnTroVe" type="button" class="btn btn-outline-danger">
+                  <a style="text-decoration: none;" class="text-reset" th:href="@{/admin/khachhang}">
+                    <i class="fa fa-arrow-left"></i> Trở về
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+          <!-- Row 2 -->
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
+              <table class="table">
+                <tr>
+                  <th>Họ và tên</th>
+                  <td><input class="form-control" type="text" name="accountName" id="accountName"
+                      placeholder="Họ và tên Khách hàng" th:field="*{accountName}" th:value="${account.accountName}"
+                      disabled /></td>
+                </tr>
+                <tr>
+                  <th>Số điện thoại</th>
+                  <td><input class="form-control" type="tel" name="phone" id="phone" placeholder="Số điện thoại"
+                      th:field="*{phone}" th:value="${account.phone}" disabled />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Giới tính</th>
+                  <td>
+                    <div class="form-check-inline">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" id="genderNam" th:field="*{gender}"
+                          th:check="${account.gender == 'Nam' ? true : false}" value="Nam" disabled /> Nam
+                      </label>
+                    </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" id="genderNu" th:field="*{gender}"
+                          th:check="${account.gender == 'Nu' ? true : false}" value="Nu" disabled /> Nữ
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Địa chỉ</th>
+                  <td><textarea class="form-control" name="address" id="address" cols="30" rows="2"
+                      th:field="*{address}" placeholder="Địa chỉ" th:value="${account.address}" disabled></textarea>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+              <table class="table">
+                <tr>
+                  <th>Mã Khách hàng</th>
+                  <td>
+                    <input class="form-control" type="number" name="" id="accountId" placeholder="Mã Khách hàng"
+                      th:field="*{accountId}" th:value="${account.accountId}" readonly />
+                    <input class="form-control" type="hidden" name="" id="accountId" placeholder="Mã Khách hàng"
+                      th:field="*{password}" th:value="${account.password}" readonly />
+
+                    <input class="form-control" type="text" th:value="${account.roles}" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td><input class="form-control" type="email" name="" id="email" placeholder="Email"
+                      th:field="*{email}" th:value="${account.email}" disabled /></td>
+                </tr>
+                <tr>
+                  <th>Ngày sinh</th>
+                  <td><input class="form-control" type="date" name="" id="birthday" placeholder="Ngày sinh"
+                      th:field="*{birthday}" th:value="${account.birthday}" disabled /></td>
+                </tr>
+                <tr>
+                  <th>Ghi chú</th>
+                  <td><textarea class="form-control" name="" id="note" cols="30" rows="2" placeholder="Ghi chú"
+                      th:field="*{note}" th:value="${account.note}" disabled></textarea>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Row 3 -->
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
+              <h2>Lịch sử mua hàng</h2>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <div class="float-right">
+                <button type="button" class="btn btn-outline-success">
+                  <i class="fa fa-file-excel-o"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger">
+                  <i class="fa fa-file-pdf-o"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="row">
+            <div class="col">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th></th>
+                      <th>Mã đơn hàng</th>
+                      <th>Kho xuất</th>
+                      <th>Ngày đặt</th>
+                      <th>Ngày giao hàng</th>
+                      <th>Trạng thái</th>
+                      <th>Tổng tiền</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <div th:each="order : ${account.orders}">
+                      <tr>
+                        <td style="text-align: center;">
+                          <button type="button" class="btn btn-outline-primary" data-toggle="collapse"
+                            th:attr="data-target='#collapseId' + ${order.orderId}">
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </td>
+                        <td><span th:text="${order.orderId}"></span></td>
+                        <td><span></span></td>
+                        <td><span th:text="${order.orderDate}"></span></td>
+                        <td><span th:text="${order.shipDate}"></span></td>
+                        <td><span></span></td>
+                        <td></td>
+                        <td style="text-align: center;">
+                          <button type="button" class="btn btn-outline-dark"><i class="fa fa-print"></i></button>
+                          <button type="button" class="btn btn-outline-warning"><i class=" fa fa-trash"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="8">
+                          <div th:attr="id='collapseId' + ${order.orderId}" class="collapse">
+                            <!-- Tab -->
+                            <ul class="nav nav-tabs">
+                              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#"></a></li>
+                            </ul>
+                            <!-- Tab Content -->
+                            <div class="tab-content">
+                              <div class="tab-pane active">
+                                <div class="alert alert-success" style="display: flex;">
+                                  <div class="ml-5">
+                                    <i class="fa fa-shopping-cart"></i> Số lượng sản
+                                    phẩm
+                                    <span th:text="${#lists.size(order.orderDetails)}"></span>
+                                  </div>
+                                  <div class="ml-5">
+                                    <i class="fa fa-dollar"> Tiền hàng</i>
+                                  </div>
+                                  <div class="ml-5">
+                                    <i class="fa fa-dollar"> Giảm giá</i>
+                                  </div>
+                                  <div class="ml-5">
+                                    <i class="fa fa-dollar"> Tổng tiền</i>
+                                  </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                  <table class="table table-bordered table-hover table-sm">
+                                    <thead class="thead-light">
+                                      <tr>
+                                        <th>STT</th>
+                                        <th>Mã sản phẩm</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá bán</th>
+                                        <th>Tổng tiền</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr th:each="orderDetail : ${order.orderDetails}">
+                                        <td></td>
+                                        <td><span th:text="${orderDetail.product.productId}"></span></td>
+                                        <td><span th:text="${orderDetail.product.productName}"></span></td>
+                                        <td><span th:text="${orderDetail.quantity}"></span></td>
+                                        <td><span th:text="${orderDetail.unitPrice}"></span></td>
+                                        <td><span></span></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </div>
+
+                  </tbody>
+                </table>
+                <div class="alert alert-primary" style="display: flex;">
+                  <div class="ml-5">
+                    <i class="fa fa-terminal"></i> Tổng số Hoá đơn <span th:text="${#lists.size(account.orders)}"></span>
+                  </div>
+                  <div class="ml-5">
+                    <i class="fa fa-dollar"></i> Tổng tiền
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

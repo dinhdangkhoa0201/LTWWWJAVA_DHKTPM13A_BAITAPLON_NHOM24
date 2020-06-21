@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Trang Chủ</title>
+</head>
+
+<body>
+	<a href="#">Hello</a>
+	<br>
+	<h2>Trang chủ nè, chưa có gì đâu! Huhu :</h2>
+	<h1>Kif ta</h1>
+
+	<div th:if="${#request.userPrincipal != null}">
+		<a th:href="@{/sign-out}">Log out</a>
+		<br>
+		<span>Account</span>
+		<br>
+		<span th:text="${account.accountName}"></span>
+		<br>
+		<a th:if="${ROLE_ADMIN != null}" th:href="@{/admin/index}" href="">Admin</a>
+	</div>
+	
+	<a th:if="${#request.userPrincipal == null}" th:href="@{/sign-in}">Sign in</a>
+	<a th:href="@{/timkiem}"></a>
+	<br>
+
+</body>
+
+</html>
