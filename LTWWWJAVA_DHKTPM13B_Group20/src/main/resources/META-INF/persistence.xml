@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="LTWWWJAVA_DHKTPM13B_Group20"
+		transaction-type="RESOURCE_LOCAL">
+		<class>fit.se.main.model.Account</class>
+		<class>fit.se.main.model.Category</class>
+		<class>fit.se.main.model.Location</class>
+		<class>fit.se.main.model.Product</class>
+		<class>fit.se.main.model.ProductImage</class>
+		<class>fit.se.main.model.ProductInventory</class>
+		<class>fit.se.main.model.ProductInventory_PK</class>
+		<class>fit.se.main.model.PurchaseOrderDetail</class>
+		<class>fit.se.main.model.PurchaseOrderDetail_PK</class>
+		<class>fit.se.main.model.PurchaseOrderHeader</class>
+		<class>fit.se.main.model.Role</class>
+		<class>fit.se.main.model.SaleOrderDetail</class>
+		<class>fit.se.main.model.SaleOrderDetail_PK</class>
+		<class>fit.se.main.model.SaleOrderHeader</class>
+		<class>fit.se.main.model.Supplier</class>
+		<class>fit.se.main.model.UnitMeasure</class>
+		<class>fit.se.main.model.VerifyAccount</class>
+
+		<properties>
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.SQLServer2012Dialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.connection.driver_class"
+				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<property name="javax.persistence.validation.mode"
+				value="none" />
+			<property name="javax.persistence.schema-generation.database.action" value="create"/>
+			<!-- <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
+				/> <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=LTWWWJAVA_Group20" 
+				/> <property name="javax.persistence.jdbc.user" value="sa" /> <property name="javax.persistence.jdbc.password" 
+				value="025825273a" /> -->
+
+
+		</properties>
+	</persistence-unit>
+</persistence>
