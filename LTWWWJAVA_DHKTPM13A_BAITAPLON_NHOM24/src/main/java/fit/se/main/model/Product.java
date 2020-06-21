@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "product")
@@ -51,7 +50,6 @@ public class Product implements Serializable{
 	@OneToMany(mappedBy = "product")
 	private List<ProductInventory> productInventories;
 
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
 	private List<SaleOrderDetail> orderDetails;
 
@@ -81,7 +79,6 @@ public class Product implements Serializable{
 		this.productImages = productImages;
 	}
 
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
 	private List<ProductImage> productImages;
 

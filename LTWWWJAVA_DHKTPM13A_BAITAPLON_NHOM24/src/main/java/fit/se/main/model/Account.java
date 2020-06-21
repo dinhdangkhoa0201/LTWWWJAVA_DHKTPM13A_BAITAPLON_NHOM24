@@ -18,7 +18,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "account")
@@ -57,18 +56,15 @@ public class Account implements Serializable {
 	@Column(name = "note", columnDefinition = "nvarchar(255)")
 	private String note;
 
-	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "account_role", joinColumns = {
 			@JoinColumn(name = "account_id")}, inverseJoinColumns = @JoinColumn(name = "role_id")
 	)
 	private List<Role> roles;
 
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
 	private List<VerifyAccount> verificationTokens;
 
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
 	private List<SaleOrderHeader> orders;
 

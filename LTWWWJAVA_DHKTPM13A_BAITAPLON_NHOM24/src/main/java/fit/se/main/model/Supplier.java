@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "supplier")
@@ -37,7 +36,6 @@ public class Supplier implements Serializable{
 	private String email;
 	private LocalDateTime modifiedDate;
 	
-	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier", cascade = CascadeType.ALL)
 	private List<Product> products;
 
