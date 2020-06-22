@@ -14,7 +14,6 @@
 	<debug />
 
 
-
 	<http auto-config="true">
 		<csrf disabled="true" />
 		<intercept-url pattern="/" access="permitAll()" />

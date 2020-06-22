@@ -47,6 +47,10 @@ delete from account
 
 delete from role
 
+delete from unit_measure
+
+
+
 
 use master
 
