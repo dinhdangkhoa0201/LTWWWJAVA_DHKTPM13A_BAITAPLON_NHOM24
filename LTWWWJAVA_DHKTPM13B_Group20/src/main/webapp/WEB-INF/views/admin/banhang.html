@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<!-- ****************************************************************** -->
+	<!-- JQuery UI Complete -->
+	<link rel="stylesheet" th:href="@{/resources/lib/jquery-ui-1.12.1/jquery-ui.min.css}">
+
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -21,7 +24,197 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+	<script th:src="@{/resources/lib/jquery-ui-1.12.1/jquery-ui.min.js}"></script>
+
 	<!-- ****************************************************************** -->
+
+	<script type="text/javascript" th:inline="javascript">
+		$(document).ready(function () {
+			const accounts = /*[[${accounts}]]*/[];
+			const products = /*[[${products}]]*/[];
+			var accountSource = [];
+			var productSource = [];
+
+			var varAccount = accounts.split('],');
+			var varProduct = products.split('],');
+
+			console.log('varAccount ' + varProduct);
+
+			for (var i = 0; i < varAccount.length; i++) {
+				// console.log(i);
+
+				// console.log('- 0 : ' + varAccount[i]);
+
+				varAccount[i] = varAccount[i].replace(/[[\]\\]/g, '');
+				// console.log('- 1 : ' + varAccount[i]);
+
+				if (varAccount[i].includes('"{')) {
+					varAccount[i] = varAccount[i].replace(/"{/g, '{');
+				} else if (varAccount[i].includes('"}"')) {
+					varAccount[i] = varAccount[i].replace(/"}"/g, '"}');
+				}
+
+				// console.log('- 3 : ' + varAccount[i]);
+
+				varAccount[i] = varAccount[i].trim();
+				// console.log('- 4 : ' + varAccount[i]);
+
+				varAccount[i] = varAccount[i].replace(/(\w+:)|(\w+ :)/g, function (s) {
+					return '"' + s.substring(0, s.length - 1) + '":';
+				});
+				// console.log('- 5 : ' + varAccount[i]);
+
+				varAccount[i] = JSON.parse(varAccount[i]);
+				// console.log('- 6 :' + varAccount[i].accountId);
+
+				var temp = varAccount[i].accountId + ' - ' + varAccount[i].accountName + ' - ' + varAccount[i].phone + ' - ' + varAccount[i].birthday;
+
+				accountSource.push(temp);
+			}
+
+			for (var i = 0; i < varProduct.length; i++) {
+				// console.log(i);
+
+				// console.log('- 0 : ' + varProduct[i]);
+
+				varProduct[i] = varProduct[i].replace(/[[\]\\]/g, '');
+				// console.log('- 1 : ' + varProduct[i]);
+
+				if (varProduct[i].includes('"{')) {
+					varProduct[i] = varProduct[i].replace(/"{/g, '{');
+				} else if (varProduct[i].includes('"}"')) {
+					varProduct[i] = varProduct[i].replace(/"}"/g, '"}');
+				};
+
+				if (varProduct[i].includes('}"}')) {
+					varProduct[i] = varProduct[i].replace(/}"}/g, '}}');
+				};
+				if (varProduct[i].includes('}}"')) {
+					varProduct[i] = varProduct[i].replace(/}}"/g, '}}');
+				};
+
+				// console.log('- 3 : ' + varProduct[i]);
+
+				varProduct[i] = varProduct[i].trim();
+				// console.log('- 4 : ' + varProduct[i]);
+
+				varProduct[i] = varProduct[i].replace(/(\w+:)|(\w+ :)/g, function (s) {
+					return '"' + s.substring(0, s.length - 1) + '":';
+				});
+				// console.log('- 5 : ' + varProduct[i]);
+
+				varProduct[i] = JSON.parse(varProduct[i]);
+				// console.log('- 6 :' + varProduct[i]);
+
+				var temp = varProduct[i].productId + ' - ' + varProduct[i].productName + ' - ' + varProduct[i].sellingPrice + ' - ' + varProduct[i].quantity;
+				productSource.push(temp);
+			}
+
+			// console.log(varProduct);
+
+
+			$('#account').autocomplete({
+				source: accountSource,
+				autoFocus: true,
+				minLength: 0,
+				select: function () {
+
+				}
+			}).focus(function () {
+				$(this).autocomplete("search");
+			});
+
+			$('#search').autocomplete({
+				source: productSource,
+				select: function (event, ui) {
+					var index = $.inArray(ui.item.value, productSource);
+					console.log(varProduct[index]);
+
+					$('#tableSaleOrder > tbody:last-child').append(
+						'<tr>' +
+						'<td><span class="countRow"></span></td>' +
+						'<td><span th:field="orderDetails.product.productId">' + varProduct[index].productId + '</span></td>' +
+						'<td><span>' + varProduct[index].productName + '</span></td>' +
+						'<td><span>' + varProduct[index].image + '</span></td>' +
+						'<td><input class="form-control quantity" data-id="quantity" type="number" min="0" value="1" /></td>' +
+						'<td><span>' + varProduct[index].unitMeasure.unitName + '</span></td>' +
+						'<td><span class="sellingPrice">' + varProduct[index].sellingPrice + '</span></td>' +
+						'<td><span class="thanhTien">' + varProduct[index].sellingPrice + '</span></td>' +
+						'<td><button type="button" data-id="xoa"><i class="fa fa-trash"></i></button></td>' +
+						'</tr'
+					);
+					$(this).val('');
+					totalMoney();
+					renumberRows();
+					return false;
+				},
+				minLength: 0
+			}).focus(function () {
+				$(this).autocomplete("search");
+			});
+
+			$(document).on('click', 'button[data-id="xoa"]', function () {
+				if (confirm("Delete selected item ?")) {
+					$(this).closest('tr').fadeTo(400, 0, function () {
+						$(this).remove();
+						totalMoney();
+						renumberRows();
+					});
+				} else {
+					event.stopPropagation();
+					event.preventDefault();
+				};
+
+
+
+				return false;
+			});
+
+			$(document).on('change keyup', 'input[data-id="quantity"]', function () {
+				var quantity = $(this).val();
+				var sellingPrice = $(this).closest('tr').find('.sellingPrice').html();
+				$(this).closest('tr').find('.thanhTien').html(quantity * sellingPrice);
+				totalMoney();
+			});
+
+			$('#vat').on('change', function () {
+				totalMoney();
+			});
+
+			function totalMoney() {
+				var temp = 0;
+				$('#tableSaleOrder > tbody > tr').each(function (i, v) {
+					temp += parseFloat($(this).find('span.thanhTien').text());
+				});
+				var vat = $('#vat :selected').val() * temp;
+				$('#tienhang').val(temp);
+				console.log('vat : ' + vat);
+				$('#totalMoney').val(temp + vat);
+			};
+
+			function renumberRows() {
+				$("#tableSaleOrder > tbody > tr").each(function (i, v) {
+					$(this).find(".countRow").text(i + 1);
+				});
+			};
+
+
+			$(window).on('keydown', function (event) {
+				if (event.keyCode === 13 && event.target === document.getElementById("save")) {
+
+					document.querySelector("form").submit();
+				} else if (event.keyCode === 13 && event.target !== document.getElementById("save")) {
+					event.preventDefault();
+					event.target.click();
+					return false;
+				}
+			});
+
+			console.log(new Date());
+
+			$('#orderDate').val(new Date().toISOString().substring(0, 10));
+		});
+	</script>
 	<style>
 		label {
 			font-weight: 600;
@@ -35,54 +228,50 @@
 		<div class="header card-header">
 			<h3>Bán Hàng</h3>
 		</div>
+
 		<div class="content mt-5 mb-5 card-body">
-			<div class="row">
-				<div id="orderDetail" class="col-lg-8 col-md-12">
-					<div class="">
-						<form action="" class="mb-3">
-							<label for="search">Tìm kiếm Sản phẩm</label> <input type="text" class="form-control" name=""
-								id="search" placeholder="Nhập mã hoặc tên sản phấm" />
-						</form>
-						<table class="table table-bordered table-hover table-striped">
-							<thead>
-								<tr>
-									<td>STT</td>
-									<td>Mã hàng</td>
-									<td>Tên sản phẩm</td>
-									<td>Ảnh</td>
-									<td>Số lượng</td>
-									<td>ĐVT</td>
-									<td>Giá bán</td>
-									<td>Thành tiền</td>
-									<td></td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</tbody>
-						</table>
+			<form action="#" th:action="@{/admin/hoadon/taohoadon}" method="POST" th:object="${saleOrderHeader}">
+				<div class="row">
+					<div id="orderDetail" class="col-lg-8 col-md-12">
+						<div class="">
+							<div class="form-group">
+								<label for="search">Tìm kiếm Sản phẩm</label>
+								<input type="text" class="form-control" name="" id="search"
+									placeholder="Nhập mã hoặc tên sản phấm" />
+							</div>
+
+							<table id="tableSaleOrder" class="table table-bordered table-hover table-striped">
+								<thead>
+									<tr>
+										<td>STT</td>
+										<td>Mã hàng</td>
+										<td>Tên sản phẩm</td>
+										<td>Ảnh</td>
+										<td>Số lượng</td>
+										<td>ĐVT</td>
+										<td>Giá bán</td>
+										<td>Thành tiền</td>
+										<td></td>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="alert alert-success my-4">
+							<strong>Tips!</strong> Gõ mã hoặc tên sản phẩm vào hộp tìm kiếm để
+							thêm hàng vào đơn hàng
+						</div>
 					</div>
-					<div class="alert alert-success my-4">
-						<strong>Tips!</strong> Gõ mã hoặc tên sản phẩm vào hộp tìm kiếm để
-						thêm hàng vào đơn hàng
-					</div>
-				</div>
-				<!-- Start Order -->
-				<div id="order" class="col-lg-4 col-md-12">
-					<form action="">
+					<!-- Start Order -->
+					<div id="order" class="col-lg-4 col-md-12">
+						<label for="nhanvien">Ngày</label>
+						<div id="nhanvien" class="mb-3">
+							<input class="form-control" type="date" name="orderDate" id="orderDate" readonly />
+						</div>
 						<label for="khachhang"><span>Khách hàng</span></label>
 						<div class="input-group mb-3" id="khachhang">
-							<input class="form-control" type="text" name="khachhang" id="" placeholder="Nhập tên Khách hàng"
+							<input id="account" class="form-control" type="text" name="khachhang" placeholder="Nhập tên Khách hàng"
 								required />
 							<div class="input-group-prepend">
 								<button type="button" class="btn btn-success">
@@ -90,15 +279,15 @@
 								</button>
 							</div>
 						</div>
-						<label for="nhanvien">NV bán hàng</label>
-						<div id="nhanvien" class="mb-3">
+						<!-- <label for="nhanvien">NV bán hàng</label> -->
+						<!-- <div id="nhanvien" class="mb-3">
 							<select class="form-control">
 								<option value="">Nhân viên</option>
 							</select>
-						</div>
+						</div> -->
 						<label for="ghichu">Ghi chú</label>
 						<div id="ghichu" class="mb-3">
-							<textarea class="form-control" name="ghichu" id="ghichu" cols="30" rows="5"></textarea>
+							<textarea class="form-control" name="ghichu" id="ghichu" cols="30" rows="5" th:field="*{note}"></textarea>
 						</div>
 						<hr>
 						<label for="thongtinthanhtoan" style="font-size: 20px;"><span class="fa fa-info-circle"
@@ -108,40 +297,48 @@
 							<label for="hinhthuc">Hình thức</label>
 							<div id="hinhthuc">
 								<div class="form-check-inline">
-									<label class="form-check-label"> <input type="radio" name="hinhthucTT" id="" /> Tiền mặt
+									<label class="form-check-label"> <input type="radio" name="hinhthucTT" id="tienMat" /> Tiền mặt
 									</label>
 								</div>
 								<div class="form-check-inline">
-									<label class="form-check-label"> <input type="radio" name="hinhthucTT" id="" /> Thẻ
+									<label class="form-check-label"> <input type="radio" name="hinhthucTT" id="the" /> Thẻ
 									</label>
 								</div>
 								<div class="form-check-inline">
-									<label class="form-check-label"> <input type="radio" name="hinhthucTT" id="" /> Chuyển khoảng
+									<label class="form-check-label"> <input type="radio" name="hinhthucTT" id="chuyenKhoang" /> Chuyển
+										khoảng
 									</label>
 								</div>
 							</div>
 						</div>
 						<label for="vat">VAT</label>
 						<div id="vat" class="mb-3">
-							<select name="vat" id="" class="form-control">
-								<option value="0%">0%</option>
-								<option value="5%">5%</option>
-								<option value="10%">10%</option>
+							<select name="vat" id="vat" class="form-control">
+								<option value="0" selected>0%</option>
+								<option value="0.05">5%</option>
+								<option value="0.1">10%</option>
 							</select>
 						</div>
 						<label for="lbltienhang">Tiền hàng</label>
-						<div id="lbltienhang" class="mb-3">
+						<div id="lbltienhang" class="mb-3 input-group">
 							<input class="form-control" type="text" name="tienhang" id="tienhang" readonly />
+							<div class="input-group-append">
+								<span class="input-group-text">VNĐ</span>
+							</div>
 						</div>
 						<hr>
 						<label for="thanhtien">Thành tiền</label>
-						<div class="mb-3" id="thanhtien">
-							<output class="float-right">VND</output>
+						<div class="mb-3 input-group" id="thanhtien">
+							<input class="form-control" type="text" name="totalMoney" id="totalMoney" value="0" readonly
+								th:field="*{totalOrder}" />
+							<div class="input-group-append">
+								<span class="input-group-text">VNĐ</span>
+							</div>
 						</div>
 						<div style="clear: both;"></div>
 						<hr>
 						<div class="float-right mt-1">
-							<button class="btn btn-primary">
+							<button id="save" type="submit" class="btn btn-primary">
 								<i class="fa fa-check"></i> Lưu
 							</button>
 							<button class="btn btn-warning">
@@ -149,10 +346,11 @@
 							</button>
 						</div>
 						<div style="clear: both;"></div>
-					</form>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
+
 		<div class="card-footer"></div>
 	</div>
 </body>

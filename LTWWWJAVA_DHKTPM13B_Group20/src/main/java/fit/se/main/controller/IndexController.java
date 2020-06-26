@@ -2,6 +2,7 @@ package fit.se.main.controller;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,8 +59,12 @@ public class IndexController {
 	@Autowired
 	private UnitMeasureService unitMeasureService;
 
+	@GetMapping("/")
+	public String dashboard(Model model) {
+		return "/admin/index";
+	}
 
-	@RequestMapping("/")
+	@RequestMapping("/log-in")
 	public String login(Model model, HttpServletRequest request) {
 		System.out.println("Hello");
 		
@@ -82,13 +87,13 @@ public class IndexController {
 	@RequestMapping("/index")
 	public String index(Model model, Principal principal) {
 		AccountPricipal accountAdminPricipal = (AccountPricipal)  ((Authentication) principal).getPrincipal();
-		
 		System.out.println("account pricipal login : " + accountAdminPricipal);
 		if(accountAdminPricipal != null) {
 			Account account = accountService.findById(accountAdminPricipal.getAccountId());
 			
 			System.out.println("Account : " + account);
 			System.out.println("Account Role : " + account.getRoles());
+			
 			model.addAttribute("account", account);
 			for(Role role : account.getRoles()) {
 				if(role.getName().equalsIgnoreCase("ROLE_ADMIN")) {
@@ -148,7 +153,7 @@ public class IndexController {
 			productService.createProduct(product1);
 			productService.createProduct(product2);
 
-			SaleOrderHeader orderHeader = new SaleOrderHeader(account, LocalDate.now(), LocalDate.now(), "");
+			SaleOrderHeader orderHeader = new SaleOrderHeader(account, LocalDateTime.now(), LocalDateTime.now(), "");
 			saleOrderHeaderService.createOrder(orderHeader);
 
 			SaleOrderDetail orderDetail1 = new SaleOrderDetail(orderHeader, product1, 1, product1.getPrice()); 

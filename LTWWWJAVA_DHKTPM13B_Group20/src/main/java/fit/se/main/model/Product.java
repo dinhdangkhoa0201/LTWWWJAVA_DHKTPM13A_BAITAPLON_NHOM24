@@ -2,6 +2,7 @@ package fit.se.main.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -75,8 +76,8 @@ public class Product implements Serializable{
 	@Lob
 	@Column(name = "image", columnDefinition = "image")
 	private byte[] image;
-	
-	
+
+
 	private boolean enable;
 
 	public List<ProductImage> getProductImages() {
@@ -234,11 +235,10 @@ public class Product implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price
-				+ ", sellingPrice=" + sellingPrice + ", quantity=" + quantity
-				+ ", note=" + note + ", image=" + image + ", enable=" + enable + ", productImages=" + productImages
-				+ ", modifiedDate=" + modifiedDate + "]";
+		return "{productId: " + productId + ", productName: \"" + productName + "\", price: " + price
+				+ ", sellingPrice: " + sellingPrice + ", quantity: " + quantity + ", note: \""
+				+ note + "\", image: \"" + Arrays.toString(image) + "\", enable: \"" + enable 
+				+ "\", unitMeasure: \"" + unitMeasure + "\"}]";
 	}
-
 
 }

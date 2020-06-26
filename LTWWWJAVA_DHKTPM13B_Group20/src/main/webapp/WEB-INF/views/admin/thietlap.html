@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- ****************************************************************** -->
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+    th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+  <script th:src="@{/resources/lib/ckeditor/ckeditor.js}" src="../../../resources/lib/ckeditor/ckeditor.js"></script>
+
+  <!-- ****************************************************************** -->
+  <script>
+    $(document).ready(function () {
+      CKEDITOR.replace('editor1');
+      CKEDITOR.instances.editor1.on('change', function (evt) {
+        var data = CKEDITOR.instances.editor1.getData();
+
+        $('#editorReview').contents().find('body').html(data);
+
+        $('#editorReview').on('change', function () {
+          $('#editorReview').contentWindow.location.reload();
+        });
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="card">
+      <!-- Card Header -->
+      <div class="card-header">
+        <h3>Thiết lập</h3>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#bill">Mẫu hoá đơn</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane container-fluid active" id="bill">
+            <div class="mt-1">
+              <div class="row">
+                <!-- Edit form bill -->
+                <div class="col-lg-6 col-sm-12 card">
+                  <div class="card-header">Editor</div>
+                  <div class="card-body">
+                    <form action="">
+                      <textarea class="form-control" name="editor1" id="editor1" cols="30" rows="10">
+                      </textarea>
+                    </form>
+                  </div>
+                </div>
+
+                <!-- Display form bill -->
+                <div class="col-lg-6 col-sm-12 card">
+                  <div class="card-header">Review</div>
+                  <div class="card-body">
+                    <iframe class="w-100" id="editorReview" src="javascript:void(0)" frameborder="0">
+
+                    </iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

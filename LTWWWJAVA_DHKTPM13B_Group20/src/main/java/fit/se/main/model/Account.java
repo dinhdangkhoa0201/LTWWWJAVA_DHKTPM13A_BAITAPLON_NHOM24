@@ -261,10 +261,9 @@ public class Account implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Account [accountId=" + accountId + ", accountName=" + accountName + ", birthday=" + birthday
-				+ ", gender=" + gender + ", email=" + email + ", phone=" + phone + ", address=" + address
-				+ ", password=" + password + ", note=" + note + ", isEnabled=" + isEnabled + ", modifiedDate="
-				+ modifiedDate + "]";
+		return "{accountId: " + accountId + ", accountName: \"" + accountName + "\", birthday: \"" + birthday
+				+ "\", gender: \"" + gender + "\", email: \"" + email + "\", phone: \"" + phone + "\", address: \"" + address
+				+ "\", password: \"" + password + "\", note: \"" + note + "\", isEnabled: \"" + isEnabled + "\"}]";
 	}
 
 }

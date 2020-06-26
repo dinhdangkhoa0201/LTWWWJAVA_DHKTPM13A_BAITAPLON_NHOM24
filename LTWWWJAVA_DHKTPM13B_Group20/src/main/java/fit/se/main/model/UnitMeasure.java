@@ -91,10 +91,7 @@ public class UnitMeasure implements Serializable{
 
 	@Override
 	public String toString() {
-		return "UnitMeasure [unitId=" + unitId + ", unitName=" + unitName + ", modifiedDate=" + modifiedDate + "]";
+		return "[{unitId: " + unitId + ", unitName: \"" + unitName +"\"}]";
 	}
-	
-	
-	
 	
 }
