@@ -152,7 +152,7 @@ public class SaleOrderHeader implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", account=" + account.toString() + ", orderDetails=" + orderDetails + ", orderDate="
+		return "Order [orderId=" + orderId + ", account=" + account.toString() + ", orderDetails=" + orderDetails.toString() + ", orderDate="
 				+ orderDate + ", shipDate=" + shipDate + ", note=" + note + "]";
 	}
 	

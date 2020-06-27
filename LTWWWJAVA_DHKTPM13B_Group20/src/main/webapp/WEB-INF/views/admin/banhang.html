@@ -30,119 +30,84 @@
 
 	<script type="text/javascript" th:inline="javascript">
 		$(document).ready(function () {
+			/* Get value accounts and products */
 			const accounts = /*[[${accounts}]]*/[];
 			const products = /*[[${products}]]*/[];
 			var accountSource = [];
 			var productSource = [];
-
 			var varAccount = accounts.split('],');
 			var varProduct = products.split('],');
-
-			console.log('varAccount ' + varProduct);
-
+			// console.log('varAccount ' + varProduct);
+			/* Convert account String to JSON */
 			for (var i = 0; i < varAccount.length; i++) {
-				// console.log(i);
-
-				// console.log('- 0 : ' + varAccount[i]);
-
 				varAccount[i] = varAccount[i].replace(/[[\]\\]/g, '');
-				// console.log('- 1 : ' + varAccount[i]);
-
 				if (varAccount[i].includes('"{')) {
 					varAccount[i] = varAccount[i].replace(/"{/g, '{');
 				} else if (varAccount[i].includes('"}"')) {
 					varAccount[i] = varAccount[i].replace(/"}"/g, '"}');
 				}
-
-				// console.log('- 3 : ' + varAccount[i]);
-
 				varAccount[i] = varAccount[i].trim();
-				// console.log('- 4 : ' + varAccount[i]);
-
 				varAccount[i] = varAccount[i].replace(/(\w+:)|(\w+ :)/g, function (s) {
 					return '"' + s.substring(0, s.length - 1) + '":';
 				});
-				// console.log('- 5 : ' + varAccount[i]);
-
 				varAccount[i] = JSON.parse(varAccount[i]);
-				// console.log('- 6 :' + varAccount[i].accountId);
-
 				var temp = varAccount[i].accountId + ' - ' + varAccount[i].accountName + ' - ' + varAccount[i].phone + ' - ' + varAccount[i].birthday;
-
 				accountSource.push(temp);
 			}
-
+			console.log(varAccount);
+			/* Convert product String to JSON */
 			for (var i = 0; i < varProduct.length; i++) {
-				// console.log(i);
-
-				// console.log('- 0 : ' + varProduct[i]);
-
 				varProduct[i] = varProduct[i].replace(/[[\]\\]/g, '');
-				// console.log('- 1 : ' + varProduct[i]);
-
 				if (varProduct[i].includes('"{')) {
 					varProduct[i] = varProduct[i].replace(/"{/g, '{');
 				} else if (varProduct[i].includes('"}"')) {
 					varProduct[i] = varProduct[i].replace(/"}"/g, '"}');
 				};
-
 				if (varProduct[i].includes('}"}')) {
 					varProduct[i] = varProduct[i].replace(/}"}/g, '}}');
 				};
 				if (varProduct[i].includes('}}"')) {
 					varProduct[i] = varProduct[i].replace(/}}"/g, '}}');
 				};
-
-				// console.log('- 3 : ' + varProduct[i]);
-
 				varProduct[i] = varProduct[i].trim();
-				// console.log('- 4 : ' + varProduct[i]);
-
 				varProduct[i] = varProduct[i].replace(/(\w+:)|(\w+ :)/g, function (s) {
 					return '"' + s.substring(0, s.length - 1) + '":';
 				});
-				// console.log('- 5 : ' + varProduct[i]);
-
 				varProduct[i] = JSON.parse(varProduct[i]);
-				// console.log('- 6 :' + varProduct[i]);
-
 				var temp = varProduct[i].productId + ' - ' + varProduct[i].productName + ' - ' + varProduct[i].sellingPrice + ' - ' + varProduct[i].quantity;
 				productSource.push(temp);
 			}
-
-			// console.log(varProduct);
-
-
+			/* Account autocomplete */
 			$('#account').autocomplete({
 				source: accountSource,
-				autoFocus: true,
-				minLength: 0,
-				select: function () {
-
-				}
+				// minLength: 0,
 			}).focus(function () {
 				$(this).autocomplete("search");
 			});
-
+			/* Product autocomplete */
 			$('#search').autocomplete({
 				source: productSource,
 				select: function (event, ui) {
 					var index = $.inArray(ui.item.value, productSource);
-					console.log(varProduct[index]);
+					// console.log(varProduct[index]);
+					var rowCount = $('table#tableSaleOrder > tbody > tr:last').index() + 2;
+					// console.log('count ' + rowCount);
 
 					$('#tableSaleOrder > tbody:last-child').append(
 						'<tr>' +
 						'<td><span class="countRow"></span></td>' +
-						'<td><span th:field="orderDetails.product.productId">' + varProduct[index].productId + '</span></td>' +
-						'<td><span>' + varProduct[index].productName + '</span></td>' +
+						'<td><input type="text" id="productId" th:name="products[' + rowCount + '].productId"  /><span>' + varProduct[index].productId + '</span></td>' +
+						'<td><input type="hidden" id="productId" th:name="products[' + rowCount + '].productName"  /><span>' + varProduct[index].productName + '</span></td>' +
 						'<td><span>' + varProduct[index].image + '</span></td>' +
-						'<td><input class="form-control quantity" data-id="quantity" type="number" min="0" value="1" /></td>' +
+						'<td><input class="form-control quantity" th:name="products[' + rowCount + '].quantity" data-id="quantity" type="number" min="0" value="1" /></td>' +
 						'<td><span>' + varProduct[index].unitMeasure.unitName + '</span></td>' +
 						'<td><span class="sellingPrice">' + varProduct[index].sellingPrice + '</span></td>' +
 						'<td><span class="thanhTien">' + varProduct[index].sellingPrice + '</span></td>' +
 						'<td><button type="button" data-id="xoa"><i class="fa fa-trash"></i></button></td>' +
 						'</tr'
 					);
+
+					$('#productId').val(varProduct[index].productId);
 					$(this).val('');
 					totalMoney();
 					renumberRows();
@@ -153,6 +118,7 @@
 				$(this).autocomplete("search");
 			});
 
+			/* Delete row */
 			$(document).on('click', 'button[data-id="xoa"]', function () {
 				if (confirm("Delete selected item ?")) {
 					$(this).closest('tr').fadeTo(400, 0, function () {
@@ -164,44 +130,51 @@
 					event.stopPropagation();
 					event.preventDefault();
 				};
-
-
-
 				return false;
 			});
 
+			/* Modifield input quantity */
 			$(document).on('change keyup', 'input[data-id="quantity"]', function () {
 				var quantity = $(this).val();
 				var sellingPrice = $(this).closest('tr').find('.sellingPrice').html();
 				$(this).closest('tr').find('.thanhTien').html(quantity * sellingPrice);
 				totalMoney();
 			});
-
 			$('#vat').on('change', function () {
 				totalMoney();
 			});
-
+			/* calculate money */
 			function totalMoney() {
 				var temp = 0;
 				$('#tableSaleOrder > tbody > tr').each(function (i, v) {
-					temp += parseFloat($(this).find('span.thanhTien').text());
+					temp += parseFloat($(this).find('span.thanhTien').html());
+					// console.log('temp : ' + temp);
 				});
 				var vat = $('#vat :selected').val() * temp;
 				$('#tienhang').val(temp);
-				console.log('vat : ' + vat);
+				// console.log('vat : ' + vat);
 				$('#totalMoney').val(temp + vat);
 			};
 
+			/* Count row table */
 			function renumberRows() {
 				$("#tableSaleOrder > tbody > tr").each(function (i, v) {
-					$(this).find(".countRow").text(i + 1);
+					$(this).find("span.countRow").text(i + 1);
 				});
 			};
 
+			/* Return row countr */
+			function countRows() {
+				$("#tableSaleOrder > tbody > tr").each(function (i, v) {
+					return $(this).find("span.countRow").text(i + 1);
+				});
+			};
 
+			/* Set id account wher i submmit */
+
+			/* disable Enter */
 			$(window).on('keydown', function (event) {
 				if (event.keyCode === 13 && event.target === document.getElementById("save")) {
-
 					document.querySelector("form").submit();
 				} else if (event.keyCode === 13 && event.target !== document.getElementById("save")) {
 					event.preventDefault();
@@ -210,7 +183,19 @@
 				}
 			});
 
-			console.log(new Date());
+			$('#formSaleOrderHeader').submit(function (e) {
+				e.preventDefault();
+				var self = $(this);
+
+				var $input = $('#account').val();
+				var index = accountSource.indexOf($input);
+				if (index > -1) {
+					var accountId = varAccount[index].accountId;
+					$('#account').val(accountId);
+					$("#formSaleOrderHeader").off("submit");
+					$(this).submit();
+				}
+			});
 
 			$('#orderDate').val(new Date().toISOString().substring(0, 10));
 		});
@@ -230,7 +215,8 @@
 		</div>
 
 		<div class="content mt-5 mb-5 card-body">
-			<form action="#" th:action="@{/admin/hoadon/taohoadon}" method="POST" th:object="${saleOrderHeader}">
+			<form id="formSaleOrderHeader" action="#" th:action="@{/admin/hoadon/taohoadon}" method="POST"
+				th:object="${saleOrderHeader}">
 				<div class="row">
 					<div id="orderDetail" class="col-lg-8 col-md-12">
 						<div class="">
@@ -255,6 +241,24 @@
 									</tr>
 								</thead>
 								<tbody>
+									<tr>
+										<td><span class="countRow"></span></td>
+										<td><input type="text" id="productId" th:name="products[0].productId" />
+											<span></span>
+										</td>
+										<td>
+											<span></span>
+										</td>
+										<td>
+											<span></span>
+										</td>
+										<td><input class="form-control quantity" th:name="products[0].quantity" data-id="quantity"
+												type="number" min="0" value="1" /></td>
+										<td><span></span></td>
+										<td><span class="sellingPrice"></span></td>
+										<td><span class="thanhTien"></span></td>
+										<td><button type="button" data-id="xoa"><i class="fa fa-trash"></i></button></td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -267,12 +271,12 @@
 					<div id="order" class="col-lg-4 col-md-12">
 						<label for="nhanvien">Ngày</label>
 						<div id="nhanvien" class="mb-3">
-							<input class="form-control" type="date" name="orderDate" id="orderDate" readonly />
+							<input class="form-control" type="date" name="" id="orderDate" readonly />
 						</div>
 						<label for="khachhang"><span>Khách hàng</span></label>
 						<div class="input-group mb-3" id="khachhang">
-							<input id="account" class="form-control" type="text" name="khachhang" placeholder="Nhập tên Khách hàng"
-								required />
+							<input id="account" class="form-control" type="text" value="" name="khachhang"
+								placeholder="Nhập tên Khách hàng" required th:field="*{accountId}" />
 							<div class="input-group-prepend">
 								<button type="button" class="btn btn-success">
 									<i class="fa fa-plus"></i>
@@ -321,7 +325,7 @@
 						</div>
 						<label for="lbltienhang">Tiền hàng</label>
 						<div id="lbltienhang" class="mb-3 input-group">
-							<input class="form-control" type="text" name="tienhang" id="tienhang" readonly />
+							<input class="form-control" type="text" name="tienhang" id="tienhang" value="0" readonly />
 							<div class="input-group-append">
 								<span class="input-group-text">VNĐ</span>
 							</div>
@@ -330,7 +334,7 @@
 						<label for="thanhtien">Thành tiền</label>
 						<div class="mb-3 input-group" id="thanhtien">
 							<input class="form-control" type="text" name="totalMoney" id="totalMoney" value="0" readonly
-								th:field="*{totalOrder}" />
+								th:field="*{totalMoney}" />
 							<div class="input-group-append">
 								<span class="input-group-text">VNĐ</span>
 							</div>

@@ -21,6 +21,7 @@ import com.google.gson.GsonBuilder;
 
 import fit.se.main.dto.AccountCreateDTO;
 import fit.se.main.dto.ProductCreateDTO;
+import fit.se.main.dto.SaleOrderHeaderCreateDTO;
 import fit.se.main.model.Account;
 import fit.se.main.model.Category;
 import fit.se.main.model.Product;
@@ -576,15 +577,20 @@ public class AdminController {
 		model.addAttribute("accounts", jsonAccount);
 		model.addAttribute("products", jsonProduct);
 		
-		SaleOrderHeader saleOrderHeader = new SaleOrderHeader();
-		model.addAttribute("saleOrderHeader", saleOrderHeader);
+		SaleOrderHeaderCreateDTO saleOrderHeaderCreateDTO = new SaleOrderHeaderCreateDTO();
+		model.addAttribute("saleOrderHeader", saleOrderHeaderCreateDTO);
 		
 		return "/admin/banhang";
 	}
 	
 	@PostMapping("/hoadon/taohoadon")
-	public String taoHoaDon(Model model, @ModelAttribute("saleOrderHeader") SaleOrderHeader saleOrderHeader, BindingResult result) {
-		System.out.println("sale Order : " + saleOrderHeader);
+	public String taoHoaDon(Model model, @ModelAttribute("saleOrderHeader") SaleOrderHeaderCreateDTO saleOrderHeader, BindingResult result) {
+		if(result.hasErrors()) {
+			System.out.println(result);
+			return "redirect:/admin/hoadon/taodonhang";
+		}
+		System.out.println(saleOrderHeader.getProducts());
+		
 		return "redirect:/admin/hoadon";
 	}
 	
