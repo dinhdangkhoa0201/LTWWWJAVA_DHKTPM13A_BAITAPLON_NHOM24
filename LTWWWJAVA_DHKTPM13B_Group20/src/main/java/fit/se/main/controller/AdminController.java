@@ -59,7 +59,7 @@ public class AdminController {
 	
 /* - Danh sách Khách hàng */
 	@GetMapping("/khachhang")
-	public String khachHang(Model model) {
+	public String Model(Model model) {
 		List<Account> accounts = accountService.findAll();
 		List<String> emails = new ArrayList<String>();
 		List<String> phones = new ArrayList<String>();

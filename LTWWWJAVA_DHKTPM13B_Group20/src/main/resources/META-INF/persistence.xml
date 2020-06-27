@@ -32,7 +32,7 @@
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="javax.persistence.validation.mode"
 				value="none" />
-			<property name="javax.persistence.schema-generation.database.action" value="create"/>
+			<property name="javax.persistence.schema-generation.database.action" value="none"/>
 			<!-- <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
 				/> <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=LTWWWJAVA_Group20" 
 				/> <property name="javax.persistence.jdbc.user" value="sa" /> <property name="javax.persistence.jdbc.password" 

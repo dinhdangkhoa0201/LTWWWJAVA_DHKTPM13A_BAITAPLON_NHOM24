@@ -71,7 +71,6 @@ public class IndexController {
 				Account account = accountService.createAdmin(createDTO);
 				System.out.println("Admin : " + account);
 			}
-			init();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

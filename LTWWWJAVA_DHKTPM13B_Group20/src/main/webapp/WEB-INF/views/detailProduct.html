@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Chi Tiết Sản Phẩm</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link  th:href="@{/resources/css/sb-admin-2.min.css}" rel="stylesheet">
+    <link th:href="@{/resources/css/detailProduct.css}" rel="stylesheet" href="../../../resources/css/detailProduct.css">
+   	<link th:href="@{/resources/css/search.css}" rel="stylesheet" href="../../../resources/css/search.css">
+	<script type="text/javascript" th:src="@{/resources/js/detailProduct.js}" ></script>
+    
+
+
+</head>
+
+<body>
+
+    <div class="header">
+  
+		<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  <!-- Topbar Search -->
+  <a href=""> <img src="../images/logo.png"></a>
+	<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+	<div class="input-group">
+	  <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa bạn muốn tìm kiếm"  >
+		<button class="btn btn-primary" type="button">
+		  <i class="fas fa-search fa-sm" ></i>
+		</button>
+	</div>
+  </form>
+
+  <!-- Topbar Navbar -->
+  <ul class="navbar-nav ml-auto">
+
+	<!-- Shopping Cart -->
+	<li class="nav-item dropdown no-arrow mx-1">
+	  <a class="nav-link dropdown-toggle" th:href="@{/ShoppingCart}">
+		<i class="fa fa-cart-plus " aria-hidden="true" style="font-size:24px"></i>
+		<!-- Counter - Messages -->
+		<span class="badge badge-danger badge-counter" th:text="${myCart.getLineItemCount()}"></span>
+	  </a>
+	</li>
+
+	<div class="topbar-divider d-none d-sm-block"></div>
+
+	<!-- Nav Item - User Information -->
+	<li class="nav-item dropdown no-arrow">
+	  <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown"  aria-expanded="false">
+		<span class="mr-2 d-none d-lg-inline text-gray-600 small">Lê Đình huy</span>
+		<i class="fa fa-user" aria-hidden="true" style="font-size:24px"></i>
+	  </a>
+	  <!-- Dropdown - User Information -->
+	  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" a>
+		<a class="dropdown-item" href="#">
+		  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+		 Thông Tin
+		</a>
+		<a class="dropdown-item" href="#">
+		  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+		  Đăng Nhập
+		</a>
+		<a class="dropdown-item" href="#">
+		  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+		  Tạo Tài Khoản
+		</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+		  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+		  Đăng Xuất
+		</a>
+	  </div>
+	</li>
+
+  </ul>
+
+</nav>
+<!-- End of Topbar -->
+</div>
+
+
+
+    <!-- Main -->
+    <div class="Container jFkAwY ">
+        <div  class="gQLVSm">
+            <div class="ProductImages kQvKqX">
+                <div class="images">
+                    <img src="#" style="width: 390px; height: 390px;">
+                </div>
+            </div>
+            <div class="ProductContent XlJje">
+                <div class="header border-bottom">
+                	<strong>Tên Sản Phẩm: </strong><span  th:text="${product.productName}"></span> <br>
+                	<strong>Loại Sản Phẩm: </strong> <span th:text="${product.category.categoryName}"></span><br>
+                	<strong>Nhà Cung Cấp: </strong> <span th:text="${product.supplier.supplierName}"></span><br>
+                	<strong>Giá: </strong> <span th:text="${product.price}"></span><br>
+                	
+                	
+                </div>
+                <div class="body">
+                    Chọn số lượng:
+                    <div class="addProductitem dJbIjB">
+                        <div class="buttons_added">
+                            <button class="minus is-form" onclick="buttonClicMinuskdetail();">-</button>
+                            <input aria-label="quantity" class="input-qty" id="inc" max="10" min="1" name="" type="number" value="1">
+                              <button class="plus is-form" onclick="buttonClicPlusdetail();">+</button>
+                          </div>
+                          <div class="group-button">    
+                            <div class="purchase-form__button">
+                      
+                                <button  name="button" type="submit" class="js-purchase__add-to-cart e-btn--3d -color-primary -size-m -width-full"data-toggle="modal" data-target="#myModalAddCart">
+                                  <i class="fa fa-cart-plus "></i> <strong>Add to Cart</strong>
+                              </button>  
+                                      
+                              </div>                               
+                               <input type="hidden" th:value="${product.productId}" id="productid">                             
+                           </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Container-itwfbd-0 jFkAwY">
+            <div class="ProductDescription__Wrapper-fuzaih-0 khHtLW">
+                <div class="left">
+                    <h2>Thông tin chi tiết</h2>
+                    <div class="group">
+                        <div class="content has-table"><table>
+                            <tbody>
+                                <tr>
+                                    <td>Thương hiệu</td>
+                                    <td>abc</td>
+                                </tr>
+                                <tr>
+                                    <td>SKU</td>
+                                    <td>abc</td>
+                                </tr>
+                                <tr>
+                                    <td>Trọng lượng</td>
+                                    <td> abc</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="group">
+                        <h4 class="BlockTitle__Wrapper-qpz3fo-0 cfpgte">MÔ TẢ SẢN PHẨM</h4>
+                        <div class="content">
+                            
+                               
+                               
+                                        <p>
+                                            <img src="../../../resources/images/dongtrunghathao.jpg">
+                                        </p>
+                                        <p>
+                                            <img src="../../../images/dongtrunghathao.jpg">
+                                        </p>
+                                        <p>
+                                            <img src="../images/dongtrunghathao.jpg">
+                                        </p>
+                                        <p>
+                                            <img src="../images/dongtrunghathao.jpg">
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                Máy Đo Nhiệt Độ/Độ Ẩm Trong Nhà Deli DC107 8812 là dụng cụ kiểm tra nhiệt độ, độ ẩm trong nhà, từ đó giúp phòng tránh một số bệnh như cảm lạnh, viêm mũi, viêm xoang, huyết áp
+                                            </li>
+                                            <li>
+                                                Thiết bị giúp người sử dụng chủ động trong việc đối phó với thời tiết, cho cơ thể khỏe mạnh hơn.
+                                            </li>
+                                        </ul>
+                                        <p>Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Tuy nhiên tuỳ vào từng loại sản phẩm hoặc phương thức, địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, ...</p>
+                                  
+                      
+
+                        </div>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+    <!--End Main-->
+    
+
+    <!-- The model add cart -->
+    
+    
+    <div class="modal fade" id="myModalAddCart">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="e-modal__header h-text-align-center">
+                <h2 class="t-heading -size-m">Giỏ Hàng</h2>
+              
+            </div>
+            
+            <!-- Modal body -->
+            <div class="e-modal__section -background-mid">
+                <div class="cart-entry-summary__thumbnail">
+              <img width="80" height="80" alt="Earthyellow - Responsive Ecommerce HTML5 Template" src="#">
+            </div>
+            <div class="cart-entry-summary__core-info">
+              <h5 class="t-heading -size-xxs"></h5>
+              <p class="t-body -size-m" th:text="${product.productName}"></p>
+            </div>
+            
+            <div class="cart-entry-summary__variant-info ">
+              <div class="t-heading -size-l h-mb1 cart-modal__price-group">
+                
+                <strong class="js-cart-variant__output-discount-price cart-variant__output-discount-price active t-currency">
+                  
+                </strong>
+              </div>
+            
+              <div class="t-body -size-m">
+                <br>
+            
+                  <strong>Support:</strong>
+                  <span class="js-cart-variant__output-support" th:text="${product.category.categoryName}">
+                    
+                  </span><br>
+            
+              </div>
+              <strong class="js-cart-variant__output-price  t-currency" th:text="${product.price}">
+        
+              </strong>
+            
+            </div>
+            
+              </div>
+            <input type="hidden" th:value="${product.productId}" id="productid">
+            <!-- Modal footer -->
+            <div class="modal-footer ">
+                
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát </button>              
+                            <a id="btnAddtoCart" onclick="addToCart('btnAddtoCart')"> 
+                            <button type="button" class="btn btn-secondary" >Thêm Vào Giỏ Hàng</button>
+                            </a>
+                
+            </div>
+            <footer class="e-modal__footer">
+                
+
+              </footer>
+            
+          </div>
+        </div>
+      </div>
+    <!-- End Model add cart -->
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2019</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+</body>
+
+</html>

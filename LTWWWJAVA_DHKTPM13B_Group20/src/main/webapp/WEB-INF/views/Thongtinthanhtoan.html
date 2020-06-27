@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Thông tin thanh toán| HKV</title>
+	<link rel="shortcut icon" href="images/logo.PNG" type="image/x-icon"/>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		*{
+			padding: 0;
+			box-sizing: border-box;
+		}
+		header {
+		    display: block;
+		}
+		h3 {
+		    display: block;
+		    font-size: 1.17em;
+		    margin-block-start: 1em;
+		    margin-block-end: 1em;
+		    margin-inline-start: 0px;
+		    margin-inline-end: 0px;
+		    font-weight: bold;
+		}
+		
+		button, input {
+		    overflow: visible;
+		}
+		button, input, optgroup, select, textarea {
+		    font-family: inherit;
+		    font-size: 100%;
+		    line-height: 1.15;
+		    margin: 0px;
+		}
+		ul {
+		    display: block;
+		    list-style-type: disc;
+		    margin-block-start: 1em;
+		    margin-block-end: 1em;
+		    margin-inline-start: 0px;
+		    margin-inline-end: 0px;
+		    padding-inline-start: 40px;
+		}
+		.iQydii {
+		    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+		    position: relative;
+		    z-index: 1;
+		    padding: 25px 0px 15px;
+		    background: rgb(255, 255, 255);
+		}
+		.iQydii .header-container {
+		    display: flex;
+		    width: 1170px;
+		}
+		.jFkAwY {
+		    width: 1270px;
+		    padding-left: 15px;
+		    padding-right: 15px;
+		    margin-right: auto;
+		    margin-left: auto;
+		}
+		.header .logo {
+		    flex: 1 1 0%;
+		}
+		.iQydii .logo .icon {
+		    background-image: url(images/logo.PNG);
+		    background-size: 90px;
+		    width: 90px;
+		    height: 85px;
+		    display: block;
+		    background-position: 0px 0px;
+		}
+
+		.iQydii .pro {
+		    display: flex;
+		    flex: 4 1 0%;
+		}
+		.hSHEnI {
+		    position: relative;
+		    width: 33%;
+		}
+		.hSHEnI .text {
+		    text-align: center;
+		    color: rgb(89, 89, 89);
+		    font-size: 14px;
+		}
+		.hSHEnI:first-child .bar {
+		    left: 50%;
+		    width: 50%;
+		}
+		.hSHEnI .bar {
+		    height: 6px;
+		    position: relative;
+		    margin: 16px 0px;
+		    background: rgb(235, 235, 235);
+		}
+		.hSHEnI:first-child .bar .fill-color {
+		    width: 100%;
+		}
+		.hSHEnI:last-child .bar {
+		    width: 50%;
+		}
+		.hSHEnI .bar .fill-color {
+		    width: 100%;
+		    height: 100%;
+		    box-shadow: none;
+		    background: rgb(0, 182, 240);
+		    transition: none 0s ease 0s;
+		}
+		.hSHEnI .circle {
+		    position: absolute;
+		    width: 26px;
+		    height: 26px;
+		    display: block;
+		    top: 41px;
+		    left: 50%;
+		    margin-top: -15px;
+		    margin-left: -15px;
+		    color: rgb(255, 255, 255);
+		    font-size: 15px;
+		    text-align: center;
+		    line-height: 26px;
+		    box-shadow: rgb(102, 102, 102) 0px 0px 2px;
+		    background: rgb(0, 182, 240);
+		    border-radius: 50%;
+		    border-width: initial;
+		    border-style: none;
+		    border-color: initial;
+		    border-image: initial;
+		}
+		.iQydii .hotline {
+		    display: flex;
+		    -webkit-box-pack: end;
+		    justify-content: flex-end;
+		    -webkit-box-align: center;
+		    align-items: center;
+		    flex: 1 1 0%;
+		}
+		.bBVUHD {
+		    font-size: 11px;
+		    margin-top: 40px;
+		    padding-bottom: 10px;
+		    padding-top: 10px;
+		    background: none;
+		    background-color: rgb(225, 225, 225);
+		}
+		.LjGNU {
+		    flex-basis: 100%;
+		    flex-shrink: 0;
+		    padding: 10px;
+		}
+		.ggAFge {
+		    flex-basis: 72%;
+		    padding: 25px 15px 0px;
+		}
+		.fwsEni {
+		    opacity: 1;
+		}
+		.fwsEni .title {
+		    margin-top: 0px;
+		    margin-bottom: 10px;
+		    font-size: 18px;
+		    color: rgb(95, 95, 95);
+		    font-weight: 700;
+		}
+		.dnmKst {
+		    background-color: rgb(255, 255, 255);
+		    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px;
+		    margin-bottom: 20px;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(221, 221, 221);
+		    border-image: initial;
+		    border-radius: 4px;
+		    padding: 10px 15px;
+		}
+		.jvJKXm {
+		    margin-bottom: 15px;
+		}
+		.bqACGT {
+		    display: block;
+		    margin-right: 15px;
+		}
+		.bqACGT input[type="radio"] {
+		    position: absolute;
+		    height: 1px;
+		    width: 1px;
+		    visibility: hidden;
+		    clip: rect(0px, 0px, 0px, 0px);
+		    opacity: 0;
+		}
+		.bqACGT input[type="radio"]:checked + .radio-fake {
+		    border-color: rgb(27, 168, 255);
+		}
+		.bqACGT .radio-fake {
+		    width: 18px;
+		    height: 18px;
+		    display: inline-block;
+		    vertical-align: middle;
+		    position: relative;
+		    z-index: 1;
+		    color: rgb(120, 120, 120);
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(120, 120, 120);
+		    border-image: initial;
+		    border-radius: 50%;
+		    margin: 10px 12px 10px 0px;
+		}
+		.bqACGT input[type="radio"]:checked + .radio-fake::before {
+		    transform: scale(1);
+		}
+		.bqACGT .radio-fake::before {
+		    content: "";
+		    position: absolute;
+		    left: 2px;
+		    top: 2px;
+		    width: 12px;
+		    height: 12px;
+		    background-color: rgb(27, 168, 255);
+		    transform: scale(0);
+		    border-radius: 50%;
+		    transition: transform 0.3s ease 0s;
+		}
+		.bqACGT .label {
+		    font-size: 13px;
+		    line-height: 20px;
+		    display: inline-block;
+		    vertical-align: middle;
+		    max-width: 80%;
+		    color: rgb(51, 51, 51);	
+		}
+		.jvJKXm .label {
+		    font-weight: 500;
+		    padding: 10px 0px;
+		}
+		.jvJKXm .label-no-shippments__etaText {
+		    color: rgb(38, 188, 78);
+		    font-weight: 500;
+		    font-size: 14px;
+		    margin-bottom: 8px;
+		}
+		.jvJKXm .label-no-shippments .shipping-fee {
+		    font-weight: 400;
+		    margin-left: 0px;
+		    margin-right: 5px;
+		}
+		.jvJKXm .shipping-fee {
+		    color: rgb(36, 36, 36);
+		    font-size: 13px;
+		    margin-left: 8px;
+		}
+		.jvJKXm .no-shipping-fee {
+		    color: rgb(255, 255, 255);
+		    font-size: 12px;
+		    line-height: 1;
+		    text-align: center;
+		    font-weight: 300;
+		    background: rgb(38, 188, 78);
+		    border-radius: 17px;
+		    padding: 4px 14px 3px;
+		}
+		.jvJKXm .label-no-shippments .no-shipping-fee {
+		    margin-right: 8px;
+		}
+		.jvJKXm .label-no-shippments .method-name {
+		    font-size: 13px;
+		    color: rgb(36, 36, 36);
+		    font-weight: 400;
+		}
+		.jvJKXm .method-name {
+		    display: inline-flex;
+		    -webkit-box-align: baseline;
+		    align-items: baseline;
+		}
+		.fJEQQi {
+		    color: rgb(51, 51, 51);
+		    margin-bottom: 20px;
+		    background: rgb(255, 255, 255);
+		    padding: 15px 25px 10px 15px;
+		    border-radius: 5px;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(221, 221, 221);
+		    border-image: initial;
+		}
+		.fJEQQi .list {
+		    margin: 0px;
+		    padding: 0px;
+		    list-style: none;
+		}
+		.fTvtIP {
+		    font-size: 14px;
+		    margin-bottom: 8px;
+		}
+		.igEbbo {
+		    font-size: 13px;
+		    display: flex;
+		    -webkit-box-align: center;
+		    align-items: center;
+		    flex-wrap: wrap;
+		    color: rgb(51, 51, 51);
+		    min-height: 36px;
+		    margin: 0px 0px 15px;
+		}
+		.cpOFZC {
+		    max-height: 0px;
+		    transition: max-height 0.5s ease-out 0s;
+		    overflow: hidden;
+		}
+		.iDFEuF {
+		    background-color: rgb(255, 255, 255);
+		    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px;
+		    margin-bottom: 20px;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(221, 221, 221);
+		    border-image: initial;
+		    border-radius: 4px;
+		    padding: 20px 15px;
+		}
+		.hXamyU {
+		    max-height: 1000px;
+		    transition: max-height 0.5s ease-out 0s;
+		    overflow: hidden;
+		}
+		.iDFEuF .circle-wrapper {
+		    position: relative;
+		}
+		.iDFEuF .circle-wrapper .circle-question {
+		    cursor: pointer;
+		    position: relative;
+		    margin: -4px 0px 0px 5px;
+		}
+		.bYlDgr {
+		    height: 34px;
+		    line-height: 34px;
+		    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(204, 204, 204);
+		    border-image: initial;
+		    border-radius: 4px;
+		    padding: 6px 12px;
+		    outline: none;
+		}
+		.doFXqy {
+		    line-height: 20px;
+		    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(204, 204, 204);
+		    border-image: initial;
+		    border-radius: 4px;
+		    padding: 6px 12px;
+		    outline: none;
+		}
+		.igEbbo .note {
+		    margin-left: 15%;
+		    color: rgba(55, 55, 55, 0.87);
+		    font-size: 13px;
+		    padding: 10px 0px;
+		}
+		.ggAFge .order-button {
+		    width: 50%;
+		}
+		.ggAFge .order-button button {
+		    width: 360px;
+		    height: 50px;
+		    line-height: 2;
+		    color: rgb(255, 255, 255);
+		    font-size: 18px;
+		    outline-color: rgb(204, 204, 204);
+		    cursor: pointer;
+		    margin: 10px 0px 0px;
+		    padding: 4px 12px;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(172, 34, 39);
+		    border-image: initial;
+		    border-radius: 3px;
+		    background: linear-gradient(rgb(239, 57, 89), rgb(215, 32, 65));
+		}
+		.ggAFge .order-button p {
+		    text-align: left;
+		    color: rgb(80, 80, 80);
+		    font-size: 13px;
+		    margin: 10px 0px;
+		}
+		.jFEIKb {
+		    flex-basis: 28%;
+		    padding: 40px 15px 0px;
+		}
+		.fxjiAa {
+		    background-color: rgb(255, 255, 255);
+		    color: rgb(51, 51, 51);
+		    margin-top: 15px;
+		    padding: 10px 15px;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(221, 221, 221);
+		    border-image: initial;
+		    border-radius: 3px;
+		}
+		.fxjiAa .title {
+		    display: flex;
+		    -webkit-box-pack: justify;
+		    justify-content: space-between;
+		    padding-bottom: 10px;
+		    font-size: 13px;
+		    line-height: 31px;
+		    border-bottom: 1px solid rgb(201, 201, 201);
+		}
+		.fxjiAa .title a {
+		    font-size: 12px;
+		    padding-left: 14px;
+		    padding-right: 14px;
+		    height: 31px;
+		    outline-color: rgb(204, 204, 204);
+		    color: rgb(51, 51, 51);
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(204, 204, 204);
+		    border-image: initial;
+		    background: linear-gradient(rgb(255, 255, 255), rgb(247, 247, 247));
+		    border-radius: 2px;
+		    text-decoration: none;
+		}
+		.fxjiAa .address .name {
+		    font-size: 15px;
+		    font-weight: 700;
+		    margin-top: 15px;
+		    margin-bottom: 10px;
+		}
+		.fxjiAa .address span {
+		    display: block;
+		    font-size: 13px;
+		}
+		.fxjiAa .address .street, .fxjiAa .address .phone {
+		    padding: 2px 0px;
+		}
+		.UHbjr {
+		    background-color: rgb(255, 255, 255);
+		    color: rgb(51, 51, 51);
+		    margin-top: 15px;
+		    padding: 10px 15px;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(221, 221, 221);
+		    border-image: initial;
+		    border-radius: 3px;
+		}
+		.UHbjr .title {
+		    display: flex;
+		    -webkit-box-pack: justify;
+		    justify-content: space-between;
+		    padding-bottom: 10px;
+		    font-size: 13px;
+		    line-height: 31px;
+		    border-bottom: 1px solid rgb(201, 201, 201);
+		}
+		.UHbjr .cart {
+		    font-size: 12px;
+		}
+		.UHbjr .cart .product {
+		    margin-bottom: 15px;
+		}
+		.iylcMU {
+		    font-size: 11px;
+		    display: flex;
+		    -webkit-box-pack: justify;
+		    justify-content: space-between;
+		    padding: 12px 0px;
+		    border-bottom: 1px solid rgb(201, 201, 201);
+		}
+		.iylcMU .info {
+		    flex: 2 1 0%;
+		}
+		.iylcMU .price {
+		    text-align: right;
+		    flex: 1 1 0%;
+		}
+		.jPiCqD {
+		    margin-bottom: 13px;
+		    display: flex;
+		    -webkit-box-pack: justify;
+		    justify-content: space-between;
+		    position: relative;
+		}
+		.UHbjr .cart .price-summary .total {
+		    display: flex;
+		    -webkit-box-pack: justify;
+		    justify-content: space-between;
+		    padding-top: 12px;
+		    margin-bottom: 0px;
+		    line-height: 19px;
+		    font-weight: 700;
+		    border-top: 2px solid rgb(201, 201, 201);
+		}
+		.nxmyE {
+		    position: relative;
+		    width: 100%;
+		    box-shadow: none;
+		    color: rgb(51, 51, 51);
+		    margin: 20px auto 0px;
+		    padding: 5px 0px;
+		    border-radius: 3px;
+		    background: rgb(247, 247, 247);
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(235, 235, 235);
+		    border-image: initial;
+		}
+		.nxmyE .arrow {
+		    position: absolute;
+		    display: block;
+		    width: 0px;
+		    height: 0px;
+		    left: 50%;
+		    margin-left: -6px;
+		    top: -12px;
+		    border-color: transparent transparent rgb(235, 235, 235);
+		    border-style: solid;
+		    border-width: 6px;
+		}
+		.nxmyE .arrow::after {
+		    content: " ";
+		    left: 50%;
+		    position: absolute;
+		    display: block;
+		    width: 0px;
+		    height: 0px;
+		    margin-left: -5px;
+		    top: 1px;
+		    border-color: transparent transparent rgb(247, 247, 247);
+		    border-style: solid;
+		    border-width: 0px 5px 5px;
+		}
+		.nxmyE .content {
+		    font-size: 13px;
+		    padding: 9px 14px;
+		}
+		.iylcMU .info .seller-name {
+		    display: block;
+		    margin-top: 5px;
+		}
+		.bBVUHD .copyright {
+		    margin-top: 12px;
+		    width: 100%;
+		    margin-left: 0px;
+		    margin-bottom: 0px;
+		}
+	</style>
+	<script type="text/javascript">
+		function Huy(){	
+			var id = document.getElementById("frmTang");
+			id.classList.add("cpOFZC");
+			id.classList.remove("hXamyU");
+		}
+		function Tang(){	
+			var id = document.getElementById("frmTang");
+			id.classList.add("hXamyU");
+			id.classList.remove("cpOFZC");
+		}
+		function HienThi(){
+			var id = document.getElementById("chkTang");
+			if(id.checked)
+				Tang();
+			else
+				Huy();
+		}
+		function DatMua(){
+			window.location.href = "Thanhtoanthanhcong.html";
+		}
+	</script>
+</head>
+<body>
+	<header class="iQydii">
+		<div class="header-container jFkAwY">
+			<div class="logo">
+				<a href="#"><i class="icon"></i></a>
+			</div>
+			<div class="pro" style="padding-top: 10px">
+				<div class="hSHEnI">
+					<div class="text">Đăng nhập</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div><div class="circle">1</div>
+				</div>
+				<div class="hSHEnI">
+					<div class="text">Địa chỉ giao hàng</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div>
+					<div class="circle">2</div>
+				</div>
+				<div class="hSHEnI">
+					<div class="text">Thanh toán &amp; Đặt mua</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div>
+					<div class="circle">3</div>
+				</div>
+			</div>
+			<div class="hotline">
+				<img src="images/hotline.jpg" style="width: 35px;margin-bottom: 10px">
+				<p style="color: green;">
+					<b>0943723053<br>8 - 21h, cả T7 & CN</b>
+				</p>
+			</div>
+		</div>
+	</header>
+	<main style="background: rgb(255, 255, 255);">
+		<div class="jFkAwY" style="display: flex; width: 1200px; flex-wrap: wrap;">
+			<div class="LjGNU"></div>
+			<div class="ggAFge">
+				<div class="fwsEni">
+					<h3 class="title">1. Chọn hình thức giao hàng</h3>
+					<div class="dnmKst">
+						<div class="jvJKXm">
+							<label class="bqACGT">
+								<input type="radio" readonly="" name="shipping-methods" value="1" checked="">
+								<span class="radio-fake"></span>
+								<span class="label">
+									<div class="label-no-shippments">
+										<div class="label-no-shippments__etaText">Giao vào Thứ sáu, 12/06</div>
+										<div>
+											<span class="shipping-fee">19.000 ₫</span>
+											<span class="method-name">Giao tiêu chuẩn</span>
+										</div>
+									</div>
+								</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="fwsEni">
+					<h3 class="title">2. Chọn hình thức thanh toán</h3>
+					<div class="fJEQQi">
+						<ul class="list">
+							<li class="fTvtIP">
+								<label class="bqACGT">
+									<input type="radio" readonly="" name="payment-methods" value="cod" checked="">
+									<span class="radio-fake"></span>
+									<span class="label">Thanh toán tiền mặt khi nhận hàng</span>
+								</label>
+							</li>
+							<li class="fTvtIP">
+								<label class="bqACGT">
+									<input type="radio" readonly="" name="payment-methods" value="cybersource">
+									<span class="radio-fake"></span>
+									<span class="label">Thanh toán trực tuyến</span>
+								</label>
+								<div class="ZLPVe"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="leKoEO">
+					<div class="igEbbo">
+						<label style="cursor: pointer; font-size: 13px;">
+							<label class="lblfxX" style="margin: -4px 10px 0px 0px;">
+								<input name="send_as_gift" type="checkbox" readonly="" id="chkTang" onchange="HienThi()">
+							</label>Gửi quà tặng đến bạn bè, người thân
+						</label>
+					</div>
+					<div class="cpOFZC" id="frmTang">
+						<h3 class="step-title">3. Thông tin quà tặng</h3>
+						<div class="iDFEuF">
+							<div class="igEbbo">
+								<div class="igEbbo" style="width: 40%; display: inline-flex;">
+									<label class="label" style="width: 30%; color: rgb(51, 51, 51); font-size: 100%">Gửi từ</label>
+									<input type="text" name="from" placeholder="Tên người gửi" class="bYlDgr" value="" style="width: 70%;">
+								</div>
+								<div class="igEbbo" style="width: 40%; display: inline-flex;">
+									<label class="label" style="width: 30%; text-align: center; color: rgb(51, 51, 51);font-size: 100%">Tới</label>
+									<input type="text" name="to" placeholder="Tên người nhận" class="bYlDgr" value="" style="width: 70%;">
+								</div>
+								<div class="igEbbo" style="width: 80%;">
+									<label class="label" style="width: 15%; align-self: flex-start; color: rgb(51, 51, 51);font-size: 100%">Lời nhắn</label>
+									<textarea type="textarea" name="message" maxlength="200" placeholder="Ví dụ: Chúc mừng sinh nhật bạn. (Tối đa 200 ký tự)" class="doFXqy" style="width: 85%; max-width: 85%; height: 100px;"></textarea>
+									<span class="note">* Hóa đơn của đơn hàng này sẽ không in giá.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="order-button">
+						<button onclick="DatMua()">ĐẶT MUA</button>
+						<p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
+					</div>
+				</div>
+				
+			</div>
+			<div class="jFEIKb">
+					<div class="fxjiAa">
+						<div class="title">
+							<span>Địa chỉ giao hàng</span>
+							<a href="Thongtindathang.html">Sửa</a>
+						</div>
+						<div class="address">
+							<span class="name">Phan Sang Vô</span>
+							<span class="street">231c/22 Dương Bá Trạc, Phường 01, Quận 8, Hồ Chí Minh Việt Nam</span>
+							<span class="phone">Điện thoại: 0943723053</span>
+						</div>
+					</div>
+					<div class="UHbjr">
+						<div class="title">
+							<span>Đơn hàng (1 sản phẩm)</span>
+							<a href="">Sửa</a>
+						</div>
+						<div class="cart">
+							<div class="product">
+								<div class="iylcMU">
+									<div class="info">
+										<strong class="qty">1 x</strong>
+										<a href="/op-lung-cho-xiaomi-redmi-note-6-pro-redmi-note-6-iron-man-nhua-pc-cung-vien-deo-chong-soc-xanh-den-p7406693.html?spid=11861212" target="_blank" class="product-name">Ốp Lưng Cho Xiaomi Redmi Note 6 Pro / Redmi Note 6 iRON - MAN Nhựa PC Cứng Viền Dẻo Chống Sốc - Xanh đen</a>
+										<span class="seller-name">Cung cấp bởi <strong>Handtown</strong></span>
+									</div>
+									<div class="price">69.000 ₫</div>
+								</div>
+							</div>
+							<div class="price-summary">
+								<div class="jPiCqD">
+									<div class="name">Tạm tính</div>
+									<div class="value">69.000đ</div>
+								</div>
+							<div class="OrderSummary__StyledPriceInfo-ue7sy3-2 jPiCqD">
+								<div class="name">Phí vận chuyển</div>
+								<div class="value">19.000đ</div>
+							</div>
+							<div class="total">
+								<div class="name">Thành tiền:</div>
+								<div class="value">88.000 ₫<i>(Đã bao gồm VAT nếu có)</i></div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="nxmyE" style="display: none;">
+						<div class="arrow"></div>
+						<div class="content">
+							<span>Đơn hàng bạn sẽ được miễn phí vận chuyển.</span>
+						</div>
+					</div>
+				</div>
+			</main>
+	<footer class="bBVUHD">
+		<div class="jFkAwY">
+			<p class="terms-text">Bằng việc tiến hành Đặt Mua, khách hàng đồng ý với các Điều Kiện Giao Dịch Chung được ban hành bởi HKV:</p>
+			<p class="terms">
+				<a href="" target="_blank">Quy chế hoạt động</a>
+				|<a href="" target="_blank">Chính sách giải quyết khiếu nại</a>
+				|<a href="" target="_blank">Chính sách bảo hành</a>
+				|<a href="" target="_blank">Chính sách bảo mật thanh toán</a>
+				|<a href="" target="_blank">Chính sách bảo mật thông tin cá nhân</a>
+			</p>
+			<p class="copyright">© 2019 - Bản quyền của Công Ty Cổ Phần HKV- HKV.vn</p>
+		</div>
+	</footer>
+</body>
+</html>

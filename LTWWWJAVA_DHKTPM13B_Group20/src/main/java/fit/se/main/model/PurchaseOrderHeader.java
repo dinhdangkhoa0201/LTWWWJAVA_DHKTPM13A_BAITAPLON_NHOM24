@@ -3,10 +3,14 @@ package fit.se.main.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -28,6 +32,9 @@ public class PurchaseOrderHeader implements Serializable{
 	private LocalDateTime shipDate;
 	private double subTotal;
 	private LocalDateTime modifiedDate;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "supplier_id")
+	private Supplier supplier;
 	
 
 	public PurchaseOrderHeader(int orderId, LocalDateTime orderDate, LocalDateTime shipDate, double subTotal) {
