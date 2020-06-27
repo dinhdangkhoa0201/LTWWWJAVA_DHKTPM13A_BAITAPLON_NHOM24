@@ -90,9 +90,8 @@ public class SaleOrderDetail implements Serializable{
 
 	@Override
 	public String toString() {
-		return "OrderDetail [order=" + order + ", product=" + product + ", quantity=" + quantity + ", unitPrice="
+		return "OrderDetail [order=" + ", product=" + product.toString() + ", quantity=" + quantity + ", unitPrice="
 				+ unitPrice + "]";
 	}
-	
 	
 }

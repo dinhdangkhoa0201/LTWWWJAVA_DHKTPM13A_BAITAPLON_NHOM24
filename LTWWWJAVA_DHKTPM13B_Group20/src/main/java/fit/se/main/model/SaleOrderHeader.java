@@ -34,10 +34,10 @@ public class SaleOrderHeader implements Serializable{
 	private int orderId;
 
 	@Column(name = "order_date")
-	private LocalDate orderDate;
+	private LocalDateTime orderDate;
 	
 	@Column(name = "ship_date")
-	private LocalDate shipDate;
+	private LocalDateTime shipDate;
 	
 	@Column(columnDefinition = "nvarchar(100)")
 	private String note;
@@ -52,8 +52,12 @@ public class SaleOrderHeader implements Serializable{
 	private List<SaleOrderDetail> orderDetails;
 	
 	private LocalDateTime modifiedDate;
+	
+	private double totalOrder;
+	@Column(columnDefinition = "nvarchar(50)")
+	private String status;
 
-	public SaleOrderHeader(int orderId, LocalDate orderDate, LocalDate shipDate,
+	public SaleOrderHeader(int orderId, LocalDateTime orderDate, LocalDateTime shipDate,
 			String note) {
 		this.orderId = orderId;
 		this.orderDate = orderDate;
@@ -62,12 +66,13 @@ public class SaleOrderHeader implements Serializable{
 		this.modifiedDate = LocalDateTime.now();
 	}
 
-	public SaleOrderHeader(Account account, LocalDate orderDate, LocalDate shipDate, String note) {
+	public SaleOrderHeader(Account account, LocalDateTime orderDate, LocalDateTime shipDate, String note) {
 		this.account = account;
 		this.orderDate = orderDate;
 		this.shipDate = shipDate;
 		this.note = note;
 		this.modifiedDate = LocalDateTime.now();
+		this.status = "Chờ xử lý";
 	}
 	
 	public SaleOrderHeader() {
@@ -85,11 +90,11 @@ public class SaleOrderHeader implements Serializable{
 		return orderDetails;
 	}
 
-	public LocalDate getOrderDate() {
+	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
 
-	public LocalDate getShipDate() {
+	public LocalDateTime getShipDate() {
 		return shipDate;
 	}
 
@@ -109,11 +114,11 @@ public class SaleOrderHeader implements Serializable{
 		this.orderDetails = orderDetails;
 	}
 
-	public void setOrderDate(LocalDate orderDate) {
+	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
 
-	public void setShipDate(LocalDate shipDate) {
+	public void setShipDate(LocalDateTime shipDate) {
 		this.shipDate = shipDate;
 	}
 
@@ -129,9 +134,25 @@ public class SaleOrderHeader implements Serializable{
 		this.modifiedDate = modifiedDate;
 	}
 
+	public double getTotalOrder() {
+		return totalOrder;
+	}
+
+	public void setTotalOrder(double totalOrder) {
+		this.totalOrder = totalOrder;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", account=" + account + ", orderDetails=" + orderDetails + ", orderDate="
+		return "Order [orderId=" + orderId + ", account=" + account.toString() + ", orderDetails=" + orderDetails.toString() + ", orderDate="
 				+ orderDate + ", shipDate=" + shipDate + ", note=" + note + "]";
 	}
 	

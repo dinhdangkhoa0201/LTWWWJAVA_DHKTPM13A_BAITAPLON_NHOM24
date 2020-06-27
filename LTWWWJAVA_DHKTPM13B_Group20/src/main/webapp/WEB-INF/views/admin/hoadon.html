@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<link rel="stylesheet" href="../../../resources/css/style.css"
+	th:href="@{/resources/css/style.css}">
+<!-- Font awesome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Animate -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+<!-- CSS JQueryUI -->
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+	th:href="@{/webjars/datatables/1.10.21/css/dataTables.jqueryui.css}">
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css"
+	th:href="@{/webjars/datatables/1.10.21/css/dataTables.jqueryui.css}">
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.jqueryui.min.css"
+	th:href="@{/webjars/datatables/1.10.21/css/dataTables.jqueryui.css}">
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+<!-- Datatable -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+<!-- Datatable button -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
+<!-- Datatable select -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap4.min.css">
+<!-- Datatable responsive model -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+<!-- CSS fix header -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css">
+
+<!-- ****************************************************************** -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+<!-- ****************************************************************** -->
+
+<!-- JQuery Datatable -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"
+	th:src="@{/webjars/datatables/1.10.21/js/jquery.dataTables.min.js}"></script>
+<!-- JQuery Datatable bootstrap 4 -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!-- JQuery Datatable JQueryUI -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script>
+<!-- JQuery Fixed Header -->
+<script
+	src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+<!-- JQuery Button -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<!-- JQuery Button bootstrap 4 -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+
+<!-- JQuery Button JQueryUI -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.jqueryui.min.js"></script>
+
+<!-- JQuery Button HTML5 -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"
+	th:src="@{/webjars/datatables.net-buttons/1.6.1/js/buttons.html5.min.js}"></script>
+<!-- JQuery Button Print -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"
+	th:src="@{/webjars/datatables.net-buttons/1.6.1/js/buttons.print.min.js}"></script>
+<!-- JQuery Button Colvi -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"
+	th:src="@{/webjars/datatables.net-buttons/1.6.1/js/buttons.colVis.min.js}"></script>
+
+<!-- JQuery JSzip -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<!-- JQuery PDF Maker -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<!-- JQuery PDF fonts -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<!-- JQuery Select -->
+<script
+	src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+<script src="../../static/js/index.js"
+	th:src="@{/resources/js/index.js}"></script>
+
+<script>
+    $(document).ready(function () {
+
+    });
+  </script>
+</head>
+
+<body>
+	<div id="left-sidebar" class="left-sidebar bg-dark">
+		<nav class="navbar">
+			<div>
+				<img class="nav-brand" src="../../static/image/logo.jpg"
+					width="50px" alt="">
+			</div>
+		</nav>
+		<ul class="list-group list-group-flush">
+			<li class="menu-title">Menu</li>
+			<li id="trangchu" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link"> <i class="fa fa-tachometer fa-lg"></i>
+						<span>Trang chủ</span>
+					</a>
+				</div>
+			</li>
+			<li id="banhang" class="list-group-item bg-dark">
+				<div>
+					<a href="#" id="linkBanHang" class="nav-link"> <i
+						class="fa fa-clipboard fa-lg"></i> <span>Bán hàng</span>
+					</a>
+				</div>
+			</li>
+			<li id="khohang" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link" data-toggle="collapse"
+						data-target="#collapseKhoHang" aria-expanded="false"> <i
+						class="fa fa-shopping-cart fa-lg"></i> <span>Kho hàng</span>
+					</a>
+				</div>
+				<div id="collapseKhoHang" class="collapse"
+					data-parent="#left-sidebar">
+					<ul>
+						<li><a href="" class="nav-link"><span>Nhập kho -
+									Mua hàng</span></a></li>
+						<li><a href="" class="nav-link"><span>Xuất kho -
+									Bán hàng</span></a></li>
+						<li><a href="" class="nav-link"><span>Báo cáo
+									Nhập - Xuất - Tồn</span></a></li>
+						<li><a href="" class="nav-link"><span>Sổ chi
+									tiết Hàng hoá</span></a></li>
+						<li><a href="" class="nav-link"><span>Sổ chi
+									tiết mua hàng</span></a></li>
+						<li><a href="" class="nav-link"><span>Sổ chi
+									tiết bán hàng</span></a></li>
+					</ul>
+				</div>
+			</li>
+			<li id="thuchi" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link"> <i class="fa fa-dollar fa-lg"></i>
+						<span>Thu chi</span>
+					</a>
+				</div>
+			</li>
+			<li id="baocao-danhmuc" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link"> <i class="fa fa-cog"></i> <span>Báo
+							cáo - Thống kê</span>
+					</a>
+				</div>
+			</li>
+			<li id="danhmuc" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link" data-toggle="collapse"
+						data-target="#collapseDanhMuc" aria-expanded="false"> <i
+						class="fa fa-clone fa-lg"></i> <span>Danh muc</span>
+					</a>
+				</div>
+				<div id="collapseDanhMuc" class="collapse"
+					data-parent="#left-sidebar">
+					<ul>
+						<li><a th:href="@{/admin/khachhang}" id="linkDMKhachHang"
+							class="nav-link"> <span>DM Khách hàng</span>
+						</a></li>
+						<li><a th:href="@{#}" href="#" id="linkDMNhomHangHoa"
+							class="nav-link"><span>DM Nhóm hàng hoá</span></a></li>
+						<li><a th:href="@{/admin/hanghoa}" href="#"
+							id="linkDMHangHoa" class="nav-link active"><span>DM
+									Hàng hoá</span></a></li>
+						<li><a th:href="@{#}" href="#" id="linkDMNhaCungCap"
+							class="nav-link"><span>DM Nhà cung cấp</span></a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div id="page-content">
+		<div id="header" class=""></div>
+		<div id="navigation" class="">
+			<nav class="navbar navbar-expand-sm navbar-dark bg-primary fix-top">
+				<div class="d-flex flex-grow-1">
+					<a id="btn-menunav" href="javascript:void(0)" class="navbar-brand"
+						onclick="openNav()"><i class=""></i></a>
+					<form class="mr-2 my-auto w-50 d-inline-block order-1">
+						<div class="input-group">
+							<input type="text"
+								class="form-control border border-right-0 border-success"
+								placeholder="Search..."> <span
+								class="input-group-append">
+								<button class="btn btn-success border border-left-0"
+									type="button">
+									<i class="fa fa-search" style="color: #fff;"></i>
+								</button>
+							</span>
+						</div>
+					</form>
+				</div>
+				<ul id="dropdownUserMenu" class="navbar-nav float-right">
+					<li class="nav-item dropdown"><a href=""
+						class="navlink dropdown " id="navbarDropdownUserMenu"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-user fa-2x"></i>
+					</a>
+						<div
+							class="dropdown-menu dropdown-menu-right animate__animated animate__fadeInUp"
+							aria-labelledby="#navbarDropdownUserMenu">
+							<div class="dropdown-header">Welcome!</div>
+							<a class="dropdown-item" href="#"><i class="fa fa-user"></i>
+								Profile</a> <a class="dropdown-item" href=""><i
+								class="fa fa-cog"></i> Setting</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href=""><i class="fa fa-sign-out"></i>
+								Log out</a>
+						</div></li>
+				</ul>
+			</nav>
+		</div>
+
+
+		<div class="content card">
+			<div class="card-header">
+				<h3>Hoá đơn đặt hàng</h3>
+			</div>
+			<div class="card-body">
+				<!-- Row -->
+				<div class="row">
+					<div class="col-lg-auto page-title">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">Home</a></li>
+							<li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+							<li class="breadcrumb-item"><a href="#">Hoá đơn</a></li>
+						</ol>
+					</div>
+					<div class="col-lg-9">
+						<div class="float-right">
+							<a class="btn btn-success text-reset"
+								th:href="@{/admin/hoadon/taodonhang}"> Thêm hoá đơn </a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<table id="tableHoaDon"
+							class="table table-striped table-sm table-repository table-bordered">
+							<thead>
+								<tr>
+									<td></td>
+									<td>ID</td>
+									<td>Mã</td>
+									<td>Ngày order</td>
+									<td>Khách hàng</td>
+									<td>Trạng thái</td>
+									<td>Số lượng</td>
+									<td>Tổng tiền</td>
+								</tr>
+							</thead>
+							<tbody>
+								<div th:each="order : ${saleOrderHeaders}">
+									<tr>
+										<!-- Button Order Detail -->
+										<td style="text-align: center;">
+											<button type="button" class="btn btn-outline-primary"
+												data-toggle="collapse"
+												th:attr="data-target='#collapseId' + ${order.orderId}">
+												<i class="fa fa-plus"></i>
+											</button>
+										</td>
+										<!-- STT -->
+										<td></td>
+										<!-- ID -->
+										<td><span th:text="${order.orderId}"></span></td>
+										<!-- Order date -->
+										<td><span th:text="${order.orderDate}"></span></td>
+										<!-- Account Name -->
+										<td><a
+											th:href="@{/admin/thongtinkhachhang(accountId=${order.account.accountId})}"><span
+												th:text="${order.account.accountName}"></span></a></td>
+										<!-- State -->
+										<td><span th:text="${order.status}"></span></td>
+										<td style="text-align: center;">
+											<button type="button" class="btn btn-outline-dark">
+												<i class="fa fa-print"></i>
+											</button>
+											<button type="button" class="btn btn-outline-warning">
+												<i class=" fa fa-trash"></i>
+											</button>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="8">
+											<div th:attr="id='collapseId' + ${order.orderId}"
+												class="collapse">
+												<!-- Tab -->
+												<ul class="nav nav-tabs">
+													<li class="nav-item"><a class="nav-link"
+														data-toggle="tab" href="#"></a></li>
+												</ul>
+												<!-- Tab Content -->
+												<div class="tab-content">
+													<div class="tab-pane active">
+														<div class="alert alert-success" style="display: flex;">
+															<div class="ml-5">
+																<i class="fa fa-shopping-cart"></i> Số lượng sản
+																phẩm <span th:text="${#lists.size(order.orderDetails)}"></span>
+															</div>
+															<div class="ml-5">
+																<i class="fa fa-dollar"> Tiền hàng</i>
+															</div>
+															<div class="ml-5">
+																<i class="fa fa-dollar"> Giảm giá</i>
+															</div>
+															<div class="ml-5">
+																<i class="fa fa-dollar"> Tổng tiền</i>
+															</div>
+														</div>
+
+														<div class="table-responsive">
+															<table class="table table-bordered table-hover table-sm">
+																<thead class="thead-light">
+																	<tr>
+																		<th>STT</th>
+																		<th>Mã sản phẩm</th>
+																		<th>Tên sản phẩm</th>
+																		<th>Số lượng</th>
+																		<th>Đơn vị</th>
+																		<th>Giá bán</th>
+																		<th>Tổng tiền</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr th:each="orderDetail : ${order.orderDetails}">
+																		<td></td>
+																		<td><span
+																			th:text="${orderDetail.product.productId}"></span></td>
+																		<td><span
+																			th:text="${orderDetail.product.productName}"></span></td>
+																		<td><span th:text="${orderDetail.quantity}"></span></td>
+																		<td><span
+																			th:text="${orderDetail.product.unitMeasure.unitName}"></span></td>
+																		<td><span th:text="${orderDetail.unitPrice}"></span></td>
+																		<td><span></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</div>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

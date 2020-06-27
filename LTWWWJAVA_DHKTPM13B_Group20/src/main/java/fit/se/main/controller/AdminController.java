@@ -16,19 +16,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import fit.se.main.dto.AccountCreateDTO;
 import fit.se.main.dto.ProductCreateDTO;
+import fit.se.main.dto.SaleOrderHeaderCreateDTO;
 import fit.se.main.model.Account;
 import fit.se.main.model.Category;
 import fit.se.main.model.Product;
 import fit.se.main.model.ProductImage;
 import fit.se.main.model.ProductInventory;
 import fit.se.main.model.SaleOrderDetail;
+import fit.se.main.model.SaleOrderHeader;
 import fit.se.main.model.Supplier;
 import fit.se.main.model.UnitMeasure;
 import fit.se.main.service.account.AccountService;
 import fit.se.main.service.category.CategoryService;
 import fit.se.main.service.product.ProductService;
+import fit.se.main.service.sale_order_header.SaleOrderHeaderService;
 import fit.se.main.service.supplier.SupplierService;
 import fit.se.main.service.unit_measure.UnitMeasureService;
 
@@ -50,6 +56,9 @@ public class AdminController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private SaleOrderHeaderService saleOrderHeaderService;
 	
 /* - Trang chủ Admin */
 	@GetMapping("/index")
@@ -78,7 +87,7 @@ public class AdminController {
 	}
 /* - Cập nhật thông tin Khách hàng */
 	@PostMapping("/khachhang")
-	private String capNhatKhachHang(Model model, @ModelAttribute("account") Account account, BindingResult result) {
+	public String capNhatKhachHang(Model model, @ModelAttribute("account") Account account, BindingResult result) {
 		if(result.hasErrors()) {
 			System.out.println("Lỗi mẹ rồi");
 		}
@@ -101,7 +110,7 @@ public class AdminController {
 	}
 /* - Thêm Khách hàng */
 	@PostMapping("/themKhachHang")
-	private String themKhachhang(Model model, @ModelAttribute("accountCreateDTO") AccountCreateDTO accountCreateDTO, BindingResult result) {
+	public String themKhachhang(Model model, @ModelAttribute("accountCreateDTO") AccountCreateDTO accountCreateDTO, BindingResult result) {
 		if(result.hasErrors()) {
 			System.out.println("Lỗi mẹ rồi");
 		}
@@ -116,7 +125,7 @@ public class AdminController {
 	}
 /* - Xoá Khách hàng */
 	@GetMapping("/xoaKhachHang")
-	private String xoaKhachHang(Model model, @RequestParam(name = "accountId") int id) {
+	public String xoaKhachHang(Model model, @RequestParam(name = "accountId") int id) {
 		try {
 			Account account = accountService.findById(id);
 			account.clearRole();
@@ -137,7 +146,7 @@ public class AdminController {
 	}
 /* - Thông tin Khách hàng */
 	@GetMapping("/thongtinkhachhang")
-	private String chitietKhachHang(Model model, @RequestParam(name = "accountId") int id) {
+	public String chitietKhachHang(Model model, @RequestParam(name = "accountId") int id) {
 		Account account = accountService.findById(id);
 		System.out.println("- Accoutn : " +account);
 		model.addAttribute("account", account);
@@ -527,7 +536,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/thongtinkhachhang")
-	private String thongtinkhachhang(Model model, @Valid Account account, BindingResult result) {
+	public String thongtinkhachhang(Model model, @Valid Account account, BindingResult result) {
 		if(result.hasErrors()) {
 			System.out.println("Lỗi mẹ rồi");
 		}
@@ -550,4 +559,60 @@ public class AdminController {
 		return "redirect:/admin/thongtinkhachhang?accountId=" + account.getAccountId() +"";
 	}
 
+	@GetMapping("/hoadon")
+	public String hoaDon(Model model) {
+		List<SaleOrderHeader> saleOrderHeaders = new ArrayList<SaleOrderHeader>();
+		saleOrderHeaders = saleOrderHeaderService.findAll();
+		model.addAttribute("saleOrderHeaders",saleOrderHeaders);
+		return "admin/hoadon";
+	}
+	
+	@GetMapping("/hoadon/taodonhang")
+	public String taoDonHang(Model model) {
+		Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+		List<Account> accounts = accountService.findAll();
+		List<Product> products = productService.findAll();
+		String jsonAccount = gson.toJson(accounts.toString());
+		String jsonProduct = gson.toJson(products.toString());
+		model.addAttribute("accounts", jsonAccount);
+		model.addAttribute("products", jsonProduct);
+		
+		SaleOrderHeaderCreateDTO saleOrderHeaderCreateDTO = new SaleOrderHeaderCreateDTO();
+		model.addAttribute("saleOrderHeader", saleOrderHeaderCreateDTO);
+		
+		return "/admin/banhang";
+	}
+	
+	@PostMapping("/hoadon/taohoadon")
+	public String taoHoaDon(Model model, @ModelAttribute("saleOrderHeader") SaleOrderHeaderCreateDTO saleOrderHeader, BindingResult result) {
+		if(result.hasErrors()) {
+			System.out.println(result);
+			return "redirect:/admin/hoadon/taodonhang";
+		}
+		System.out.println(saleOrderHeader.getProducts());
+		
+		return "redirect:/admin/hoadon";
+	}
+	
+	@GetMapping("/nhomsanpham")
+	public String nhomSanPham(Model model) {
+		List<Category> categories = new ArrayList<Category>();
+		categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
+		return "admin/nhomsanpham";
+	}
+	
+	@GetMapping("/nhacungcap")
+	public String nhaCungCap(Model model) {
+		List<Supplier> suppliers = supplierService.findAll();
+		model.addAttribute("suppliers", suppliers);
+		return "/admin/nhacungcap";
+	}
+	
+	@GetMapping("/nhacungcap/thongtinnhacungcap")
+	public String thongTinNhaCungCap(Model model, @RequestParam(name = "supplierId") int supplierId) {
+		Supplier supplier = supplierService.findById(supplierId);
+		model.addAttribute("supplier", supplier);
+		return "/admin/thongtinnhacungcap";
+	}
 }

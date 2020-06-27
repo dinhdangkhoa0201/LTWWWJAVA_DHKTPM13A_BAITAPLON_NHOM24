@@ -15,5 +15,4 @@ public interface AccountRepository extends JpaRepository<Account, Integer>{
 	
 	@Query(value = "select a.email from account a", nativeQuery = true)
 	Optional<String> findAllEmail();
-	
 }

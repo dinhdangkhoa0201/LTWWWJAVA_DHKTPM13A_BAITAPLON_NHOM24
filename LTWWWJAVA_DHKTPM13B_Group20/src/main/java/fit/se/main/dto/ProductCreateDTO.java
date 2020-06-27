@@ -3,7 +3,7 @@ package fit.se.main.dto;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class ProductCreateDTO {
-	private String productId;
+	private int productId;
 	
 	private String productName;
 	
@@ -24,9 +24,10 @@ public class ProductCreateDTO {
 	private CommonsMultipartFile image;
 
 	public ProductCreateDTO() {
+
 	}
 
-	public String getProductId() {
+	public int getProductId() {
 		return productId;
 	}
 
@@ -54,7 +55,7 @@ public class ProductCreateDTO {
 		return image;
 	}
 
-	public void setProductId(String productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 

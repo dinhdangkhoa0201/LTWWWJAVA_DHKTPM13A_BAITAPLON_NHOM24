@@ -115,8 +115,6 @@
 		entity-manager-factory-ref="entityManager"
 		transaction-manager-ref="transactionManager" />
 
-
-
 	<!-- SET default mail properties -->
 	<beans:bean id="sender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">

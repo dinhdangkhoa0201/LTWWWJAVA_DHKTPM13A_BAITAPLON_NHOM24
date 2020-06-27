@@ -36,9 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests().antMatchers("/", "/sign-in", "/sign-out").permitAll();
 
-		http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')");
-
-		http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
+//		http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')");
+//
+//		http.authorizeRequests().antMatchers("/admin/*").access("hasRole('ROLE_ADMIN')");
 
 		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 		
@@ -46,16 +46,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.loginPage("/sign-in")
 		.loginProcessingUrl("/j_spring_security_check")
 		.defaultSuccessUrl("/index")
-		.failureUrl("/sign-in?erro=false")
+		.failureUrl("/sign-in?error=false")
 		.usernameParameter("email")
 		.passwordParameter("password")
 		
-		.and().logout().logoutUrl("/sign-out").logoutSuccessUrl("/sign-in");
+		.and().logout()
+		.logoutUrl("/sign-out")
+		.logoutSuccessUrl("/sign-in");
 		
 		http.authorizeRequests().and()
 		.rememberMe().tokenRepository(this.persistentTokenRepository()).tokenValiditySeconds(1*24*60*60);
-
-		System.out.println(http.formLogin().usernameParameter("email") + " - " + http.formLogin().passwordParameter("password"));
+		
 	}
 	
 	@Override

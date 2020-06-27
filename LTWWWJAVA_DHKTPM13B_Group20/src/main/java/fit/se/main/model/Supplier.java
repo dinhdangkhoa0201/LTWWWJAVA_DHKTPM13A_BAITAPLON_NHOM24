@@ -38,8 +38,14 @@ public class Supplier implements Serializable{
 	private String email;
 	private LocalDateTime modifiedDate;
 	
+	@Column(columnDefinition = "nvarchar(500)")
+	private String note;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier", cascade = CascadeType.ALL)
 	private List<Product> products;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "supplier")
+	private List<PurchaseOrderHeader> purchaseOrderHeaders;
 
 	public Supplier(int supplierId, String supplierName, String phone, String address, String email) {
 		this.supplierId = supplierId;
@@ -126,6 +132,22 @@ public class Supplier implements Serializable{
 
 	public void setModifiedDate(LocalDateTime modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+
+	public List<PurchaseOrderHeader> getPurchaseOrderHeaders() {
+		return purchaseOrderHeaders;
+	}
+
+	public void setPurchaseOrderHeaders(List<PurchaseOrderHeader> purchaseOrderHeaders) {
+		this.purchaseOrderHeaders = purchaseOrderHeaders;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	@Override

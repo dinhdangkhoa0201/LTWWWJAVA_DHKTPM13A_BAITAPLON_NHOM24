@@ -2,6 +2,7 @@ package fit.se.main.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,12 +14,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "purchase_order_header")
 public class PurchaseOrderHeader implements Serializable{
-	
+
 	/**
 	 * 
 	 */
@@ -27,7 +29,7 @@ public class PurchaseOrderHeader implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderId;
-	
+
 	private LocalDateTime orderDate;
 	private LocalDateTime shipDate;
 	private double subTotal;
@@ -36,6 +38,14 @@ public class PurchaseOrderHeader implements Serializable{
 	@JoinColumn(name = "supplier_id")
 	private Supplier supplier;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseOrderHeader", cascade = CascadeType.ALL)
+	private List<PurchaseOrderDetail> purchaseOrderDetails;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "supplier_id")
+	private Supplier supplier;
+
+
 
 	public PurchaseOrderHeader(int orderId, LocalDateTime orderDate, LocalDateTime shipDate, double subTotal) {
 		this.orderId = orderId;
@@ -95,11 +105,27 @@ public class PurchaseOrderHeader implements Serializable{
 		this.modifiedDate = modifiedDate;
 	}
 
+	public List<PurchaseOrderDetail> getPurchaseOrderDetails() {
+		return purchaseOrderDetails;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setPurchaseOrderDetails(List<PurchaseOrderDetail> purchaseOrderDetails) {
+		this.purchaseOrderDetails = purchaseOrderDetails;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
 	@Override
 	public String toString() {
 		return "PurchaseOrderHeader [orderId=" + orderId + ", orderDate=" + orderDate + ", shipDate=" + shipDate
 				+ ", subTotal=" + subTotal + "]";
 	}
-	
-	
+
+
 }
