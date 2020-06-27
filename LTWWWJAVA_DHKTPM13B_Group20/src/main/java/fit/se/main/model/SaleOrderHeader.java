@@ -76,6 +76,7 @@ public class SaleOrderHeader implements Serializable{
 	}
 	
 	public SaleOrderHeader() {
+		this.modifiedDate = LocalDateTime.now();
 	}
 
 	public int getOrderId() {

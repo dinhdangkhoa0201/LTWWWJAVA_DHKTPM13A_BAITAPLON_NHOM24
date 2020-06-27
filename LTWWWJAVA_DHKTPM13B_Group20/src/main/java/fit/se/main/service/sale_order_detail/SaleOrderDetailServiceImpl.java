@@ -11,7 +11,6 @@ import fit.se.main.model.SaleOrderDetail;
 import fit.se.main.model.SaleOrderHeader;
 
 @Service
-@Transactional
 public class SaleOrderDetailServiceImpl implements SaleOrderDetailService{
 
 	@Autowired

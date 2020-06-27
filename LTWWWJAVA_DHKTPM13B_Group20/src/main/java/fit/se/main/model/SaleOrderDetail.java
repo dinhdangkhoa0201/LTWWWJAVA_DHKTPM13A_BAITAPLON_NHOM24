@@ -46,6 +46,7 @@ public class SaleOrderDetail implements Serializable{
 	}
 
 	public SaleOrderDetail() {
+		this.modifiedDate = LocalDateTime.now();
 	}
 
 	public SaleOrderHeader getOrder() {

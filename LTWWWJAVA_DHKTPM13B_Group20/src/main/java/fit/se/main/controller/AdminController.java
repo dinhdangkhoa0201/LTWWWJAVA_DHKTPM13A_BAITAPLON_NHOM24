@@ -2,7 +2,9 @@ package fit.se.main.controller;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -34,6 +36,7 @@ import fit.se.main.model.UnitMeasure;
 import fit.se.main.service.account.AccountService;
 import fit.se.main.service.category.CategoryService;
 import fit.se.main.service.product.ProductService;
+import fit.se.main.service.sale_order_detail.SaleOrderDetailService;
 import fit.se.main.service.sale_order_header.SaleOrderHeaderService;
 import fit.se.main.service.supplier.SupplierService;
 import fit.se.main.service.unit_measure.UnitMeasureService;
@@ -59,6 +62,9 @@ public class AdminController {
 	
 	@Autowired
 	private SaleOrderHeaderService saleOrderHeaderService;
+	
+	@Autowired
+	private SaleOrderDetailService saleOrderDetailService;
 	
 /* - Trang chủ Admin */
 	@GetMapping("/index")
@@ -540,6 +546,8 @@ public class AdminController {
 		if(result.hasErrors()) {
 			System.out.println("Lỗi mẹ rồi");
 		}
+		
+		System.out.println("Account : " + account	);
 		try {
 			Account temp = accountService.findById(account.getAccountId());
 
@@ -579,7 +587,6 @@ public class AdminController {
 		
 		SaleOrderHeaderCreateDTO saleOrderHeaderCreateDTO = new SaleOrderHeaderCreateDTO();
 		model.addAttribute("saleOrderHeader", saleOrderHeaderCreateDTO);
-		
 		return "/admin/banhang";
 	}
 	
@@ -589,8 +596,55 @@ public class AdminController {
 			System.out.println(result);
 			return "redirect:/admin/hoadon/taodonhang";
 		}
-		System.out.println(saleOrderHeader.getProducts());
+		saleOrderHeader.getProducts().remove(0);
+		Account account = new Account();
+		if(accountService.findById(saleOrderHeader.getAccountId()) != null) {
+			account = accountService.findById(saleOrderHeader.getAccountId());
+		}
 		
+		SaleOrderHeader orderHeader = new SaleOrderHeader();
+		orderHeader.setAccount(account);
+		orderHeader.setNote(saleOrderHeader.getNote());
+		orderHeader.setOrderDate(LocalDateTime.now());
+		orderHeader.setStatus("Đang xử lý");
+		orderHeader.setTotalOrder(saleOrderHeader.getTotalMoney());
+		saleOrderHeaderService.createOrder(orderHeader);
+		
+		Map<Product, Integer> details = new HashMap<Product, Integer>();
+		for(ProductCreateDTO productCreateDTO : saleOrderHeader.getProducts()) {
+			Product product = productService.findById(productCreateDTO.getProductId());
+			
+			System.out.println("Product : " + product);
+			if(product != null) {
+				details.put(product, productCreateDTO.getQuantity());
+			}
+		}
+		
+		for(Map.Entry<Product, Integer> entry : details.entrySet()) {
+			Product product = new Product(entry.getKey().getProductId());
+			SaleOrderDetail orderDetail = new SaleOrderDetail(orderHeader, product, entry.getValue(), entry.getKey().getSellingPrice()*entry.getValue());
+			saleOrderDetailService.createOrderDetail(orderDetail);
+		}
+		
+		return "redirect:/admin/hoadon";
+	}
+	
+	@GetMapping("/hoadon/xoaHoaDon")
+	public String xoaHoaDon(Model model, @RequestParam(name = "orderHeaderId") int orderHeaderId) {
+		try {
+			SaleOrderHeader saleOrderHeader = saleOrderHeaderService.findOrderById(orderHeaderId);
+			if(saleOrderHeader != null) {
+				List<SaleOrderDetail> saleOrderDetails = saleOrderDetailService.findByOrder(saleOrderHeader);
+				for(SaleOrderDetail orderDetail: saleOrderDetails) {
+					saleOrderDetailService.deletOrderDetail(orderDetail);
+				}
+				
+				saleOrderHeaderService.deleteOrder(saleOrderHeader);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("success !");
 		return "redirect:/admin/hoadon";
 	}
 	

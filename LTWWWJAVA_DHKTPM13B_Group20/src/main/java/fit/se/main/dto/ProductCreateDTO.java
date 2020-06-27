@@ -11,7 +11,7 @@ public class ProductCreateDTO {
 	
 	private double sellingPrice;
 	
-	private String quantity;
+	private int quantity;
 	
 	private int category;
 	
@@ -43,7 +43,7 @@ public class ProductCreateDTO {
 		return sellingPrice;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
@@ -71,7 +71,7 @@ public class ProductCreateDTO {
 		this.sellingPrice = sellingProce;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 

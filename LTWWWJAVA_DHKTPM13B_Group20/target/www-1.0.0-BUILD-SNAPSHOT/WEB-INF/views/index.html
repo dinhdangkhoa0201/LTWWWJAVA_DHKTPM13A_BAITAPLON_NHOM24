@@ -20,10 +20,11 @@
 		<span th:text="${account.accountName}"></span>
 		<br>
 		<a th:if="${ROLE_ADMIN != null}" th:href="@{/admin/index}" href="">Admin</a>
+		<a th:if="${ROLE_ADMIN != null}" th:href="@{/email/listProduct}" href="">trang chu</a>
 	</div>
 	
 	<a th:if="${#request.userPrincipal == null}" th:href="@{/sign-in}">Sign in</a>
-	<a th:href="@{/timkiem}"></a>
+	<a th:href="@{/listProduct}"> sdd</a>
 	<br>
 
 </body>

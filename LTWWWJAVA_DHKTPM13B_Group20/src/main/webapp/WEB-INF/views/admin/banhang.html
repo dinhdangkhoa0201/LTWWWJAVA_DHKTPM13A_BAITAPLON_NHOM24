@@ -92,22 +92,19 @@
 					// console.log(varProduct[index]);
 					var rowCount = $('table#tableSaleOrder > tbody > tr:last').index() + 2;
 					// console.log('count ' + rowCount);
-
 					$('#tableSaleOrder > tbody:last-child').append(
-						'<tr>' +
+						'<tr th:id="product' + rowCount + '">' +
 						'<td><span class="countRow"></span></td>' +
-						'<td><input type="text" id="productId" th:name="products[' + rowCount + '].productId"  /><span>' + varProduct[index].productId + '</span></td>' +
-						'<td><input type="hidden" id="productId" th:name="products[' + rowCount + '].productName"  /><span>' + varProduct[index].productName + '</span></td>' +
+						'<td><input type="text" th:id="products' + rowCount + '.productId" name="products[' + rowCount + '].productId" value="' + varProduct[index].productId + '"  /><span>' + varProduct[index].productId + '</span></td>' +
+						'<td><input type="hidden" th:name="products[' + rowCount + '].productName"  /><span>' + varProduct[index].productName + '</span></td>' +
 						'<td><span>' + varProduct[index].image + '</span></td>' +
-						'<td><input class="form-control quantity" th:name="products[' + rowCount + '].quantity" data-id="quantity" type="number" min="0" value="1" /></td>' +
+						'<td><input th:id="products' + rowCount + '.quantity"  class="form-control quantity" name="products[' + rowCount + '].quantity" data-id="quantity" type="number" min="0" value="1" /></td>' +
 						'<td><span>' + varProduct[index].unitMeasure.unitName + '</span></td>' +
 						'<td><span class="sellingPrice">' + varProduct[index].sellingPrice + '</span></td>' +
 						'<td><span class="thanhTien">' + varProduct[index].sellingPrice + '</span></td>' +
 						'<td><button type="button" data-id="xoa"><i class="fa fa-trash"></i></button></td>' +
 						'</tr'
 					);
-
-					$('#productId').val(varProduct[index].productId);
 					$(this).val('');
 					totalMoney();
 					renumberRows();
@@ -117,7 +114,6 @@
 			}).focus(function () {
 				$(this).autocomplete("search");
 			});
-
 			/* Delete row */
 			$(document).on('click', 'button[data-id="xoa"]', function () {
 				if (confirm("Delete selected item ?")) {
@@ -132,7 +128,6 @@
 				};
 				return false;
 			});
-
 			/* Modifield input quantity */
 			$(document).on('change keyup', 'input[data-id="quantity"]', function () {
 				var quantity = $(this).val();
@@ -183,6 +178,7 @@
 				}
 			});
 
+			/* Change id account before submit*/
 			$('#formSaleOrderHeader').submit(function (e) {
 				e.preventDefault();
 				var self = $(this);
@@ -215,7 +211,7 @@
 		</div>
 
 		<div class="content mt-5 mb-5 card-body">
-			<form id="formSaleOrderHeader" action="#" th:action="@{/admin/hoadon/taohoadon}" method="POST"
+			<form id="formSaleOrderHeader" th:action="@{/admin/hoadon/taohoadon}" method="POST"
 				th:object="${saleOrderHeader}">
 				<div class="row">
 					<div id="orderDetail" class="col-lg-8 col-md-12">
@@ -241,24 +237,6 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td><span class="countRow"></span></td>
-										<td><input type="text" id="productId" th:name="products[0].productId" />
-											<span></span>
-										</td>
-										<td>
-											<span></span>
-										</td>
-										<td>
-											<span></span>
-										</td>
-										<td><input class="form-control quantity" th:name="products[0].quantity" data-id="quantity"
-												type="number" min="0" value="1" /></td>
-										<td><span></span></td>
-										<td><span class="sellingPrice"></span></td>
-										<td><span class="thanhTien"></span></td>
-										<td><button type="button" data-id="xoa"><i class="fa fa-trash"></i></button></td>
-									</tr>
 								</tbody>
 							</table>
 						</div>

@@ -34,9 +34,6 @@ public class PurchaseOrderHeader implements Serializable{
 	private LocalDateTime shipDate;
 	private double subTotal;
 	private LocalDateTime modifiedDate;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "supplier_id")
-	private Supplier supplier;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseOrderHeader", cascade = CascadeType.ALL)
 	private List<PurchaseOrderDetail> purchaseOrderDetails;
