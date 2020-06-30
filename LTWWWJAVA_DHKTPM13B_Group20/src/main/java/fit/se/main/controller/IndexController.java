@@ -57,7 +57,11 @@ public class IndexController {
 	
 	@Autowired
 	private UnitMeasureService unitMeasureService;
-
+	
+	@RequestMapping("/sign-in")
+	public String singin(Model model) {
+		return "sing-in";
+	}
 
 	@RequestMapping("/")
 	public String login(Model model, HttpServletRequest request) {
@@ -71,7 +75,7 @@ public class IndexController {
 				Account account = accountService.createAdmin(createDTO);
 				System.out.println("Admin : " + account);
 			}
-			init();
+			//init();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -107,57 +111,5 @@ public class IndexController {
 			new SecurityContextLogoutHandler().logout(request, responses, authentication);
 		}
 		return "redirect:/index";
-	}
-
-	@Transactional
-	public void init() {		
-		try {
-			AccountCreateDTO accountMember = new AccountCreateDTO("ddk", "0937602105", "khoacyruss@gmail.com", "11111111", "11111111");
-			Account account = null;
-			if(!accountService.findByEmail(accountMember.getEmail()).isPresent()) {
-				account = accountService.createMember(accountMember);
-			} else {
-				account = accountService.findById(2);
-			}
-			
-			Category category = new Category("A");
-			categoryService.createCategory(category);
-			
-			Supplier supplier = new Supplier("B");
-			supplierService.createSupplier(supplier);
-
-			UnitMeasure unitMeasure = null;
-			if(unitMeasureService.findByName("C") == null) {
-				unitMeasure = new UnitMeasure("C");
-				unitMeasureService.createUnitMeasure(unitMeasure);
-			} else {
-				unitMeasure = unitMeasureService.findByName("C");
-			}
-
-
-			// List Product
-			Product product1 = new Product("Gạo", 20000);
-			product1.setCategory(category);
-			product1.setSupplier(supplier);
-			product1.setUnitMeasure(unitMeasure);
-			Product product2 = new Product("Sua", 18000);
-			product2.setCategory(category);
-			product2.setSupplier(supplier);
-			product2.setUnitMeasure(unitMeasure);
-			
-			productService.createProduct(product1);
-			productService.createProduct(product2);
-
-			SaleOrderHeader orderHeader = new SaleOrderHeader(account, LocalDate.now(), LocalDate.now(), "");
-			saleOrderHeaderService.createOrder(orderHeader);
-
-			SaleOrderDetail orderDetail1 = new SaleOrderDetail(orderHeader, product1, 1, product1.getPrice()); 
-			SaleOrderDetail orderDetail2 = new SaleOrderDetail(orderHeader, product2, 2, product2.getPrice()); 
-			saleOrderDetailService.createOrderDetail(orderDetail1);
-			saleOrderDetailService.createOrderDetail(orderDetail2);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 }

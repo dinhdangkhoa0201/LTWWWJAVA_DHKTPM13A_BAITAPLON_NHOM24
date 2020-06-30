@@ -33,6 +33,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/webjars/**" location="/webjars/" />
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 
@@ -67,7 +68,7 @@
 		<beans:property name="url"
 			value="jdbc:sqlserver://localhost:1433;databaseName=LTWWWJAVA_Group20;useLOBs=false" />
 		<beans:property name="username" value="sa" />
-		<beans:property name="password" value="025825273a" />
+		<beans:property name="password" value="sapassword" />
 	</beans:bean>
 
 	<!-- JPA Vendor -->

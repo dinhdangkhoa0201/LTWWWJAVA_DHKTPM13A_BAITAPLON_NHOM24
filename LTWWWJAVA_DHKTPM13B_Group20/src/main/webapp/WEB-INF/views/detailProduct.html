@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Chi Tiết Sản Phẩm</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+<link th:href="@{/resources/css/sb-admin-2.min.css}" rel="stylesheet">
+<link th:href="@{/resources/css/detailProduct.css}" rel="stylesheet"
+	href="../../../resources/css/detailProduct.css">
+<link th:href="@{/resources/css/search.css}" rel="stylesheet"
+	href="../../../resources/css/search.css">
+<script type="text/javascript"
+	th:src="@{/resources/js/detailProduct.js}"></script>
+
+</head>
+
+<body>
+
+	<div class="header">
+
+		<nav
+			class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+			<!-- Topbar Search -->
+			<div class="logo">
+				<a href="/www/index"><img class="icon"
+					th:src="@{/resources/image/logo.PNG}"></a>
+			</div>
+			<form
+				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+				<div class="input-group">
+					<input type="text" class="form-control bg-light border-0 small"
+						placeholder="Nhập từ khóa bạn muốn tìm kiếm">
+					<button class="btn btn-primary" type="button">
+						<i class="fas fa-search fa-sm"></i>
+					</button>
+				</div>
+			</form>
+
+			<!-- Topbar Navbar -->
+			<ul class="navbar-nav ml-auto">
+
+				<!-- Shopping Cart -->
+				<li class="nav-item dropdown no-arrow mx-1"><a
+					class="nav-link dropdown-toggle" th:href="@{/ShoppingCart}"> <i
+						class="fa fa-cart-plus " aria-hidden="true"
+						style="font-size: 24px"></i> <!-- Counter - Messages --> <span
+						class="badge badge-danger badge-counter"
+						th:text="${myCart.getLineItemCount()}"></span>
+				</a></li>
+
+				<div class="topbar-divider d-none d-sm-block"></div>
+
+				<!-- Nav Item - User Information -->
+				<li class="nav-item dropdown no-arrow"
+					th:style="${account!=null}? 'display: none;':'display: block;'">
+					<a class="nav-link dropdown-toggle" href="#" role="button"
+					data-toggle="dropdown" aria-expanded="false"> <span
+						class="mr-2 d-none d-lg-inline text-gray-600 small"></span> <i
+						class="fa fa-user" aria-hidden="true" style="font-size: 24px"></i>
+				</a> <!-- Dropdown - User Information -->
+					<div
+						class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+						<a class="dropdown-item" data-toggle="modal"
+							data-target="#loginModal"> <i
+							class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400">Đăng Nhập</i>
+
+						</a> <a class="dropdown-item" href="/www/sign-up"> <i
+							class="fas fa-list fa-sm fa-fw mr-2 text-gray-400">Tạo Tài
+								Khoản</i>
+						</a>
+						<div class="dropdown-divider"></div>
+					</div>
+				</li>
+				<li class="nav-item dropdown no-arrow"
+					th:style="${account==null}? 'display: none;':'display: block;'">
+					<a class="nav-link dropdown-toggle" href="#" role="button"
+					data-toggle="dropdown" aria-expanded="false"> <span
+						class="mr-2 d-none d-lg-inline text-gray-600 small"
+						th:if="${account!=null}" th:text="${account.accountName}"></span>
+						<i class="fa fa-user" aria-hidden="true" style="font-size: 24px"></i>
+				</a> <!-- Dropdown - User Information -->
+					<div
+						class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+						<a class="dropdown-item" data-toggle="modal"
+							data-target="#modalEditKhachHang"> <i
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông Tin
+						</a>
+						</a> <a class="dropdown-item" th:href="@{/order}"> <i
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Đơn hàng
+							của tôi
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" th:href="@{/sign-out}"> <i
+							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+							Đăng Xuất
+						</a>
+					</div>
+				</li>
+
+			</ul>
+
+		</nav>
+		<!-- End of Topbar -->
+	</div>
+
+
+
+	<!-- Main -->
+	<div class="Container jFkAwY ">
+		<div class="gQLVSm">
+			<div class="ProductImages kQvKqX">
+				<div class="images">
+					<img src="#" style="width: 390px; height: 390px;">
+				</div>
+			</div>
+			<div class="ProductContent XlJje">
+				<div class="header border-bottom">
+					<strong>Tên Sản Phẩm: </strong>
+					<span
+						th:text="${product.productName}"></span> <br>
+					<strong>Loại Sản Phẩm: </strong> 
+					<span th:text="${product.category.categoryName}"></span><br>
+					<strong>Nhà Cung Cấp: </strong> 
+					<span
+						th:text="${product.supplier.supplierName}"></span><br> 
+					<strong>Giá:</strong> 
+					<span th:text="${product.price}"></span><br>
+					<strong>Mô tả:</strong> 
+					<span th:text="${product.note}"></span><br>
+
+				</div>
+				<div class="body">
+					Chọn số lượng:
+					<div class="addProductitem dJbIjB">
+						<div class="buttons_added">
+							<button class="minus is-form" onclick="buttonClickMinuskdetail();">-</button>
+							<input aria-label="quantity" class="input-qty" id="inc" max="10"
+								min="1" name="" type="number" value="1">
+							<button class="plus is-form" onclick="buttonClickPlusdetail();">+</button>
+						</div>
+						<div class="group-button">
+							<div class="purchase-form__button">
+
+								<button name="button" type="submit"
+									class="js-purchase__add-to-cart e-btn--3d -color-primary -size-m -width-full"
+									data-toggle="modal" data-target="#myModalAddCart">
+									<i class="fa fa-cart-plus "></i> <strong>Add to Cart</strong>
+								</button>
+
+							</div>
+							<input type="hidden" th:value="${product.productId}"
+								id="productid">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--End Main-->
+
+
+	<!-- The model add cart -->
+
+
+	<div class="modal fade" id="myModalAddCart">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="e-modal__header h-text-align-center">
+					<h2 class="t-heading -size-m">Giỏ Hàng</h2>
+
+				</div>
+
+				<!-- Modal body -->
+				<div class="e-modal__section -background-mid">
+					<div class="cart-entry-summary__thumbnail">
+						<img width="80" height="80"
+							alt="Earthyellow - Responsive Ecommerce HTML5 Template" src="#">
+					</div>
+					<div class="cart-entry-summary__core-info">
+						<h5 class="t-heading -size-xxs"></h5>
+						<p class="t-body -size-m" th:text="${product.productName}"></p>
+					</div>
+
+					<div class="cart-entry-summary__variant-info ">
+						<div class="t-heading -size-l h-mb1 cart-modal__price-group">
+
+							<strong
+								class="js-cart-variant__output-discount-price cart-variant__output-discount-price active t-currency">
+
+							</strong>
+						</div>
+
+						<div class="t-body -size-m">
+							<br> <strong>Support:</strong> <span
+								class="js-cart-variant__output-support"
+								th:text="${product.category.categoryName}"> </span><br>
+
+						</div>
+						<strong class="js-cart-variant__output-price  t-currency"
+							th:text="${product.price}"> </strong>
+
+					</div>
+
+				</div>
+				<input type="hidden" th:value="${product.productId}" id="productid">
+				<!-- Modal footer -->
+				<div class="modal-footer ">
+
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Thoát</button>
+					<a id="btnAddtoCart" onclick="addToCart('btnAddtoCart')">
+						<button type="button" class="btn btn-secondary">Thêm Vào
+							Giỏ Hàng</button>
+					</a>
+
+				</div>
+				<footer class="e-modal__footer"> </footer>
+
+			</div>
+		</div>
+	</div>
+	<!-- End Model add cart -->
+	<!-- Footer -->
+	<footer class="sticky-footer bg-white">
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<span>Copyright &copy; Your Website 2019</span>
+			</div>
+		</div>
+	</footer>
+	<!-- End of Footer -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="t-heading -size-m">Đăng nhập</h2>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="" th:action="@{/j_spring_security_check}"
+						method="POST">
+						<div class="form-group">
+							<label for="email">Email</label> <input type="email" name="email"
+								id="email" required placeholder="Email" class="form-control"
+								value="dinhdangkhoa0201@gmail.com" />
+						</div>
+						<div class="form-group">
+							<label for="matkhau">Password</label> <input type="password"
+								name="password" id="password" required placeholder="Password"
+								class="form-control" value="11111111" />
+						</div>
+						<button type="submit" id="btnSubmit" class="btn btn-success">Sign
+							In</button>
+						<div>
+							<a href="#" th:href="@{/sign-up}">Sign up</a>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

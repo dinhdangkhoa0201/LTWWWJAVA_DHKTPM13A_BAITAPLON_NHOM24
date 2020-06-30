@@ -1,112 +1,127 @@
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\ProductCreateDTO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\purchase_order_detail\impl\PurchaseOrderDetailDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\sale_order_detail\SaleOrderDetailServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\sale_order_header\SaleOrderHeaderServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\CreateUserNameValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product_inventory\ProductInventoryService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\sale_order_header\SaleOrderHeaderService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product\impl\ProductDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product_inventory\ProductInventoryServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product_image\impl\ProductImageDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\supplier\SupplierServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\category\CategoryService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\purchase_order_detail\PurchaseOrderDetailDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\purchase_order_header\PurchaseOrderHeaderServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidRepeatPassword.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\unit_measure\UnitMeasureService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\verifyaccount\impl\VerifyAccountDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\controller\AccountController.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\VerifyCodeDTO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\sale_order_detail\SaleOrderDetailService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\category\impl\CategoryDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\controller\IndexController.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\ProductUpdateDTO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Role.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\account\AccountService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\config\WebSecurityConfig.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\account\impl\AccountDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\SaleOrderDetail_PK.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\RepeatPasswordValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\account\AccountServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\location\impl\LocationDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\KttkpmDhktpm13AGroup20Application.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\location\LocationServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\role\impl\RoleDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\verifyaccount\VerifyAccountDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\ProductImage.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product_image\ProductImageDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\EmailValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\purchase_order_detail\PurchaseOrderDetailService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\controller\HomeController.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\principal\AccountPricipal.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\AccountCreateDTO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\util\RegexUtil.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\CreateEmaiValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product\ProductService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\mail\MailService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidCreateUserName.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\util\RandomUtil.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\sale_order_detail\impl\SaleOrderDetailDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\PurchaseOrderDetail.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\PhoneValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\PurchaseOrderHeader.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\PurchaseOrderDetail_PK.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product_inventory\ProductInventoryDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\category\CategoryDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\PasswordValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidPhone.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\purchase_order_header\impl\PurchaseOrderHeaderDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\purchase_order_header\PurchaseOrderHeaderService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Category.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\UnitMeasure.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\unit_measure\UnitMeasureDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidPassword.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\mail\Mail.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\category\CategoryServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\verifyaccount\VerifyCodeValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product_image\ProductImageServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\SupplierCreateDTO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidCreateEmail.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\role\RoleDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Location.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\sale_order_header\impl\SaleOrderHeaderDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\sale_order_header\SaleOrderHeaderDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidUserName.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product_inventory\impl\ProductInventoryDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\location\LocationDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\ProductInventory.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\EmailSenderService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\verifyaccount\ValidVerifyCode.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\IOperations.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\UnitMeasureCreateDTO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\ProductInventory_PK.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\account\AccountDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\role\RoleService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidEmail.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\principal\CustomUserDetailsService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\CreatePhoneValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\supplier\SupplierDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product\ProductServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Supplier.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product\ProductDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\supplier\impl\SupplierDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidCreatePhone.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\SaleOrderDetail.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product_image\ProductImageService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\unit_measure\impl\UnitMeasureDAOImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\SaleOrderHeader.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\purchase_order_header\PurchaseOrderHeaderDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\VerifyCodeValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\CategoryCreateDTO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\sale_order_detail\SaleOrderDetailDAO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\VerifyAccount.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\supplier\SupplierService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Account.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\unit_measure\UnitMeasureServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\UserNameValidator.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\AccountUpdateDTO.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\role\RoleServiceImpl.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\location\LocationService.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Product.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\controller\AdminController.java
-D:\TaiLieu\Nam 3 - HK2\workspace\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\purchase_order_detail\PurchaseOrderDetailServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\category\CategoryService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\PurchaseOrderDetailRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\VerifyAccount.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidUserName.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\AccountCreateDTO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\CreateEmaiValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\PurchaseOrderHeaderRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\CreateUserNameValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidCreatePhone.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\account\AccountDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\config\SpringSecurityInitializer.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\VerifyCodeDTO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidPassword.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\role\RoleService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\location\LocationServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidEmail.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\account\AccountServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\location\LocationDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\config\WebSecurityConfig.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\mail\MailService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Role.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\purchase_order_detail\PurchaseOrderDetailService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Product.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\category\CategoryDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\verifyaccount\ValidVerifyCode.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\ProductInventory_PK.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\AccountUpdateDTO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\principal\AccountPricipal.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\CreatePhoneValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product_image\ProductImageDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\SaleOrderDetailRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\PurchaseOrderDetail.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product\ProductDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\PurchaseOrderHeader.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\RoleRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\supplier\SupplierServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\unit_measure\UnitMeasureService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\controller\HomeController.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\ProductUpdateDTO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\purchase_order_header\PurchaseOrderHeaderServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\RepeatPasswordValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\controller\AccountController.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\purchase_order_detail\PurchaseOrderDetailServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\category\CategoryServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\verifyaccount\VerifyCodeValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\ProductInventoryRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\role\RoleDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product_image\ProductImageService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\unit_measure\UnitMeasureDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\IOperations.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\role\RoleDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\supplier\SupplierDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\ProductRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\sale_order_detail\SaleOrderDetailDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\SaleOrderHeader.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\role\RoleServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\CategoryCreateDTO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\SaleOrderDetail.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\UnitMeasure.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product\ProductServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\purchase_order_header\PurchaseOrderHeaderDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\supplier\SupplierDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\SupplierCreateDTO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Location.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\VerifyCodeValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\location\LocationDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\purchase_order_detail\PurchaseOrderDetailDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\purchase_order_detail\PurchaseOrderDetailDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Category.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\location\LocationService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\sale_order_header\SaleOrderHeaderDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\PasswordValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidPhone.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\ProductCreateDTO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\PhoneValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\purchase_order_header\PurchaseOrderHeaderDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\AccountRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product_inventory\ProductInventoryServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\sale_order_detail\SaleOrderDetailServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\util\RegexUtil.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\unit_measure\UnitMeasureServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\supplier\SupplierService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\LocationRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\controller\IndexController.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\ProductImage.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dto\UnitMeasureCreateDTO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\EmailValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidCreateEmail.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\verifyaccount\VerifyAccountDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Supplier.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\SaleOrderDetail_PK.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\sale_order_header\SaleOrderHeaderServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product_inventory\ProductInventoryService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\CategoryRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidCreateUserName.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\sale_order_header\SaleOrderHeaderService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\PurchaseOrderDetail_PK.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\EmailSenderService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\sale_order_detail\SaleOrderDetailDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\util\RandomUtil.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\ValidRepeatPassword.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product\ProductService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\unit_measure\UnitMeasureDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\SupplierRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\Account.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\sale_order_header\SaleOrderHeaderDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product_inventory\ProductInventoryDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\UnitMeasureRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product_image\ProductImageDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\KttkpmDhktpm13AGroup20Application.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\SaleOrderHeaderRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\principal\CustomUserDetailsService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\ProductImageRepository.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\account\AccountDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\validator\account\UserNameValidator.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\verifyaccount\VerifyAccountDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\model\ProductInventory.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\controller\AdminController.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product_inventory\ProductInventoryDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\account\AccountService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\product\ProductDAOImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\sale_order_detail\SaleOrderDetailService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\product_image\ProductImageServiceImpl.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\service\purchase_order_header\PurchaseOrderHeaderService.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\mail\Mail.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\dao\category\CategoryDAO.java
+C:\EclipseEE\eclipse-workspace\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13A_BAITAPLON_NHOM24\LTWWWJAVA_DHKTPM13B_Group20\src\main\java\fit\se\main\repository\VerifyAccountRepository.java

@@ -39,6 +39,28 @@ public class SaleOrderHeader implements Serializable{
 	@Column(name = "ship_date")
 	private LocalDate shipDate;
 	
+	@Column(name = "total", columnDefinition = "float")
+	private double total;
+	
+	@Column(name = "shipcost", columnDefinition = "float")
+	private double shipcost;
+	
+	public double getTotal() {
+		return total;
+	}
+
+	public double getShipcost() {
+		return shipcost;
+	}
+
+	public void setShipcost(double shipcost) {
+		this.shipcost = shipcost;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
 	@Column(columnDefinition = "nvarchar(100)")
 	private String note;
 	
@@ -54,20 +76,24 @@ public class SaleOrderHeader implements Serializable{
 	private LocalDateTime modifiedDate;
 
 	public SaleOrderHeader(int orderId, LocalDate orderDate, LocalDate shipDate,
-			String note) {
+			String note, double total, double shipcost) {
 		this.orderId = orderId;
 		this.orderDate = orderDate;
 		this.shipDate = shipDate;
 		this.note = note;
 		this.modifiedDate = LocalDateTime.now();
+		this.total = total;
+		this.shipcost = shipcost;
 	}
 
-	public SaleOrderHeader(Account account, LocalDate orderDate, LocalDate shipDate, String note) {
+	public SaleOrderHeader(Account account, LocalDate orderDate, LocalDate shipDate, String note, double total, double shipcost) {
 		this.account = account;
 		this.orderDate = orderDate;
 		this.shipDate = shipDate;
 		this.note = note;
 		this.modifiedDate = LocalDateTime.now();
+		this.total = total;
+		this.shipcost = shipcost;
 	}
 	
 	public SaleOrderHeader() {
@@ -134,6 +160,4 @@ public class SaleOrderHeader implements Serializable{
 		return "Order [orderId=" + orderId + ", account=" + account + ", orderDetails=" + orderDetails + ", orderDate="
 				+ orderDate + ", shipDate=" + shipDate + ", note=" + note + "]";
 	}
-	
-	
 }

@@ -1,9 +1,15 @@
 package fit.se.main.service.product;
 
+import java.awt.print.Book;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +54,6 @@ public class ProductServiceImpl implements ProductService{
 		product.setSellingPrice(productCreateDTO.getSellingPrice());
 		product.setQuantity(Integer.parseInt(productCreateDTO.getQuantity()));
 		product.setNote(productCreateDTO.getNote());
-		
 		product.setImage(null);
 		
 		Category category = categoryDAO.findById(productCreateDTO.getCategory());
@@ -92,4 +97,84 @@ public class ProductServiceImpl implements ProductService{
 		return productDAO.findById(productId);
 	}
 
+	@Override
+	public Integer quanityByCategory(int category_id) {
+		return productDAO.quanityByCategory(category_id);
+	}
+
+	@Override
+	public Integer quanityBySupplier(int supplier_id) {
+		return productDAO.quanityBySupplier(supplier_id);
+	}
+
+	@Override
+	public List<Product> findBySupplier(Supplier supplier) {
+		return productDAO.findBySupplier(supplier);
+	}
+
+	@Override
+	public List<Product> findByPrice(double pricemin, double pricemax) {
+		return productDAO.findByPrice(pricemin, pricemax);
+	}
+
+	@Override
+	public Integer quanityByProduct(int product_id) {
+		return productDAO.quanityByProduct(product_id);
+	}
+
+	@Override
+	public List<Integer> findByNoSale() {
+		return productDAO.findByNoSale();
+	}
+
+	@Override
+	public List<Integer> findByLowSale() {
+		return productDAO.findByLowSale();
+	}
+
+	@Override
+	public List<Integer> findByMediumSale() {
+		return productDAO.findByMediumSale();
+	}
+
+	@Override
+	public List<Integer> findByHighSale() {
+		return productDAO.findByHighSale();
+	}
+
+	@Override
+	public List<Integer> findByTopSale() {
+		return productDAO.findByTopSale();
+	}
+
+	@Override
+	public List<Product> findByYear() {
+		return productDAO.findByYear();
+	}
+
+	@Override
+	public List<Product> findByMonth() {
+		return productDAO.findByMonth();
+	}
+
+	@Override
+	public List<Product> findByWeek() {
+		return productDAO.findByWeek();
+	}
+	@Override
+	public Page<Product> findPaginated(Pageable pageable, List<Product> products) {
+		int pagesize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int startItem = currentPage*pagesize;
+		List<Product> list;
+		if(products.size() < startItem) {
+			list = Collections.emptyList();
+		}else {
+			int toIndex = Math.min(startItem + pagesize, products.size());
+			list = products.subList(startItem, toIndex);
+		}
+		Page<Product> page = new PageImpl<Product>(list, PageRequest.of(currentPage, pagesize), products.size());
+		return page;
+	}
+	
 }

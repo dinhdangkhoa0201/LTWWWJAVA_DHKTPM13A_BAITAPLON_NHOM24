@@ -245,9 +245,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.microsorf.sqlserver</groupId>
+			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>sqljdbc6</artifactId>
-			<version>4.2</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

@@ -1,0 +1,535 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Danh sách sản phẩm</title>
+<link rel="shortcut icon" href="images/logo.PNG" type="image/x-icon" />
+<meta charset="utf-8">
+<!-- Font awesome -->
+<link th:href="@{/resources/css/detailProduct.css}" rel="stylesheet"
+	href="../../../resources/css/detailProduct.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Animate -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.jqueryui.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+<!-- Datatable -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+<!-- Datatable button -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
+<!-- Datatable select -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap4.min.css">
+<!-- Datatable responsive model -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+<!-- CSS fix header -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css">
+
+<!-- ****************************************************************** -->
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"
+	th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.js}"></script>
+
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+<!-- ****************************************************************** -->
+
+<!-- JQuery Datatable -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<!-- JQuery Datatable bootstrap 4 -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!-- JQuery Datatable JQueryUI -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script>
+<!-- JQuery Fixed Header -->
+<script
+	src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+<!-- JQuery Button -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<!-- JQuery Button bootstrap 4 -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+<!-- JQuery Button JQueryUI -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.jqueryui.min.js"></script>
+<!-- JQuery Button HTML5 -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<!-- JQuery Button Print -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+<!-- JQuery Button Colvi -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
+<!-- JQuery JSzip -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<!-- JQuery PDF Maker -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<!-- JQuery PDF fonts -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<!-- JQuery Select -->
+<script
+	src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<link th:href="@{/resources/css/sb-admin-2.min.css}" rel="stylesheet">
+<style type="text/css">
+.edAZXd {
+	flex: 1 1 0%;
+}
+
+.Kxluz {
+	font-size: 13px;
+	color: rgb(36, 36, 36);
+	line-height: 1.5;
+}
+
+.Kxluz .heading {
+	font-size: 19px;
+	font-weight: 300;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	margin: 20px 0px 0px;
+}
+
+.Kxluz .created-date {
+	display: flex;
+	align-items: flex-end;
+	flex-direction: column;
+}
+
+.Kxluz .view-invoices {
+	color: rgb(27, 168, 255);
+	cursor: pointer;
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.kHWfJY {
+	display: flex;
+	margin: 10px 0px 20px;
+}
+
+.kHWfJY>div:first-child {
+	margin-left: 0px;
+}
+
+.kHWfJY>div {
+	width: 33.3333%;
+	margin: 0px 5px;
+}
+
+.ipnhKS {
+	display: flex;
+	flex-direction: column;
+	color: rgba(0, 0, 0, 0.65);
+	margin: 10px 0px 20px;
+}
+
+.ipnhKS .title {
+	font-size: 13px;
+	text-transform: uppercase;
+	color: rgb(36, 36, 36);
+	margin: 0px 0px 15px;
+}
+
+.ipnhKS .content {
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(255, 255, 255);
+	height: 100%;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.ipnhKS .name {
+	text-transform: uppercase;
+}
+
+.kHWfJY .name {
+	color: rgb(36, 36, 36);
+	font-weight: bold;
+}
+
+.kHWfJY p {
+	margin: 5px 0px 0px;
+}
+
+.ipnhKS .address span, .ipnhKS .phone span {
+	color: rgb(74, 74, 74);
+	font-weight: 300;
+}
+
+.jFkAwY {
+	width: 1270px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #f5f5f0;
+}
+.jPvSur {
+    width: 100%;
+    color: rgb(66, 66, 66);
+    display: table;
+    font-size: 13px;
+    border-collapse: collapse;
+    line-height: 1.5;
+    word-break: break-word;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    border-spacing: 0px;
+}
+.jPvSur tr {
+    display: table-row;
+    padding: 10px;
+}
+.jPvSur thead tr th:first-child {
+    border-left: none;
+}
+.jPvSur thead tr th {
+    display: table-cell;
+    min-width: 100px;
+    position: relative;
+    color: rgb(120, 120, 120);
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+    padding: 20px 15px;
+    border-top: none;
+    background: 0px 0px;
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+.jPvSur tbody tr td:first-child {
+    border-top: none;
+    border-left: none;
+}
+.jPvSur tbody tr td {
+    position: relative;
+    display: table-cell;
+    color: rgb(36, 36, 36);
+    vertical-align: top;
+    min-width: 100px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    padding: 20px 15px;
+}
+.jPvSur tbody tr td .product-item {
+    display: flex;
+}
+.jPvSur tbody tr td .product-item img {
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+}
+.jPvSur tbody tr td .product-item .product-info .product-name {
+    font-size: 14px;
+    color: rgb(36, 36, 36);
+}
+.jPvSur tbody tr td .product-item .product-info .product-seller {
+    font-size: 11px;
+}
+.jPvSur tbody tr td .product-item .product-info p {
+    margin: 12px 0px 0px;
+}
+.jPvSur tfoot tr td span {
+    color: rgb(120, 120, 120);
+    font-size: 14px;
+    float: right;
+    margin-right: 30px;
+}
+.jPvSur tfoot tr:first-child td {
+    padding-top: 30px;
+}
+.jPvSur tfoot tr td .sum {
+    color: rgb(255, 59, 39);
+    font-size: 18px;
+}
+.Kxluz .view-list-order {
+    margin-bottom: 30px;
+    margin-top: 20px;
+    display: inline-block;
+    margin-right: 15px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+}
+a:hover {
+    opacity: 0.95;
+}
+</style>
+</head>
+<html>
+<body>
+
+	<div class="header">
+		<nav
+			class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+			<!-- Topbar Search -->
+			<div class="logo">
+				<a href="/www/index"><img class="icon"
+					th:src="@{/resources/image/logo.PNG}"></a>
+			</div>
+			<form
+				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+				<div class="input-group">
+					<input type="text" class="form-control bg-light border-0 small"
+						placeholder="Nhập từ khóa bạn muốn tìm kiếm">
+					<button class="btn btn-primary" type="button">
+						<i class="fas fa-search fa-sm"></i>
+					</button>
+				</div>
+			</form>
+
+			<!-- Topbar Navbar -->
+			<ul class="navbar-nav ml-auto">
+
+				<!-- Shopping Cart -->
+				<li class="nav-item dropdown no-arrow mx-1"><a
+					class="nav-link dropdown-toggle" th:href="@{/ShoppingCart}"> <i
+						class="fa fa-cart-plus " aria-hidden="true"
+						style="font-size: 24px"></i> <!-- Counter - Messages --> <span
+						class="badge badge-danger badge-counter"
+						th:text="${myCart.getLineItemCount()}"></span>
+				</a></li>
+
+				<!-- Nav Item - User Information -->
+				<li class="nav-item dropdown no-arrow"
+					th:style="${account==null}? 'display: none;':'display: block;'">
+					<a class="nav-link dropdown-toggle" href="#" role="button"
+					data-toggle="dropdown" aria-expanded="false"> <span
+						class="mr-2 d-none d-lg-inline text-gray-600 small"
+						th:if="${account!=null}" th:text="${account.accountName}"></span>
+						<i class="fa fa-user" aria-hidden="true" style="font-size: 24px"></i>
+				</a> <!-- Dropdown - User Information -->
+					<div
+						class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+						<a class="dropdown-item" data-toggle="modal"
+							data-target="#modalEditKhachHang"> <i
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông Tin
+						</a> <a class="dropdown-item" th:href="@{/order}"> <i
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Đơn hàng
+							của tôi
+						</a> <a class="dropdown-item" th:href="@{/sign-out}"> <i
+							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+							Đăng Xuất
+						</a>
+					</div>
+				</li>
+			</ul>
+
+		</nav>
+		<!-- End of Topbar -->
+	</div>
+	<div class="jFkAwY">
+		<div class="edAZXd">
+			<div class="Kxluz">
+				<div class="heading">
+					<span>Chi tiết đơn hàng #<span th:text="${order.orderId}"></span></span>
+				</div>
+				<div class="created-date">Ngày đặt hàng: <span th:text="${order.orderDate}"></span></div>
+				<div class="kHWfJY">
+					<div class="ipnhKS">
+						<div class="title">Địa chỉ người nhận</div>
+						<div class="content">
+							<p class="name" th:text="${account.accountName}"></p>
+							<p class="address">
+								<span>Địa chỉ: <span th:text="${account.address}"></span></span>
+							</p>
+							<p class="phone">
+								<span>Điện thoại: <span th:text="${account.phone}"></span></span>
+							</p>
+						</div>
+					</div>
+					<div class="ipnhKS">
+						<div class="title">Hình thức giao hàng</div>
+						<div class="content">
+							<span th:text="${order.shipDate}"></span>
+							<span th:text="${order.shipcost}+' ₫'"></span>
+							<span class="method-name">Giao hàng tiêu chuẩn</span>
+						</div>
+					</div>
+					<div class="ipnhKS">
+						<div class="title">Hình thức thanh toán</div>
+						<div class="content">
+							<p class="">Thanh toán tiền mặt khi nhận hàng</p>
+						</div>
+					</div>
+				</div>
+				<table class="jPvSur">
+					<thead>
+						<tr>
+							<th>Sản phẩm</th>
+							<th>Giá</th>
+							<th>Số lượng</th>
+							<th style="text-align: right">Tạm tính</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="detail:${order.orderDetails}">
+							<td><div class="product-item">
+									<img>
+									<div class="product-info">
+										<a class="product-name" th:href="@{/detailProduct(product_id=${detail.product.productId})}"><span th:text="${detail.product.productName}"></span></a>
+										<p class="product-seller">
+											Cung cấp bởi <span th:text="${detail.product.supplier.supplierName}"></span>
+										</p>
+										
+									</div>
+								</div></td>
+							<td class="price"><span th:text="${detail.unitPrice}+' ₫'"></span></td>
+							<td class="quantity"><span th:text="${detail.quantity}"></span></td>
+							<td class="raw-total" style="text-align: right"><span th:text="${detail.unitPrice}*${detail.quantity}+' ₫'"></span></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4" style="text-align: right;padding: 0px;"><span>Tạm tính</span></td>
+							<td style="padding: 0px 15;text-align: right;"><span th:text="${order.total}+' ₫'"></span></td>
+						</tr>
+						<tr>
+							<td colspan="4" style="text-align: right;padding: 0px;"><span>Phí vận chuyển</span></td>
+							<td style="padding: 0px 15;text-align: right;">
+								<span th:text="${order.shipcost}+' ₫'"></span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" style="text-align: right;padding: 0px;"><span>Tổng cộng</span></td>
+							<td style="padding: 0px 15;text-align: right;"><span style=" margin-right: 0px" class="sum"><span style="color: red" th:text="${order.total}+${order.shipcost}+' ₫'"></span></span></td>
+						</tr>
+					</tfoot>
+				</table>
+				<a class="view-list-order" style="color: rgb(0, 127, 240);text-decoration: none;" th:href="@{/order}">&lt;&lt;
+					Quay lại đơn hàng của tôi</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modalEditKhachHang" tabindex="-1"
+		role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<form id="formEditKhachHang" action="/www/index/khachhang"
+					method="POST" novalidate="novalidate">
+					<!-- Modal header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Thông tin Khách hàng</h4>
+						<button type="button" class="close" data-dismiss="modal">×</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+
+						<div class="form-group">
+							<label for="accountId">Mã Khách hàng</label> <input
+								class="form-control" type="number" name="accountId"
+								id="accountId" placeholder="Mã Khách hàng" readonly=""
+								th:value="${account.accountId}">
+						</div>
+						<div class="form-group">
+							<label for="accountName">Họ và tên</label> <input
+								class="form-control" type="text" name="accountName"
+								id="accountName" placeholder="Họ và tên" disabled=""
+								required="" th:value="${account.accountName}">
+						</div>
+						<div class="form-group">
+							<label for="gender">Giới tính</label>
+							<div id="gender" class="ml-5">
+								<div class="form-check-inline">
+									<label class="form-check-label"> <input type="radio"
+										class="form-check-input" name="gender" id="genderNam"
+										value="Nam" disabled="" required=""
+										th:checked="${account.gender=='Nam'}"> Name
+									</label>
+								</div>
+								<div class="form-check-inline">
+									<label class="form-check-label"> <input type="radio"
+										class="form-check-input" name="gender" id="genderNu"
+										value="Nu" disabled="" required=""
+										th:checked="${account.gender=='Nu'}"> Nữ
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="birthday">Ngày sinh</label> <input
+								class="form-control" type="text" name="birthday"
+								data-date-format="dd/MM/yyyy" id="birthday" disabled=""
+								required="" th:value="${account.birthday}">
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label> <input class="form-control"
+								type="email" name="email" id="accountemail" disabled=""
+								required="" th:value="${account.email}">
+						</div>
+						<div class="form-group">
+							<label for="phone">Số điện thoại</label> <input
+								class="form-control" type="tel" name="phone" id="phone"
+								disabled="" required="" th:value="${account.phone}">
+						</div>
+
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-success" id="btnSua"
+							onclick="disableFalseModal()">Sửa</button>
+						<button type="submit" class="btn btn-success"
+							style="display: none;" id="btnLuu">Lưu</button>
+						<button type="button" class="btn btn-warning"
+							style="display: none;" id="btnHuy" onclick="disableTrueModal()">Huỷ</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">
+							<i class="fa fa-close"></i>Close
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
