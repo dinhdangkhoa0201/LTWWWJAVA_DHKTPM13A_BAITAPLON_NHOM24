@@ -11,9 +11,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link  th:href="@{/resources/css/sb-admin-2.min.css}" rel="stylesheet">
-    <link th:href="@{/resources/css/detailProduct.css}" rel="stylesheet" href="../../../resources/css/detailProduct.css">
-   	<link th:href="@{/resources/css/search.css}" rel="stylesheet" href="../../../resources/css/search.css">
-	<script type="text/javascript" th:src="@{/resources/js/detailProduct.js}" ></script>
+	<link th:href="@{/resources/css/detailProduct.css}" rel="stylesheet" href="../../../resources/css/detailProduct.css">
+	<script type="text/javascript" th:src="@{/resources/js/detailProduct.js}"></script>
+
     
 
 
@@ -25,12 +25,12 @@
   
 		<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
   <!-- Topbar Search -->
-  <a href=""> <img src="../images/logo.png"></a>
+  <a class="navlink" th:href="@{/index}"> <img th:src="@{/resources/images/logo.png}" style="width:66px;hieght:66px;"></a>
 	<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 	<div class="input-group">
 	  <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa bạn muốn tìm kiếm"  >
 		<button class="btn btn-primary" type="button">
-		  <i class="fas fa-search fa-sm" ></i>
+		  <i class="fas fa-search fa-sm" >Tìm Kiếm</i>
 		</button>
 	</div>
   </form>
@@ -40,10 +40,19 @@
 
 	<!-- Shopping Cart -->
 	<li class="nav-item dropdown no-arrow mx-1">
+	  <a class="nav-link dropdown-toggle" href="#">
+		<i class="fa fa-bell" aria-hidden="true" style="font-size:24px"></i>
+		<!-- Counter - Messages -->
+		<span> Đơn Hàng</span>
+		<span class="badge badge-danger badge-counter" th:text="${myCart.getLineItemCount()}+'+'"></span>
+	  </a>
+	</li>
+	<li class="nav-item dropdown no-arrow mx-1">
 	  <a class="nav-link dropdown-toggle" th:href="@{/ShoppingCart}">
 		<i class="fa fa-cart-plus " aria-hidden="true" style="font-size:24px"></i>
 		<!-- Counter - Messages -->
-		<span class="badge badge-danger badge-counter" th:text="${myCart.getLineItemCount()}"></span>
+		<span> Giỏ Hàng</span>
+		<span class="badge badge-danger badge-counter" th:text="${myCart.getLineItemCount()}+'+'"></span>
 	  </a>
 	</li>
 
@@ -51,9 +60,9 @@
 
 	<!-- Nav Item - User Information -->
 	<li class="nav-item dropdown no-arrow">
-	  <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown"  aria-expanded="false">
-		<span class="mr-2 d-none d-lg-inline text-gray-600 small">Lê Đình huy</span>
+	  <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown"  aria-expanded="false">	
 		<i class="fa fa-user" aria-hidden="true" style="font-size:24px"></i>
+		<span >  Đăng nhập </span>
 	  </a>
 	  <!-- Dropdown - User Information -->
 	  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" a>
@@ -196,7 +205,7 @@
           
             <!-- Modal Header -->
             <div class="e-modal__header h-text-align-center">
-                <h2 class="t-heading -size-m">Giỏ Hàng</h2>
+                <h2 class="t-heading -size-m">Xác Nhận Vào Giỏ Hàng</h2>
               
             </div>
             
@@ -254,12 +263,46 @@
       </div>
     <!-- End Model add cart -->
     <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2019</span>
-            </div>
+    <footer class="footer-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3">
+                  <div class="footer-left">
+                      <div class="footer-logo">
+                          <a ><img th:src="@{/resources/images/logo.png}" style="width:66px;height:66px;"></a>
+                      </div>
+                      <ul>
+                          <li>Address: 12 Nguyễn Văn Bảo </li>
+                          <li>Phone: +08 11.188.888</li>
+                          <li>Email: dhcntphcm@gmail.com</li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-4 offset-lg-1">
+                  <div class="footer-widget">
+                      <h5>Information</h5>
+                      <ul>
+                          <li><a href="#">Contact</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="footer-widget">
+                      <h5>My Account</h5>
+                      <ul>
+                          <li><a href="#">My Account</a></li>
+                          <li><a href="#">Shopping Cart</a></li>
+                          <li><a href="#">Shop</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Khoa Vô Huy Website 2020</span>
         </div>
+    </div>
     </footer>
     <!-- End of Footer -->
 </body>

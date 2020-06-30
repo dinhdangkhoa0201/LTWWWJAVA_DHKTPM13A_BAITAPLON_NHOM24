@@ -1,3 +1,80 @@
+.topbar {
+    height: 4.375rem;
+    padding-left: 300px;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+.navlink{
+    color: #4e73df;
+    text-decoration: none;
+    background-color: transparent;
+    padding-right: 272px;
+}
+img {
+    border-style: none;
+}
+.topbar .navbar-search input {
+    font-size: 0.99rem;
+    height: auto;
+}
+button, html [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: button;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 10px 0px 20px 0px;
+    color: #545454;
+    font-weight: inherit;
+}
+h2 {
+    font-size: 27px;
+    line-height: 35px;
+}
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+button, input, select, textarea {
+    font: inherit;
+    margin: 0;
+}
+button, input {
+    overflow: visible;
+}
+.btn, button, [role=button], [type=submit] {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+button, select {
+    text-transform: none;
+}
+button, input, select, textarea {
+    font: inherit;
+    margin: 0;
+}
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+    display: block;
+}
+
+.buttons_added{
+	padding-top: 30px;
+}
+
 		*{
 			box-sizing: inherit;
 		}

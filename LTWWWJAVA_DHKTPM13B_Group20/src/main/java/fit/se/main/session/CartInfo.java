@@ -1,4 +1,4 @@
-package fit.se.main.model;
+package fit.se.main.session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +25,66 @@ public class CartInfo {
 		return cartLineItem.size();
 	}
 
-	public void addProduct(CartLineInfo cartLineInfo) {
-		boolean flash = true;
+	public void addProduct(CartLineInfo cartLineInfo, int quantity) {
+		int i=0;
+		boolean flash = true; 
 		for (CartLineInfo cartLineInfo1 : cartLineItem) {
-			if(cartLineInfo.getIproductid()==cartLineInfo1.getIproductid()) {
+			if(cartLineInfo.getIproductid()==cartLineInfo1.getIproductid()&&flash==true) {
+				System.out.println("cart line id   :"+cartLineInfo.getIproductid());
+				System.out.println("cart line id 1 :"+cartLineInfo1.getIproductid());
+				int quantitytemp = cartLineInfo1.getiQuantityinCart();
+				//temp=cartLineInfo.getiQuantityinCart();
+				System.out.println("quantity       :"+quantity);
+				System.out.println("quantity temp  :"+quantitytemp);
+				//	cartLineInfo.setiQuantityinCart(quantity+quantitytemp);
+				System.out.println("cartline info  :"+cartLineInfo);
+				if((quantity%2==0 && quantitytemp==0) ||(quantity%2!=0 && quantitytemp==0)) {
+					cartLineInfo.setiQuantityinCart((quantity+quantitytemp));
+				}
+
+				else if((quantity%2==0 )) {
+					quantity = (quantity/2);
+					cartLineInfo.setiQuantityinCart(quantity+quantitytemp);
+				}
+				else if(quantity%2!=0 ) {
+					int value = 0;
+					if(quantity ==1) {
+						value=2;
+					}
+					else {
+						value = quantity/2 +2;
+						System.out.println("Value     :" + value);
+					}
+
+					quantity =quantity+1;
+					quantitytemp = quantitytemp+1;
+					System.out.println("quantity      :"+quantity);
+					System.out.println("quantitytemp       :"+quantitytemp);
+					if(quantitytemp%2!=0) {
+						value=value+1;
+					}
+					int qu = quantity+quantitytemp -value;
+					System.out.println("Tong la   : " +qu);
+					cartLineInfo.setiQuantityinCart(qu);
+				}
+				cartLineItem.set(i, cartLineInfo);
+				System.out.println("cartline item  :"+cartLineItem);
 				flash=false;
 				break;
 			}
+			i++;
 		}
 		if(flash) {
 			cartLineItem.add(cartLineInfo);
+			cartLineInfo.setiQuantityinCart(0);
+			cartLineItem.set(i, cartLineInfo);
+			System.out.println("co chay vao day ko ta");
 			calculateOrderDetail();
+			flash=false;
 		}
+
+	}
+	public void checkQuantity() {
 
 	}
 	public void updateProduct(CartLineInfo cartLineInfo) {
@@ -60,17 +108,8 @@ public class CartInfo {
 		for (CartLineInfo cartLineInfo1 : cartLineItem) {
 			if(cartLineInfo1.getIproductid()==iproductid) {
 				cartLineInfo=cartLineInfo1;
-				//				cartLineInfo.setbImage(cartLineInfo1.getbImage());
-				//				cartLineInfo.setCategory(cartLineInfo1.getCategory());
-				//				cartLineInfo.setDbSellingPrice(cartLineInfo1.getDbSellingPrice());
-				//				cartLineInfo.setIproductid(cartLineInfo1.getIproductid());
-				//				cartLineInfo.setiQuantityinCart(cartLineInfo1.getiQuantityinCart());
-				//				cartLineInfo.setStrProductName(cartLineInfo1.getStrProductName());
-				//				cartLineInfo.setSupplier(cartLineInfo1.getSupplier());
-				//				cartLineInfo.setTotalInCat(cartLineInfo1.getTotalInCat());
 				break;
 			}
-
 		}
 		return cartLineInfo;
 	}
