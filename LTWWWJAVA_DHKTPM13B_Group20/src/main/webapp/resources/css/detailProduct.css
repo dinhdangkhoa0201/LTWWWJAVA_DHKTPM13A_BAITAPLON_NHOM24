@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+<<<<<<< HEAD
 .topbar {
     height: 4.375rem;
     padding-left: 300px;
@@ -40,13 +41,19 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 
 
 
+=======
+>>>>>>> vophan
     .jFkAwY {
         width: 1270px;
         padding-left: 15px;
         padding-right: 15px;
         margin-right: auto;
         margin-left: auto;
+<<<<<<< HEAD
      
+=======
+
+>>>>>>> vophan
     }
     .gQLVSm {
         display: flex;
@@ -185,7 +192,11 @@ button, html [type="button"], [type="reset"], [type="submit"] {
                 height: 200px;
                 background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
             }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> vophan
             .iGyNLs .btn-more {
                 cursor: pointer;
                 display: block;
@@ -200,7 +211,11 @@ button, html [type="button"], [type="reset"], [type="submit"] {
                 border: 1px solid #189eff;
                 border-radius: 4px;
             }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> vophan
             .iGyNLs .btn-more:hover {
                 color: #ffffff;
                 background-color: #189eff;
@@ -251,7 +266,11 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     button, html [type="button"], [type="reset"], [type="submit"] {
     -webkit-appearance: button;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> vophan
     .btn, button, [role=button], [type=submit] {
     -webkit-font-smoothing: antialiased;
     border: none;
@@ -292,7 +311,11 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     .e-btn.-color-default, .-color-default.e-btn--3d, .-color-default.e-btn--outline, .e-btn, .e-btn--3d, .e-btn--outline {
     color: white;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> vophan
     .e-btn, .e-btn--3d, .e-btn--outline {
     cursor: pointer;
     }
@@ -317,13 +340,21 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     button, select {
         text-transform: none;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> vophan
     .btn, button, [role=button], [type=submit] {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+<<<<<<< HEAD
        
+=======
+
+>>>>>>> vophan
         border: none;
         border-radius: 4px;
         color: black;
@@ -337,8 +368,13 @@ button, html [type="button"], [type="reset"], [type="submit"] {
         text-align: center;
         text-decoration: none;
     }
+<<<<<<< HEAD
     
     
+=======
+
+
+>>>>>>> vophan
     .e-btn.-size-m, .-size-m.e-btn--3d, .-size-m.e-btn--outline {
         font-size: 16px;
         padding: 10px 20px;
@@ -522,6 +558,7 @@ html {
     line-height: 1.5;
     color: #545454;
 }
+<<<<<<< HEAD
 
 .footer-section {
     background: #2b2b2d;
@@ -619,3 +656,13 @@ p {
     font-size: 16px;
     color: #b2b2b2;
 }
+=======
+.logo .icon {
+    background-image: url(images/logo.PNG);
+    background-size: 90px;
+    width: 90px;
+    height: 85px;
+    display: block;
+    background-position: 0px 0px;
+}
+>>>>>>> vophan

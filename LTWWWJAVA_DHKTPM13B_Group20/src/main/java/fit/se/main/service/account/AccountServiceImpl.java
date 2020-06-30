@@ -94,7 +94,6 @@ public class AccountServiceImpl implements AccountService {
 		System.out.println(account);
 
 		account.addRole(roleMember);
-		;
 
 		return accountDAO.create(account);
 	}

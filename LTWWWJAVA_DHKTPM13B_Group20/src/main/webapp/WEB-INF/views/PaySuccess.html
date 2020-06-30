@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Thanh toán thành công| HKV</title>
+	<link rel="shortcut icon" href="images/logo.PNG" type="image/x-icon"/>
+	<meta charset="utf-8">
+	<!-- Animate -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.jqueryui.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+	<!-- Datatable -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+	<!-- Datatable button -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
+	<!-- Datatable select -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap4.min.css">
+	<!-- Datatable responsive model -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+	<!-- CSS fix header -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css">
+
+	<!-- ****************************************************************** -->
+
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+		th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"
+		th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.js}"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+		th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+	<!-- ****************************************************************** -->
+
+	<!-- JQuery Datatable -->
+	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<!-- JQuery Datatable bootstrap 4 -->
+	<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+	<!-- JQuery Datatable JQueryUI -->
+	<script src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script>
+	<!-- JQuery Fixed Header -->
+	<script src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+	<!-- JQuery Button -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+	<!-- JQuery Button bootstrap 4 -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+	<!-- JQuery Button JQueryUI -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.jqueryui.min.js"></script>
+	<!-- JQuery Button HTML5 -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+	<!-- JQuery Button Print -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+	<!-- JQuery Button Colvi -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
+	<!-- JQuery JSzip -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<!-- JQuery PDF Maker -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<!-- JQuery PDF fonts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<!-- JQuery Select -->
+	<script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			box-sizing: border-box;
+		}
+		header {
+		    display: block;
+		}
+		h3 {
+		    display: block;
+		    font-size: 1.17em;
+		    margin-block-start: 1em;
+		    margin-block-end: 1em;
+		    margin-inline-start: 0px;
+		    margin-inline-end: 0px;
+		    font-weight: bold;
+		}
+		
+		button, input {
+		    overflow: visible;
+		}
+		button, input, optgroup, select, textarea {
+		    font-family: inherit;
+		    font-size: 100%;
+		    line-height: 1.15;
+		    margin: 0px;
+		}
+		ul {
+		    display: block;
+		    list-style-type: disc;
+		    margin-block-start: 1em;
+		    margin-block-end: 1em;
+		    margin-inline-start: 0px;
+		    margin-inline-end: 0px;
+		    padding-inline-start: 40px;
+		}
+		.iQydii {
+		    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+		    position: relative;
+		    z-index: 1;
+		    padding: 25px 0px 15px;
+		    background: rgb(255, 255, 255);
+		}
+		.iQydii .header-container {
+		    display: flex;
+		    width: 1170px;
+		}
+		.jFkAwY {
+		    width: 1270px;
+		    padding-left: 15px;
+		    padding-right: 15px;
+		    margin-right: auto;
+		    margin-left: auto;
+		}
+		.header .logo {
+		    flex: 1 1 0%;
+		}
+		.iQydii .logo .icon {
+		    background-image: url(images/logo.PNG);
+		    background-size: 90px;
+		    width: 90px;
+		    height: 85px;
+		    display: block;
+		    background-position: 0px 0px;
+		}
+
+		.iQydii .pro {
+		    display: flex;
+		    flex: 4 1 0%;
+		}
+		.hSHEnI {
+		    position: relative;
+		    width: 33%;
+		}
+		.hSHEnI .text {
+		    text-align: center;
+		    color: rgb(89, 89, 89);
+		    font-size: 14px;
+		}
+		.hSHEnI:first-child .bar {
+		    left: 50%;
+		    width: 50%;
+		}
+		.hSHEnI .bar {
+		    height: 6px;
+		    position: relative;
+		    margin: 16px 0px;
+		    background: rgb(235, 235, 235);
+		}
+		.hSHEnI:first-child .bar .fill-color {
+		    width: 100%;
+		}
+		.hSHEnI:last-child .bar {
+		    width: 50%;
+		}
+		.hSHEnI .bar .fill-color {
+		    width: 100%;
+		    height: 100%;
+		    box-shadow: none;
+		    background: rgb(0, 182, 240);
+		    transition: none 0s ease 0s;
+		}
+		.hSHEnI .circle {
+		    position: absolute;
+		    width: 26px;
+		    height: 26px;
+		    display: block;
+		    top: 41px;
+		    left: 50%;
+		    margin-top: -15px;
+		    margin-left: -15px;
+		    color: rgb(255, 255, 255);
+		    font-size: 15px;
+		    text-align: center;
+		    line-height: 26px;
+		    box-shadow: rgb(102, 102, 102) 0px 0px 2px;
+		    background: rgb(0, 182, 240);
+		    border-radius: 50%;
+		    border-width: initial;
+		    border-style: none;
+		    border-color: initial;
+		    border-image: initial;
+		}
+		.iQydii .hotline {
+		    display: flex;
+		    -webkit-box-pack: end;
+		    justify-content: flex-end;
+		    -webkit-box-align: center;
+		    align-items: center;
+		    flex: 1 1 0%;
+		}
+		.bBVUHD {
+		    font-size: 11px;
+		    margin-top: 40px;
+		    padding-bottom: 10px;
+		    padding-top: 10px;
+		    background: none;
+		    background-color: rgb(225, 225, 225);
+		}
+		.label-cart-success{
+			color: red;
+		    font-weight: 500;
+		    font-size: 18px;
+		    margin-bottom: 8px;
+		}
+		.LjGNU {
+		    flex-basis: 100%;
+		    flex-shrink: 0;
+		    padding: 10px;
+		}
+		.dnmKst {
+		    background-color: rgb(255, 255, 255);
+		    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px;
+		    margin-bottom: 20px;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(221, 221, 221);
+		    border-image: initial;
+		    border-radius: 4px;
+		    padding: 10px 15px;
+		}
+		.bBVUHD .copyright {
+		    margin-top: 12px;
+		    width: 100%;
+		    margin-left: 0px;
+		    margin-bottom: 0px;
+		}
+	</style>
+	<script type="text/javascript">
+		function Huy(){	
+			var id = document.getElementById("frmTang");
+			id.classList.add("cpOFZC");
+			id.classList.remove("hXamyU");
+		}
+		function Tang(){	
+			var id = document.getElementById("frmTang");
+			id.classList.add("hXamyU");
+			id.classList.remove("cpOFZC");
+		}
+		function HienThi(){
+			var id = document.getElementById("chkTang");
+			if(id.checked)
+				Tang();
+			else
+				Huy();
+		}
+	</script>
+</head>
+<body>
+	<header class="iQydii">
+		<div class="header-container jFkAwY">
+			<div class="logo">
+				<a href="#"><i class="icon"></i></a>
+			</div>
+			<div class="pro" style="padding-top: 10px">
+				<div class="hSHEnI">
+					<div class="text">Đăng nhập</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div><div class="circle">1</div>
+				</div>
+				<div class="hSHEnI">
+					<div class="text">Địa chỉ giao hàng</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div>
+					<div class="circle">2</div>
+				</div>
+				<div class="hSHEnI">
+					<div class="text">Thanh toán &amp; Đặt mua</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div>
+					<div class="circle">3</div>
+				</div>
+			</div>
+			<div class="hotline">
+				<img src="images/hotline.jpg" style="width: 35px;margin-bottom: 10px">
+				<p style="color: green;">
+					<b>0943723053<br>8 - 21h, cả T7 & CN</b>
+				</p>
+			</div>
+		</div>
+	</header>
+	<main style="background: rgb(255, 255, 255);">
+		<div class="jFkAwY" style="width: 50%;">
+			<div class="LjGNU"></div>
+			<div class="dnmKst">
+				<div class="label-cart-success">Cảm ơn bạn đã mua hàng tại HKV</div>
+				<div>
+					<div>Mã đơn hàng của bạn:</div>
+					<label class="label-success" style="background-color: green;color: white; width: 100%; text-align: center;font-size: 18px;" th:text="${order_id}"></label>
+					<div>Bạn có thể xem lại <a th:href="@{/order}" style="color: rgb(2, 159, 209)">đơn hàng của tôi</a></div>
+				</div>
+				<div>
+					<div>Thời gian dự kiến giao hàng vào ngày: <span th:text="${localDate}"></span></div>
+					<div>Thông tin đơn hàng được gừi đến địa chỉ email <span th:text="${account.email}"></span>. Nếu không tìm thấy vui lòng kiểm tra trong hộp thư Spam hoặc Junk Folder</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="bBVUHD">
+		<div class="jFkAwY">
+			<p class="terms-text">Bằng việc tiến hành Đặt Mua, khách hàng đồng ý với các Điều Kiện Giao Dịch Chung được ban hành bởi HKV:</p>
+			<!-- <p class="terms">
+				<a href="" target="_blank">Quy chế hoạt động</a>
+				|<a href="" target="_blank">Chính sách giải quyết khiếu nại</a>
+				|<a href="" target="_blank">Chính sách bảo hành</a>
+				|<a href="" target="_blank">Chính sách bảo mật thanh toán</a>
+				|<a href="" target="_blank">Chính sách bảo mật thông tin cá nhân</a>
+			</p> -->
+			<p class="copyright">© 2019 - Bản quyền của Công Ty Cổ Phần HKV- HKV.vn</p>
+		</div>
+	</footer>
+</body>
+</html>

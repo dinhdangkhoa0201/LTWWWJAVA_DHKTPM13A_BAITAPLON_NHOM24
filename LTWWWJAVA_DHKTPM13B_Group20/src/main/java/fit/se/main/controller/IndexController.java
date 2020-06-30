@@ -58,10 +58,17 @@ public class IndexController {
 	
 	@Autowired
 	private UnitMeasureService unitMeasureService;
+<<<<<<< HEAD
 
 	@GetMapping("/")
 	public String dashboard(Model model) {
 		return "/admin/index";
+=======
+	
+	@RequestMapping("/sign-in")
+	public String singin(Model model) {
+		return "sing-in";
+>>>>>>> vophan
 	}
 
 	@RequestMapping("/log-in")
@@ -76,7 +83,7 @@ public class IndexController {
 				Account account = accountService.createAdmin(createDTO);
 				System.out.println("Admin : " + account);
 			}
-			init();
+			//init();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -114,6 +121,7 @@ public class IndexController {
 		}
 		return "redirect:/index";
 	}
+<<<<<<< HEAD
 
 	@Transactional
 	public void init() {		
@@ -166,4 +174,6 @@ public class IndexController {
 			e.printStackTrace();
 		}
 	}
+=======
+>>>>>>> vophan
 }

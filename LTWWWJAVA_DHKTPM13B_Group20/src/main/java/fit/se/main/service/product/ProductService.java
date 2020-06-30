@@ -3,6 +3,9 @@ package fit.se.main.service.product;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import fit.se.main.dto.ProductCreateDTO;
 import fit.se.main.model.Category;
 import fit.se.main.model.Product;
@@ -30,4 +33,8 @@ public interface ProductService {
 	List<Product> findByYear();
 	List<Product> findByMonth();
 	List<Product> findByWeek();
+<<<<<<< HEAD
+=======
+	public Page<Product> findPaginated(Pageable pageable, List<Product> products);
+>>>>>>> vophan
 }

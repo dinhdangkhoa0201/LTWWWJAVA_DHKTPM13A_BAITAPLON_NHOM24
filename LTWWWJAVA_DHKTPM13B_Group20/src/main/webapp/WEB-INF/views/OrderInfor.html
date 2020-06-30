@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Thông tin giao hàng| HKV</title>
+<link rel="shortcut icon" th:href="@{/resources/image/logo.PNG}" type="image/x-icon" />
+<meta charset="utf-8">
+<!-- Animate -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.jqueryui.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+<!-- Datatable -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+<!-- Datatable button -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
+<!-- Datatable select -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap4.min.css">
+<!-- Datatable responsive model -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+<!-- CSS fix header -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css">
+
+<!-- ****************************************************************** -->
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"
+	th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.js}"></script>
+
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+<!-- ****************************************************************** -->
+
+<!-- JQuery Datatable -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<!-- JQuery Datatable bootstrap 4 -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!-- JQuery Datatable JQueryUI -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script>
+<!-- JQuery Fixed Header -->
+<script
+	src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+<!-- JQuery Button -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<!-- JQuery Button bootstrap 4 -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+<!-- JQuery Button JQueryUI -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.jqueryui.min.js"></script>
+<!-- JQuery Button HTML5 -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<!-- JQuery Button Print -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+<!-- JQuery Button Colvi -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
+<!-- JQuery JSzip -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<!-- JQuery PDF Maker -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<!-- JQuery PDF fonts -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<!-- JQuery Select -->
+<script
+	src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<style type="text/css">
+* {
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.iQydii {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+	position: relative;
+	z-index: 1;
+	padding: 25px 0px 15px;
+	background: rgb(255, 255, 255);
+}
+
+.iQydii .header-container {
+	display: flex;
+	width: 1170px;
+}
+
+.jFkAwY {
+	width: 1270px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.header .logo {
+	flex: 1 1 0%;
+}
+
+.iQydii .logo .icon {
+	background-image: url(images/logo.PNG);
+	background-size: 90px;
+	width: 90px;
+	height: 85px;
+	display: block;
+	background-position: 0px 0px;
+}
+
+header {
+	display: block;
+}
+
+.iQydii .pro {
+	display: flex;
+	flex: 4 1 0%;
+}
+
+.hSHEnI {
+	position: relative;
+	width: 33%;
+}
+
+.hSHEnI .text {
+	text-align: center;
+	color: rgb(89, 89, 89);
+	font-size: 14px;
+}
+
+.cYzUmc {
+	position: relative;
+	width: 33%;
+}
+
+.jsldfp {
+	position: relative;
+	width: 33%;
+}
+
+.hSHEnI:first-child .bar {
+	left: 50%;
+	width: 50%;
+}
+
+.hSHEnI .bar {
+	height: 6px;
+	position: relative;
+	margin: 16px 0px;
+	background: rgb(235, 235, 235);
+}
+
+.hSHEnI:first-child .bar .fill-color {
+	width: 100%;
+}
+
+.hSHEnI .bar .fill-color {
+	width: 100%;
+	height: 100%;
+	box-shadow: none;
+	background: rgb(0, 182, 240);
+	transition: none 0s ease 0s;
+}
+
+.hSHEnI .circle {
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	display: block;
+	top: 41px;
+	left: 50%;
+	margin-top: -15px;
+	margin-left: -15px;
+	color: rgb(255, 255, 255);
+	font-size: 15px;
+	text-align: center;
+	line-height: 26px;
+	box-shadow: rgb(102, 102, 102) 0px 0px 2px;
+	background: rgb(0, 182, 240);
+	border-radius: 50%;
+	border-width: initial;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+}
+
+.cYzUmc .text {
+	text-align: center;
+	color: rgb(89, 89, 89);
+	font-size: 14px;
+}
+
+.cYzUmc .bar {
+	height: 6px;
+	position: relative;
+	margin: 16px 0px;
+	background: rgb(235, 235, 235);
+}
+
+.cYzUmc .bar .fill-color {
+	width: 50%;
+	height: 100%;
+	box-shadow: none;
+	background: rgb(0, 182, 240);
+	transition: none 0s ease 0s;
+}
+
+.cYzUmc .circle {
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	display: block;
+	top: 41px;
+	left: 50%;
+	margin-top: -15px;
+	margin-left: -15px;
+	color: rgb(255, 255, 255);
+	font-size: 15px;
+	text-align: center;
+	line-height: 26px;
+	box-shadow: rgb(102, 102, 102) 0px 0px 2px;
+	background: rgb(0, 182, 240);
+	border-radius: 50%;
+	border-width: initial;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+}
+
+.jsldfp .text {
+	text-align: center;
+	color: rgb(163, 163, 163);
+	font-size: 14px;
+}
+
+.jsldfp:last-child .bar {
+	width: 50%;
+}
+
+.jsldfp .bar {
+	height: 6px;
+	position: relative;
+	margin: 16px 0px;
+	background: rgb(235, 235, 235);
+}
+
+.jsldfp:last-child .bar .fill-color {
+	width: 0px;
+}
+
+.jsldfp .bar .fill-color {
+	width: 0px;
+	height: 100%;
+	box-shadow: none;
+	background: rgb(0, 182, 240);
+	transition: none 0s ease 0s;
+}
+
+.jsldfp .circle {
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	display: block;
+	top: 41px;
+	left: 50%;
+	margin-top: -15px;
+	margin-left: -15px;
+	color: rgb(0, 0, 0);
+	font-size: 15px;
+	text-align: center;
+	line-height: 26px;
+	box-shadow: rgb(102, 102, 102) 0px 0px 2px;
+	background: rgb(255, 255, 255);
+	border-radius: 50%;
+	border-width: initial;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+}
+
+.iQydii .hotline {
+	display: flex;
+	-webkit-box-pack: end;
+	justify-content: flex-end;
+	-webkit-box-align: center;
+	align-items: center;
+	flex: 1 1 0%;
+}
+
+.jNYLsd {
+	color: rgb(51, 51, 51);
+	padding: 5px 0px 0px;
+}
+
+.jNYLsd .title {
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+h3 {
+	display: block;
+	font-size: 1.17em;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+.jNYLsd .address-list-text {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.1;
+}
+
+.jNYLsd .address-list {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0px 0px -20px -20px;
+}
+
+.hheNUT {
+	position: relative;
+	background-color: rgb(255, 255, 255);
+	box-shadow: none;
+	max-width: calc(50% - 20px);
+	flex: 1 0 40%;
+	border-radius: 3px;
+	border-width: 1px;
+	border-style: dashed;
+	border-color: rgb(0, 153, 0);
+	border-image: initial;
+	margin: 0px 0px 20px 20px;
+	padding: 10px 15px;
+}
+
+.hheNUT .name {
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.hheNUT .name+.address {
+	height: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.hheNUT .address {
+	font-size: 13px;
+	margin-bottom: 3px;
+}
+
+.hheNUT .phone {
+	font-size: 13px;
+	margin-bottom: 10px;
+}
+
+.hheNUT .action {
+	margin-bottom: 0px;
+}
+
+.hheNUT .action .saving-address {
+	margin-right: 7px;
+	color: rgb(255, 255, 255);
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(2, 159, 209);
+	border-image: initial;
+	background: rgb(0, 182, 240);
+}
+
+.hheNUT .action .edit-address {
+	margin-right: 7px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(204, 204, 204);
+	border-image: initial;
+}
+
+.hheNUT .action .btn {
+	touch-action: manipulation;
+	cursor: pointer;
+	user-select: none;
+	text-align: center;
+	white-space: nowrap;
+	outline-color: rgb(204, 204, 204);
+	height: 31px;
+	font-size: 12px;
+	padding: 6px 14px;
+	border-radius: 2px;
+}
+
+.hheNUT .default {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	display: block;
+	font-size: 11px;
+	color: rgb(0, 153, 0);
+}
+
+.hheNUT p {
+	margin: 0px 0px 10px;
+}
+
+.gPtlxm {
+	font-size: 13px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.gPtlxm span {
+	color: rgb(0, 127, 240);
+	cursor: pointer;
+}
+
+.koCjgj {
+	box-shadow: none;
+	max-height: 650px;
+	background: rgb(247, 247, 247);
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(221, 221, 221);
+	border-image: initial;
+	border-radius: 0px 0px 3px 3px;
+	margin: 0px auto;
+	padding: 10px 15px;
+	transition: max-height 0.5s ease-out 0s;
+	overflow: hidden;
+}
+
+.jCHxCc {
+	box-shadow: none;
+	max-height: 0px;
+	background: rgb(247, 247, 247);
+	border-width: initial;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+	border-radius: 0px 0px 3px 3px;
+	margin: 0px auto;
+	padding: 0px;
+	transition: max-height 0.5s ease-out 0s;
+	overflow: hidden;
+}
+
+.jCHxCc .form-container {
+	max-width: 550px;
+	margin: 0px auto;
+}
+
+.gLBfyC {
+	font-size: 13px;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	flex-wrap: wrap;
+	color: rgb(51, 51, 51);
+	margin: 0px 0px 15px;
+}
+
+.gLBfyC>label {
+	font-weight: 700;
+	width: 33.3333%;
+}
+
+.gLBfyC [type="text"], textarea {
+	width: 66.6666%;
+}
+
+.bYlDgr {
+	height: 34px;
+	line-height: 34px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s
+		ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(204, 204, 204);
+	border-image: initial;
+	border-radius: 4px;
+	padding: 6px 12px;
+	outline: none;
+}
+
+button, input {
+	overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0px;
+}
+
+.jMZRxm .rc-select {
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	color: rgb(102, 102, 102);
+	line-height: 34px;
+	width: 100%;
+}
+
+.jMZRxm .rc-select-selection--single {
+	height: 34px;
+	line-height: 34px;
+	cursor: pointer;
+	position: relative;
+}
+
+.jMZRxm .rc-select-selection {
+	user-select: none;
+	box-sizing: border-box;
+	display: block;
+	background-color: rgb(255, 255, 255);
+	outline: none;
+	border-radius: 6px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(217, 217, 217);
+	border-image: initial;
+}
+
+.jMZRxm .rc-select-selection--single .rc-select-selection__rendered {
+	height: 34px;
+	position: relative;
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin-left: 10px;
+	line-height: 34px;
+	overflow: hidden;
+}
+
+.jMZRxm .rc-select-selection__placeholder {
+	position: absolute;
+	top: 0px;
+	color: rgb(170, 170, 170);
+}
+
+.jMZRxm .rc-select-selection--single .rc-select-selection-selected-value
+	{
+	pointer-events: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.jMZRxm .rc-select-search--inline {
+	width: 100%;
+}
+
+.jMZRxm .rc-select-search--inline .rc-select-search__field__wrap {
+	width: 100%;
+}
+
+.jMZRxm .rc-select-search__field__wrap {
+	display: inline-block;
+}
+
+.jMZRxm .rc-select-search--inline .rc-select-search__field {
+	font-size: 100%;
+	width: 100%;
+	border-width: initial;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+	background: transparent;
+	outline: 0px;
+}
+
+.jMZRxm .rc-select-search--inline .rc-select-search__field__mirror {
+	position: absolute;
+	top: -999px;
+	left: 0px;
+	white-space: pre;
+}
+
+.jMZRxm .rc-select-arrow {
+	height: 30px;
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	width: 20px;
+	outline: none;
+}
+
+.jMZRxm .rc-select-arrow .rc-select-arrow-icon {
+	height: 0px;
+	width: 0px;
+	margin-left: -4px;
+	margin-top: -2px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border-color: rgb(153, 153, 153) transparent transparent;
+	border-style: solid;
+	border-width: 5px 4px 0px;
+}
+
+.doFXqy {
+	line-height: 20px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s
+		ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(204, 204, 204);
+	border-image: initial;
+	border-radius: 4px;
+	padding: 6px 12px;
+	outline: none;
+}
+
+.gLBfyC .hint {
+	font-size: 11px;
+	font-style: italic;
+}
+
+.gLBfyC .hint {
+	font-size: 11px;
+	font-style: italic;
+}
+
+.kdUEwV {
+	display: inline-block;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+[type="checkbox"], [type="radio"] {
+	box-sizing: border-box;
+	padding: 0px;
+}
+
+.lblfxX {
+	display: inline-block;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.gLBfyC .button-group {
+	width: 66.6666%;
+	display: flex;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+}
+
+.gLBfyC .button-group .cancel {
+	margin-right: 10px;
+}
+
+.gLBfyC .button-group button {
+	outline-color: rgb(204, 204, 204);
+	font-size: 13px;
+	cursor: pointer;
+	flex: 1 0 40%;
+	background: rgb(247, 247, 247);
+	border-color: rgb(225, 225, 225);
+	padding: 10px 0px;
+	border-radius: 2px;
+}
+
+.gLBfyC .button-group .create-update {
+	color: rgb(255, 255, 255);
+	background: rgb(0, 182, 240);
+}
+
+.bBVUHD {
+	font-size: 11px;
+	margin-top: 40px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	background: none;
+	background-color: rgb(225, 225, 225);
+}
+
+.bBVUHD .copyright {
+	margin-top: 12px;
+	width: 100%;
+	margin-left: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<script type="text/javascript">
+		function Sua(s){
+			/* if(s=='frmEdit')
+				HuyBo('frmNew');
+			if(s=='frmNew')
+				HuyBo('frmEdit'); */
+			var id = document.getElementById(s);
+			id.classList.add("koCjgj");
+			id.classList.remove("jCHxCc");
+		}
+		function HuyBo(s){	
+			var id = document.getElementById(s);
+			id.classList.remove("koCjgj");
+			id.classList.add("jCHxCc");
+			
+		}
+	</script>
+</head>
+<body>
+	<header class="iQydii">
+		<div class="header-container jFkAwY">
+			<div class="logo">
+				<a href="/www/index"><img class="icon" th:src="@{/resources/image/logo.PNG}"></a>
+			</div>
+			<div class="pro" style="padding-top: 10px">
+				<div class="hSHEnI">
+					<div class="text">Đăng nhập</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div>
+					<div class="circle">1</div>
+				</div>
+				<div class="cYzUmc">
+					<div class="text">Địa chỉ giao hàng</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div>
+					<div class="circle">2</div>
+				</div>
+				<div class="jsldfp">
+					<div class="text">Thanh toán &amp; Đặt mua</div>
+					<div class="bar">
+						<div class="fill-color"></div>
+					</div>
+					<div class="circle">3</div>
+				</div>
+			</div>
+			<div class="hotline">
+				<img src="images/hotline.jpg"
+					style="width: 35px; margin-bottom: 10px">
+				<p style="color: green;">
+					<b>0943723053<br>8 - 21h, cả T7 & CN
+					</b>
+				</p>
+			</div>
+		</div>
+	</header>
+	<main style="background: none;">
+		<div class="jFkAwY" style="width: 1170px;">
+			<div class="jNYLsd">
+				<h3 class="title">2. Địa chỉ giao hàng</h3>
+				<h5 class="address-list-text">Chọn địa chỉ giao hàng có sẵn bên
+					dưới:</h5>
+				<div class="address-list">
+					<div class="hheNUT">
+						<p class="name" th:text="${account.accountName}"></p>
+						<span class="address" th:text="'Địa chỉ: '+${account.address}"></span>
+						<p class="address">Việt Nam</p>
+						<p class="phone">
+							Điện thoại: <span th:text="${account.phone}"></span>
+						</p>
+						<p class="action">
+							<a th:href="@{PayInfor}"><button type="button"
+									class="btn saving-address">Giao đến địa chỉ này</button></a>
+							<button type="button" class="btn edit-address"
+								onclick="Sua('frmEdit')">Sửa</button>
+						</p>
+						<span class="default">Mặc định</span>
+					</div>
+				</div>
+			</div>
+			<!-- <p class="gPtlxm">
+				Bạn muốn giao hàng đến địa chỉ khác? <span onclick="Sua('frmNew')">Thêm
+					địa chỉ giao hàng mới</span>
+			</p> -->
+			<br>
+			<form class="jCHxCc" th:action="@{/OrderInfor/Update(accountName=${account.accountName}, phone=${account.phone}, address=${account.address})}" id="frmEdit">
+				<div class="form-container" style="width: 50%; margin: 0 auto;">
+					<div class=" gLBfyC">
+						<label>Họ tên</label> <input type="text" name="accountName"
+							placeholder="Nhập họ tên" maxlength="50"
+							class="Input-sc-17i9bto-0 bYlDgr"
+							th:value="${account.accountName}">
+					</div>
+					<div class=" gLBfyC">
+						<label>Điện thoại di động</label> <input type="text"
+							name="phone" placeholder="Nhập số điện thoại"
+							class="Input-sc-17i9bto-0 bYlDgr" th:value="${account.phone}">
+					</div>
+					<div class=" gLBfyC">
+						<label>Địa chỉ</label>
+						<textarea type="textarea" name="address" class="doFXqy"
+							th:text="${account.address}"></textarea>
+					</div>
+
+					<div class=" gLBfyC" style="margin-bottom: 0px;">
+						<label></label>
+						<div class="button-group">
+							<button class="cancel" onclick="HuyBo('frmEdit')">Huỷ bỏ</button>
+							<button type="submit" class="create-update" >Cập
+								nhật</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- <div class="jCHxCc" id="frmNew">
+				<div class="form-container" style="width: 50%; margin: 0 auto;">
+					<div class=" gLBfyC">
+						<label>Họ tên</label> <input type="text" name="full_name"
+							placeholder="Nhập họ tên" maxlength="50"
+							class="Input-sc-17i9bto-0 bYlDgr" value="">
+					</div>
+					<div class=" gLBfyC">
+						<label>Điện thoại di động</label> <input type="text"
+							name="telephone" placeholder="Nhập số điện thoại"
+							class="Input-sc-17i9bto-0 bYlDgr" value="">
+					</div>
+					<div class=" gLBfyC">
+						<label>Địa chỉ</label>
+						<textarea type="textarea" name="street"
+							placeholder="Ví dụ: 52, đường Trần Hưng Đạo" class="doFXqy"></textarea>
+					</div>
+					<div class=" gLBfyC" style="margin-bottom: 0px;">
+						<label></label>
+						<div class="button-group">
+							<button class="cancel" onclick="HuyBo('frmNew')">Huỷ bỏ</button>
+							<button class="create-update" onclick="XacNhan()">Giao
+								đến địa chỉ này</button>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		</div>
+
+	</main>
+	<footer class="bBVUHD">
+		<div class="jFkAwY">
+			<p class="terms-text">Bằng việc tiến hành Đặt Mua, khách hàng
+				đồng ý với các Điều Kiện Giao Dịch Chung được ban hành bởi HKV:</p>
+			<!-- <p class="terms">
+				<a href="" target="_blank">Quy chế hoạt động</a> |<a href=""
+					target="_blank">Chính sách giải quyết khiếu nại</a> |<a href=""
+					target="_blank">Chính sách bảo hành</a> |<a href="" target="_blank">Chính
+					sách bảo mật thanh toán</a> |<a href="" target="_blank">Chính sách
+					bảo mật thông tin cá nhân</a>
+			</p> -->
+			<p class="copyright">© 2019 - Bản quyền của Công Ty Cổ Phần HKV-
+				HKV.vn</p>
+		</div>
+	</footer>
+</body>
+</html>

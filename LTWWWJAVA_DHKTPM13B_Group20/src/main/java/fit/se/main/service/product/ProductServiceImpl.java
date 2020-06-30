@@ -1,9 +1,15 @@
 package fit.se.main.service.product;
 
+import java.awt.print.Book;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -155,5 +161,23 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> findByWeek() {
 		return productDAO.findByWeek();
 	}
+<<<<<<< HEAD
+=======
+	@Override
+	public Page<Product> findPaginated(Pageable pageable, List<Product> products) {
+		int pagesize = pageable.getPageSize();
+		int currentPage = pageable.getPageNumber();
+		int startItem = currentPage*pagesize;
+		List<Product> list;
+		if(products.size() < startItem) {
+			list = Collections.emptyList();
+		}else {
+			int toIndex = Math.min(startItem + pagesize, products.size());
+			list = products.subList(startItem, toIndex);
+		}
+		Page<Product> page = new PageImpl<Product>(list, PageRequest.of(currentPage, pagesize), products.size());
+		return page;
+	}
+>>>>>>> vophan
 	
 }

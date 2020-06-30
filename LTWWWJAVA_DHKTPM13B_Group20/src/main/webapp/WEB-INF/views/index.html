@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -776,5 +777,967 @@
         </div>
     </footer>
     <!-- End of Footer -->
+=======
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Danh sách sản phẩm</title>
+<link rel="shortcut icon" href="images/logo.PNG" type="image/x-icon" />
+<meta charset="utf-8">
+<!-- Font awesome -->
+<link th:href="@{/resources/css/detailProduct.css}" rel="stylesheet"
+	href="../../../resources/css/detailProduct.css">
+<link th:href="@{/resources/css/search.css}" rel="stylesheet"
+	href="../../../resources/css/search.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Animate -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.jqueryui.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.jqueryui.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+<!-- Datatable -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+<!-- Datatable button -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
+<!-- Datatable select -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap4.min.css">
+<!-- Datatable responsive model -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+<!-- CSS fix header -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css">
+
+<!-- ****************************************************************** -->
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"
+	th:src="@{/webjars/jquery-validation/1.19.0/jquery.validate.js}"></script>
+
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+	th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+<!-- ****************************************************************** -->
+
+<!-- JQuery Datatable -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<!-- JQuery Datatable bootstrap 4 -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!-- JQuery Datatable JQueryUI -->
+<script
+	src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script>
+<!-- JQuery Fixed Header -->
+<script
+	src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+<!-- JQuery Button -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<!-- JQuery Button bootstrap 4 -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+<!-- JQuery Button JQueryUI -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.jqueryui.min.js"></script>
+<!-- JQuery Button HTML5 -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<!-- JQuery Button Print -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+<!-- JQuery Button Colvi -->
+<script
+	src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
+<!-- JQuery JSzip -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<!-- JQuery PDF Maker -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<!-- JQuery PDF fonts -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<!-- JQuery Select -->
+<script
+	src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<link th:href="@{/resources/css/sb-admin-2.min.css}" rel="stylesheet">
+
+
+<script type="text/javascript">
+	function activeclick(a) {
+		if (a == "btnchitiet") {
+			var x = document.getElementById(a);
+			var y = document.getElementById('btnthugon');
+			x.classList.add('is-active');
+			y.classList.remove('is-active');
+		} else {
+			var x = document.getElementById(a);
+			var y = document.getElementById('btnchitiet');
+			x.classList.add('is-active');
+			y.classList.remove('is-active');
+		}
+	}
+	function clickhienthi(a, b) {
+		var x = document.getElementById(a);
+		var y = document.getElementById(b);
+		if (x.getAttribute('aria-label') == 'Click to collapse') {
+			x.classList.remove('XLw0c');
+			y.classList.add('_2Zwwb');
+			x.setAttribute('aria-label', 'Click to expand');
+		} else {
+			x.classList.add('XLw0c');
+			y.classList.remove('_2Zwwb');
+			x.setAttribute('aria-label', 'Click to collapse');
+		}
+	}
+	function clickfilter(a, b) {
+		var x = document.getElementById(a);
+		var y = document.getElementById(b);
+		if (y.getAttribute('aria-label') == 'Collapse filter') {
+			x.classList.remove('_3riWF');
+			x.classList.add('_1brOV');
+			y.classList.remove('_3Gfh4');
+			y.classList.add('_1ccGe');
+			y.setAttribute('aria-label', 'Expand filter');
+		} else {
+			x.classList.add('_3riWF');
+			x.classList.remove('_1brOV');
+			y.classList.add('_3Gfh4');
+			y.classList.remove('_1ccGe');
+			y.setAttribute('aria-label', 'Collapse filter');
+		}
+	}
+	function hienthi(x) {
+		x.classList.add('p4v9H');
+	}
+	function an(x) {
+		x.classList.remove('p4v9H');
+	}
+	function moveleft() {
+		var x = document.getElementById('imagesection');
+		var y = x.getElementsByTagName('img');
+
+		if (y[0].getAttribute('style') == 'left: 0%;') {
+			var per = -400;
+			for (var i = 0; i < y.length; i++) {
+				y[i].setAttribute('style', 'left: ' + String(per) + '%;');
+				per += 100;
+			}
+		} else {
+			console.log(y[0].getAttribute('style').slice(6, 10));
+			var per = parseInt(y[0].getAttribute('style').slice(6, 10)) + 100;
+			for (var i = 0; i < y.length; i++) {
+				y[i].setAttribute('style', 'left: ' + String(per) + '%;');
+				per += 100;
+			}
+		}
+
+	}
+	function moveright() {
+		var x = document.getElementById('imagesection');
+		var y = x.getElementsByTagName('img');
+
+		if (y[0].getAttribute('style') == 'left: -400%;') {
+			var per = 0;
+			for (var i = 0; i < y.length; i++) {
+				y[i].setAttribute('style', 'left: ' + String(per) + '%;');
+				per -= 100;
+			}
+		} else {
+			var per = parseInt(y[0].getAttribute('style').slice(6, 10)) - 100;
+			for (var i = 0; i < y.length; i++) {
+				y[i].setAttribute('style', 'left: ' + String(per) + '%;');
+				per += 100;
+			}
+		}
+
+	}
+	function searhByPrice() {
+		var x = document.getElementById('Minimum_price').value;
+		var y = document.getElementById('Maximum_price').value;
+		var z = document.getElementById('btnPrice');
+		if (x == null || x == "")
+			x = 100000;
+		if (y == null || y == "")
+			y = 3000000;
+		console.log(x);
+		console.log(y);
+		if (x != null && y != null)
+			z.setAttribute('href', '/www/price?pricemin=' + x + '&pricemax='
+					+ y);
+	}
+
+	function choiseclick(a, m, n) {
+		var x = document.querySelectorAll(m);
+		for (i = 0; i < x.length; ++i) {
+			x[i].classList.remove(n);
+		}
+		document.getElementById(a).classList.add(n);
+	}
+
+	function choise() {
+		var x = window.location.pathname.split("/");
+		var y = window.location.href.split("=");
+		console.log(x[2]);
+		console.log(y[1]);
+		switch (x[2]) {
+		case "category":
+			choiseclick(y[1], '_1Y9yS', '_1HFue');
+			break;
+		case "supplier":
+			choiseclick(y[1], '_1HBLP', '_3IkF1');
+			break;
+		case "sale":
+			choiseclick(y[1], '_1HBLP', '_3IkF1');
+			break;
+		case "date":
+			var d = document.querySelectorAll('_1BYx5');
+			for (i = 0; i < d.length; ++i) {
+				d.removeAttribute("checked");
+			}
+			var k = document.getElementById(y[1]);
+			k.setAttribute('checked', 'checked');
+			break;
+		}
+		;
+	};
+	function addToCart(a) {
+		var x = document.getElementById('btnAddtoCart' + a);
+		console.log(x);
+		var y = document.getElementById('productid').value;
+		x.setAttribute('href', '/www/index/AddModel?product_id=' + y
+				+ '&quatityby=' + 1);
+	}
+	function disableFalseModal(){
+		document.getElementById('accountName').disabled=false;
+		document.getElementById('phone').disabled=false;
+		document.getElementById('genderNam').disabled=false;
+		document.getElementById('genderNu').disabled=false;
+		document.getElementById('accountemail').disabled=false;
+		document.getElementById('birthday').disabled=false;
+		document.getElementById("btnSua").style.display = "none";
+		document.getElementById("btnHuy").style.display = "block";
+		document.getElementById("btnLuu").style.display = "block";
+	}
+	function disableTrueModal(){
+		document.getElementById('accountName').disabled=true;
+		document.getElementById('phone').disabled=true;
+		document.getElementById('genderNam').disabled=true;
+		document.getElementById('genderNu').disabled=true;
+		document.getElementById('accountemail').disabled=true;
+		document.getElementById('birthday').disabled=true;
+		document.getElementById("btnSua").style.display = "block";
+		document.getElementById("btnHuy").style.display = "none";
+		document.getElementById("btnLuu").style.display = "none";
+	}
+	$('#modalEditKhachHang').on('hidden.bs.modal', function() {
+		tempEmails = /*[[${emails}]]*/[];
+		tempPhones = /*[[${phones}]]*/[];
+		console.log("Temp emails : " + tempEmails);
+		console.log("Temp phones : " + tempPhones);
+	});
+</script>
+</head>
+<body onload="choise()">
+	<div class="header">
+		<nav
+			class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+			<!-- Topbar Search -->
+			<div class="logo">
+				<a href="/www/index"><img class="icon"
+					th:src="@{/resources/image/logo.PNG}"></a>
+			</div>
+			<form
+				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+				<div class="input-group">
+					<input type="text" class="form-control bg-light border-0 small"
+						placeholder="Nhập từ khóa bạn muốn tìm kiếm">
+					<button class="btn btn-primary" type="button">
+						<i class="fas fa-search fa-sm"></i>
+					</button>
+				</div>
+			</form>
+
+			<!-- Topbar Navbar -->
+			<ul class="navbar-nav ml-auto">
+
+				<!-- Shopping Cart -->
+				<li class="nav-item dropdown no-arrow mx-1"><a
+					class="nav-link dropdown-toggle" th:href="@{/ShoppingCart}"> <i
+						class="fa fa-cart-plus " aria-hidden="true"
+						style="font-size: 24px"></i> <!-- Counter - Messages --> <span
+						class="badge badge-danger badge-counter"
+						th:text="${myCart.getLineItemCount()}"></span>
+				</a></li>
+
+				<!-- Nav Item - User Information -->
+				<li class="nav-item dropdown no-arrow"
+					th:style="${account!=null}? 'display: none;':'display: block;'">
+					<a class="nav-link dropdown-toggle" href="#" role="button"
+					data-toggle="dropdown" aria-expanded="false"> <span
+						class="mr-2 d-none d-lg-inline text-gray-600 small"></span> <i
+						class="fa fa-user" aria-hidden="true" style="font-size: 24px"></i>
+				</a> <!-- Dropdown - User Information -->
+					<div
+						class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+						<a class="dropdown-item" data-toggle="modal"
+							data-target="#loginModal"> <i
+							class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400">Đăng Nhập</i>
+
+						</a> <a class="dropdown-item" href="/www/sign-up"> <i
+							class="fas fa-list fa-sm fa-fw mr-2 text-gray-400">Tạo Tài
+								Khoản</i>
+						</a>
+						<div class="dropdown-divider"></div>
+					</div>
+				</li>
+				<li class="nav-item dropdown no-arrow"
+					th:style="${account==null}? 'display: none;':'display: block;'">
+					<a class="nav-link dropdown-toggle" href="#" role="button"
+					data-toggle="dropdown" aria-expanded="false"> <span
+						class="mr-2 d-none d-lg-inline text-gray-600 small"
+						th:if="${account!=null}" th:text="${account.accountName}"></span>
+						<i class="fa fa-user" aria-hidden="true" style="font-size: 24px"></i>
+				</a> <!-- Dropdown - User Information -->
+					<div
+						class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+						<a class="dropdown-item" data-toggle="modal"
+							data-target="#modalEditKhachHang"> <i
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông Tin
+						</a>
+						</a> <a class="dropdown-item" th:href="@{/order}"> <i
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Đơn hàng
+							của tôi
+						<a class="dropdown-item" th:href="@{/sign-out}"> <i
+							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+							Đăng Xuất
+						</a>
+					</div>
+				</li>
+			</ul>
+
+		</nav>
+		<!-- End of Topbar -->
+	</div>
+	<div class="wZ5nK" id="content">
+		<div class="BNYKr">
+			<div class="_2YVIw">
+				<button class="ZLSF6 _3riWF"
+					data-test-selector="toggle-filters-panel" id="btnfilter"
+					onclick="clickfilter('btnfilter', 'filter')">
+					<svg fill="currentColor" height="18" width="18" viewBox="0 0 18 18" class="_2CX5O"
+						style="vertical-align: middle">
+						<g class="QDdL6" fill="#333333">
+							<rect x="0" y="3" width="18" height="2"></rect>
+						</g>
+						<g class="_3Os_n" fill="#333333">
+							<rect x="0" y="8" width="18" height="2"></rect>
+						</g>
+						<g class="_1xGcT" fill="#333333">
+							<rect x="0" y="13" width="18" height="2"></rect>
+						</g>
+						<g class="_36iK0">
+							<g>
+								<circle fill="#333333" cx="4.5" cy="4" r="2.2"></circle>
+								<circle fill="#FFFFFF" cx="4.5" cy="4" r="0.8"></circle>
+							</g>
+						</g>
+						<g class="_1A3u9">
+							<g>
+								<circle fill="#333333" cx="13.5" cy="9" r="2.2"></circle>
+								<circle fill="#FFFFFF" cx="13.5" cy="9" r="0.8"></circle>
+							</g>
+						</g>
+						<g class="_3Fxu-">
+							<g>
+						<circle fill="#333333" cx="9" cy="14" r="2.2"></circle>
+								<circle fill="#FFFFFF" cx="9" cy="14" r="0.8"></circle>
+							</g>
+						</g>
+					</svg>
+					<span class="_3wJqg">Lọc sản phẩm</span>
+				</button>
+			</div>
+		</div>
+		<div class="TTG-m">
+			<div>
+				<div data-test-selector="search-filters">
+					<div class="JMiTG _3Gfh4" aria-label="Collapse filter" id="filter">
+						<div class="_1loc3">
+							<button class="_61rqe XLw0c" type="button"
+								aria-label="Click to collapse"
+								onclick="clickhienthi('btncategory', 'selectcategory');"
+								id="btncategory">
+								<div class="_1HhXF">
+									<h3 class="_3vvh6">Danh mục</h3>
+									<svg fill="currentColor" preserveAspectRatio="xMidYMid meet"
+										height="8" width="13" viewBox="0 0 13 8"
+										style="vertical-align: middle">
+										<title>Chevron Up</title>
+										<g>
+											<g stroke="none" stroke-width="1" fill-rule="evenodd"
+											fill="none">
+												<g transform="translate(1.000000, 2.000000)"
+											stroke-width="2" stroke="currentColor">
+													<polyline
+											transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000) "
+											points="8 -2.5 3 2.5 8 7.5"></polyline>
+												</g>
+											</g>
+										</g>
+									</svg>
+								</div>
+							</button>
+							<div class="_1y-cL" id="selectcategory">
+								<nav class="_31Giv">
+									<ul data-test-selector="category-filter">
+										<li class="_1SXRP"><a class="_1OYwR fXC7e _1HFue"
+											href="#" th:href="@{index}">Tất cả danh mục</a> <span
+											class="_1kd89" th:text="${productsAll.size()}"></span></li>
+										<li th:each="map: ${mapCategory}" class="_1SXRP"><a
+											href="#" th:id="${map.key.categoryId}"
+											th:href="@{/category(category_id = ${map.key.categoryId})}"
+											class="_1OYwR _1Y9yS"><span
+												th:text="${map.key.categoryName}"></span></a> <span
+											class="_1kd89" th:text="${map.value}"></span></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="_1loc3">
+							<button class="_61rqe XLw0c" type="button"
+								aria-label="Click to collapse"
+								onclick="clickhienthi('btntag', 'selecttag')" id="btntag">
+								<div class="_1HhXF">
+									<h3 class="_3vvh6">Nhà cung cấp</h3>
+									<svg fill="currentColor" preserveAspectRatio="xMidYMid meet"
+										height="8" width="13" viewBox="0 0 13 8"
+										style="vertical-align: middle">
+										<title>Chevron Up</title>
+										<g>
+											<g stroke="none" stroke-width="1" fill-rule="evenodd"
+											fill="none">
+												<g transform="translate(1.000000, 2.000000)"
+											stroke-width="2" stroke="currentColor">
+													<polyline
+											transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000) "
+											points="8 -2.5 3 2.5 8 7.5"></polyline>
+												</g>
+											</g>
+										</g>
+									</svg>
+								</div>
+							</button>
+							<div class="_1y-cL _3pOVV" id="selecttag">
+								<div class="_3kFGv">
+									<div class="_3Iuwi" th:each="map: ${mapSupplier}">
+										<a class="_3VE_Q"
+											th:href="@{/supplier(supplier_id = ${map.key.supplierId})}">
+											<span th:id="${map.key.supplierId}" class="_1HBLP "></span> <span
+											th:text="${map.key.supplierName}"> <!-- -->
+										</span> <span class="_12dTO"></span>
+										</a> <span class="_2kkyX" th:text="${map.value}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="_1loc3">
+							<button class="_61rqe XLw0c" type="button"
+								aria-label="Click to collapse" id="btnprice"
+								onclick="clickhienthi('btnprice', 'selectprice')">
+								<div class="_1HhXF">
+									<h3 class="_3vvh6">Giá</h3>
+									<svg fill="currentColor" preserveAspectRatio="xMidYMid meet"
+										height="8" width="13" viewBox="0 0 13 8"
+										style="vertical-align: middle">
+										<title>Chevron Up</title>
+										<g>
+											<g stroke="none" stroke-width="1" fill-rule="evenodd"
+											fill="none">
+												<g transform="translate(1.000000, 2.000000)"
+											stroke-width="2" stroke="currentColor">
+													<polyline
+											transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000) "
+											points="8 -2.5 3 2.5 8 7.5"></polyline>
+												</g>
+											</g>
+										</g>
+									</svg>
+								</div>
+							</button>
+							<div class="_1y-cL" id="selectprice">
+								<div class="_25r2q">
+									<div class="_3BYKu">
+										<span class="_1hMyj">₫</span> <input type="number"
+											aria-label="Minimum price" min="100000" id="Minimum_price"
+											name="Minimum price" class="_3yPNI" placeholder="100.000"
+											onkeypress="return event.charCode >= 48">
+									</div>
+									<span class="_2zSyE">-</span>
+									<div class="_3BYKu">
+										<span class="_1hMyj">₫</span> <input type="number"
+											aria-label="Maximum price" min="100000" id="Maximum_price"
+											name="Maximum price" class="_3yPNI" placeholder="3.000.000"
+											onkeypress="return event.charCode >= 48">
+									</div>
+									<a id="btnPrice" onclick="searhByPrice()">
+										<button type="button" class="_3WEcW">
+											<svg fill="currentColor" preserveAspectRatio="xMidYMid meet"
+												height="12" width="8" viewBox="0 0 8 13"
+												style="vertical-align: middle">
+												<title>Chevron Right</title>
+												<g fill="none" stroke="none" stroke-width="1"
+													fill-rule="evenodd">
+													<g transform="translate(-2.000000, 4.000000)"
+													stroke="currentColor" stroke-width="2">
+														<polyline
+													transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000)"
+													points="10.5 5 5.5 6.66133815e-16 0.5 5"></polyline>
+													</g>
+												</g>
+											</svg>
+										</button>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="_1loc3">
+							<button class="_61rqe XLw0c" type="button"
+								aria-label="Click to collapse" id="btnsale"
+								onclick="clickhienthi('btnsale', 'selectsale')">
+								<div class="_1HhXF">
+									<h3 class="_3vvh6">Sales</h3>
+									<svg fill="currentColor" preserveAspectRatio="xMidYMid meet"
+										height="8" width="13" viewBox="0 0 13 8"
+										style="vertical-align: middle">
+										<title>Chevron Up</title>
+										<g>
+											<g stroke="none" stroke-width="1" fill-rule="evenodd"
+											fill="none">
+												<g transform="translate(1.000000, 2.000000)"
+											stroke-width="2" stroke="currentColor">
+													<polyline
+											transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000) "
+											points="8 -2.5 3 2.5 8 7.5"></polyline>
+												</g>
+											</g>
+										</g>
+									</svg>
+								</div>
+							</button>
+							<div class="_1y-cL" id="selectsale">
+								<div class="_3kFGv">
+									<div class="_3Iuwi">
+										<a class="_3VE_Q" th:href="@{sale(type = 'NoSale')}"> <span
+											class="_1HBLP" id="NoSale"></span> <span>No sales<!-- -->
+												<span class="_12dTO"></span>
+										</span>
+										</a> <span class="_2kkyX" th:text="${findProductByNoSale.size()}"></span>
+									</div>
+									<div class="_3Iuwi">
+										<a class="_3VE_Q" th:href="@{sale(type = 'LowSale')}"> <span
+											class="_1HBLP" id="LowSale"></span> <span>Low<!-- -->
+												<span class="_12dTO"></span>
+										</span>
+										</a> <span class="_2kkyX" th:text="${findProductByLowSale.size()}"></span>
+									</div>
+									<div class="_3Iuwi">
+										<a class="_3VE_Q" th:href="@{sale(type = 'MediumSale')}">
+											<span class="_1HBLP" id="MediumSale"></span> <span>Medium<!-- -->
+												<span class="_12dTO"></span>
+										</span>
+										</a> <span class="_2kkyX"
+											th:text="${findProductByMediumSale.size()}"></span>
+									</div>
+									<div class="_3Iuwi">
+										<a class="_3VE_Q" th:href="@{sale(type = 'HighSale')}"> <span
+											class="_1HBLP" id="HighSale"></span> <span>High<!-- -->
+												<span class="_12dTO"></span>
+										</span>
+										</a> <span class="_2kkyX"
+											th:text="${findProductByHighSale.size()}"></span>
+									</div>
+									<div class="_3Iuwi">
+										<a class="_3VE_Q" th:href="@{sale(type = 'TopSale')}"> <span
+											class="_1HBLP" id="TopSale"></span> <span>Top Sellers<!-- -->
+												<span class="_12dTO"></span>
+										</span>
+										</a> <span class="_2kkyX" th:text="${findProductByTopSale.size()}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="_1loc3">
+							<button class="_61rqe XLw0c" type="button"
+								aria-label="Click to collapse" id="btndate"
+								onclick="clickhienthi('btndate', 'selectdate')">
+								<div class="_1HhXF">
+									<h3 class="_3vvh6">Date Added</h3>
+									<svg fill="currentColor" preserveAspectRatio="xMidYMid meet"
+										height="8" width="13" viewBox="0 0 13 8"
+										style="vertical-align: middle">
+										<title>Chevron Up</title>
+										<g>
+											<g stroke="none" stroke-width="1" fill-rule="evenodd"
+											fill="none">
+												<g transform="translate(1.000000, 2.000000)"
+											stroke-width="2" stroke="currentColor">
+													<polyline
+											transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000) "
+											points="8 -2.5 3 2.5 8 7.5"></polyline>
+												</g>
+											</g>
+										</g>
+									</svg>
+								</div>
+							</button>
+							<div class="_1y-cL" id="selectdate">
+								<div class="_2l-TL">
+									<div class="_3Rn0u">
+										<a th:href="@{date(type='any')}"> <input type="radio"
+											value="" class="_1BYx5" name="date" checked="" id="any">
+											<span>Any date</span>
+										</a> <span class="_3RQES" th:text="${productsAll.size()}"></span>
+									</div>
+									<div class="_3Rn0u">
+										<a th:href="@{date(type='year')}"> <input type="radio"
+											value="this-year" class="_1BYx5" name="date" id="year">
+											<span>In the last year</span>
+										</a> <span class="_3RQES" th:text="${findByYear.size()}"></span>
+									</div>
+									<div class="_3Rn0u">
+										<a th:href="@{date(type='month')}"> <input type="radio"
+											value="this-month" class="_1BYx5" name="date" id="month">
+											<span>In the last month</span>
+										</a> <span class="_3RQES" th:text="${findByMonth.size()}"></span>
+									</div>
+									<div class="_3Rn0u">
+										<a th:href="@{date(type='week')}"> <input type="radio"
+											value="this-week" class="_1BYx5" name="date" id="week">
+											<span>In the last week</span>
+										</a> <span class="_3RQES" th:text=${findByWeek.size()}></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="_1o7LM">
+				<div class="m0T0C">
+					<div class="_47ahp" data-test-selector="search-results">
+						<ul class="_2tY3C" data-test-selector="item-cards-layout-grid">
+							<li class="_1cn3x " th:each="map: ${mapProduct}"><span
+								role="group">
+									<div class="_2sT86 _1fLGj">
+										<article class="_3Oe1A">
+											<section class="_25Upe">
+												<section class="">
+													<div class="_3XNMI">
+														<a href="#" th:aria-label="${map.key.productName}">
+															<div class="_2_3rp "
+																style="padding-top: 50.847457627118644%">
+																<div style="">
+																	<img class="_1xvs1" th:src="${map.key.image}"
+																		th:title="${map.key.productName}" style="left: 0%;">
+																</div>
+															</div>
+														</a>
+													</div>
+													<section class="_1SQpT">
+														<a href="#" class="KFSGT" role="toolbar"
+															th:title="${map.key.productName}"></a>
+													</section>
+												</section>
+											</section>
+											<section class="hypZf">
+												<div class="_2DGi-">
+													<div class="vfsyA">
+														<div class="_25ygu">
+															<h3 class="_2WWZB">
+																<a href="#" class="_2Pk9X" tabindex="0"> <span
+																	th:text="${map.key.productName}"></span>
+																</a>
+															</h3>
+															<!-- <div class="JHf2a">
+																<i> by </i>
+																<a class="R8zaM" href="#">ZEMEZ</a>
+															</div> -->
+														</div>
+													</div>
+													<div class="Jhd4X">
+														<div class="XvxbR">
+															<div class="_2D2lC">
+																<div class="-DeRq">
+																	<span th:text="${map.key.price}"></span>
+																</div>
+															</div>
+															<div class="GBZ1M"></div>
+															<div class="_2xqFO">
+																<div class="_3QV9M">
+																	<span th:text="${map.value}"></span> 
+																</div>
+															</div>
+															<div class="_3PpSK">
+																<span role="button" aria-label="Show more" class="nrkj-">Show
+																	more</span>
+															</div>
+														</div>
+														<div class="_2bSMY">
+															<div class="_31alT">
+																<a class="_3tfm8 _3ePxY" role="button"
+																	th:href="@{detailProduct(product_id=${map.key.productId})}"
+																	target="_blank" rel="noopener noreferrer">Xem chi
+																	tiết</a> <a class="_3tfm8 wrc8W lpgPF" role="button"
+																	href="#" target="_blank" rel="noopener noreferrer"
+																	data-toggle="modal" data-target="#myModalAddCart">
+																	<svg fill="currentColor"
+																		preserveAspectRatio="xMidYMid meet" height="1em"
+																		width="1em" viewBox="0 0 16 16"
+																		style="vertical-align: middle">
+																		<title>Thêm vào giỏ hàng</title>
+																		<g>
+																			<path
+																			d="M 0.009 1.349 C 0.009 1.753 0.347 2.086 0.765 2.086 C 0.765 2.086 0.766 2.086 0.767 2.086 L 0.767 2.09 L 2.289 2.09 L 5.029 7.698 L 4.001 9.507 C 3.88 9.714 3.812 9.958 3.812 10.217 C 3.812 11.028 4.496 11.694 5.335 11.694 L 14.469 11.694 L 14.469 11.694 C 14.886 11.693 15.227 11.36 15.227 10.957 C 15.227 10.552 14.886 10.221 14.469 10.219 L 14.469 10.217 L 5.653 10.217 C 5.547 10.217 5.463 10.135 5.463 10.031 L 5.487 9.943 L 6.171 8.738 L 11.842 8.738 C 12.415 8.738 12.917 8.436 13.175 7.978 L 15.901 3.183 C 15.96 3.08 15.991 2.954 15.991 2.828 C 15.991 2.422 15.65 2.09 15.23 2.09 L 3.972 2.09 L 3.481 1.077 L 3.466 1.043 C 3.343 0.79 3.084 0.612 2.778 0.612 C 2.777 0.612 0.765 0.612 0.765 0.612 C 0.347 0.612 0.009 0.943 0.009 1.349 Z M 3.819 13.911 C 3.819 14.724 4.496 15.389 5.335 15.389 C 6.171 15.389 6.857 14.724 6.857 13.911 C 6.857 13.097 6.171 12.434 5.335 12.434 C 4.496 12.434 3.819 13.097 3.819 13.911 Z M 11.431 13.911 C 11.431 14.724 12.11 15.389 12.946 15.389 C 13.784 15.389 14.469 14.724 14.469 13.911 C 14.469 13.097 13.784 12.434 12.946 12.434 C 12.11 12.434 11.431 13.097 11.431 13.911 Z"></path>
+																		</g>
+																	</svg>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</section>
+										</article>
+									</div>
+							</span>
+								<div class="modal fade" id="myModalAddCart">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+
+											<!-- Modal Header -->
+											<div class="e-modal__header h-text-align-center">
+												<h2 class="t-heading -size-m">Giỏ Hàng</h2>
+
+											</div>
+
+											<!-- Modal body -->
+											<div class="e-modal__section -background-mid">
+												<div class="cart-entry-summary__thumbnail">
+													<img width="80" height="80"
+														alt="Earthyellow - Responsive Ecommerce HTML5 Template"
+														src="#">
+												</div>
+												<div class="cart-entry-summary__core-info">
+													<h5 class="t-heading -size-xxs"></h5>
+													<p class="t-body -size-m" th:text="${map.key.productName}"></p>
+												</div>
+
+												<div class="cart-entry-summary__variant-info ">
+													<div
+														class="t-heading -size-l h-mb1 cart-modal__price-group">
+
+														<strong
+															class="js-cart-variant__output-discount-price cart-variant__output-discount-price active t-currency">
+
+														</strong>
+													</div>
+
+													<div class="t-body -size-m">
+														<br> <strong>Support:</strong> <span
+															class="js-cart-variant__output-support"
+															th:text="${map.key.category.categoryName}"> </span><br>
+
+													</div>
+													<strong class="js-cart-variant__output-price  t-currency"
+														th:text="${map.key.price}"> </strong>
+
+												</div>
+
+											</div>
+											<input type="hidden" th:value="${map.key.productId}"
+												id="productid">
+											<!-- Modal footer -->
+											<div class="modal-footer ">
+
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Thoát</button>
+												<a th:id="'btnAddtoCart'+${map.key.productId}"
+													th:onclick="|addToCart(${map.key.productId})|">
+													<button type="button" class="btn btn-secondary">Thêm
+														Vào Giỏ Hàng</button>
+												</a>
+
+											</div>
+											<footer class="e-modal__footer"> </footer>
+
+										</div>
+									</div>
+								</div></li>
+					</div>
+					<nav class="rKk-w" role="navigation">
+						<ul class="_360un">
+							<li class="pIPk0" th:if="${productPage.totalPages > 0}"
+								th:each="pageNumber : ${pageNumbers}"><a class="_200rh"
+								th:href="@{/index(size=${productPage.size}, page=${pageNumber})}"
+								th:text=${pageNumber}
+								th:class="${pageNumber==productPage.number + 1} ? '_24O42 _200rh'"></a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="t-heading -size-m">Đăng nhập</h2>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="" th:action="@{/j_spring_security_check}"
+						method="POST">
+						<div class="form-group">
+							<label for="email">Email</label> <input type="email" name="email"
+								id="email" required placeholder="Email" class="form-control"
+								value="dinhdangkhoa0201@gmail.com" />
+						</div>
+						<div class="form-group">
+							<label for="matkhau">Password</label> <input type="password"
+								name="password" id="password" required placeholder="Password"
+								class="form-control" value="11111111" />
+						</div>
+						<button type="submit" id="btnSubmit" class="btn btn-success">Sign
+							In</button>
+						<div>
+							<a href="#" th:href="@{/sign-up}">Sign up</a>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+	<div th:if="${account!=null}" class="modal fade"
+		id="modalEditKhachHang" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<form id="formEditKhachHang" action="/www/index/khachhang"
+					method="POST" novalidate="novalidate">
+					<!-- Modal header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Thông tin Khách hàng</h4>
+						<button type="button" class="close" data-dismiss="modal">×</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+
+						<div class="form-group">
+							<label for="accountId">Mã Khách hàng</label> <input
+								class="form-control" type="number" name="accountId"
+								id="accountId" placeholder="Mã Khách hàng" readonly=""
+								th:value="${account.accountId}">
+						</div>
+						<div class="form-group">
+							<label for="accountName">Họ và tên</label> <input
+								class="form-control" type="text" name="accountName"
+								id="accountName" placeholder="Họ và tên" disabled=""
+								required="" th:value="${account.accountName}">
+						</div>
+						<div class="form-group">
+							<label for="gender">Giới tính</label>
+							<div id="gender" class="ml-5">
+								<div class="form-check-inline">
+									<label class="form-check-label"> <input type="radio"
+										class="form-check-input" name="gender" id="genderNam"
+										value="Nam" disabled="" required=""
+										th:checked="${account.gender=='Nam'}"> Name
+									</label>
+								</div>
+								<div class="form-check-inline">
+									<label class="form-check-label"> <input type="radio"
+										class="form-check-input" name="gender" id="genderNu"
+										value="Nu" disabled="" required=""
+										th:checked="${account.gender=='Nu'}"> Nữ
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="birthday">Ngày sinh</label> <input
+								class="form-control" type="text" name="birthday"
+								data-date-format="dd/MM/yyyy" id="birthday" disabled=""
+								required="" th:value="${account.birthday}">
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label> <input class="form-control"
+								type="email" name="email" id="accountemail" disabled=""
+								required="" th:value="${account.email}">
+						</div>
+						<div class="form-group">
+							<label for="phone">Số điện thoại</label> <input
+								class="form-control" type="tel" name="phone" id="phone"
+								disabled="" required="" th:value="${account.phone}">
+						</div>
+
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-success" id="btnSua"
+							onclick="disableFalseModal()">Sửa</button>
+						<button type="submit" class="btn btn-success"
+							style="display: none;" id="btnLuu">Lưu</button>
+						<button type="button" class="btn btn-warning"
+							style="display: none;" id="btnHuy" onclick="disableTrueModal()">Huỷ</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">
+							<i class="fa fa-close"></i>Close
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+>>>>>>> vophan
 </body>
 </html>

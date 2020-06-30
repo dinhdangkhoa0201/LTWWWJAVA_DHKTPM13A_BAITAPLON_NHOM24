@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> vophan
 //admin/index.html
 // function openNav() {
 //   document.getElementById('btn-menunav').onclick = closeNav;
@@ -63,6 +66,7 @@ var i;
 //     $('#content').load('banhang.html');
 //   });
 // });
+<<<<<<< HEAD
 =======
    function addToCart(a){
     var x = document.getElementById(a);
@@ -189,3 +193,5 @@ function choiseclick(a, m, n){
 			z.setAttribute('href', '/price?pricemin=' + x +'&pricemax='+ y);
 		}
 >>>>>>> ledinhhuy
+=======
+>>>>>>> vophan

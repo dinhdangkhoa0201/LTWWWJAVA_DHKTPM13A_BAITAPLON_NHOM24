@@ -1,7 +1,6 @@
 package fit.se.main.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,12 +10,6 @@ import fit.se.main.model.Product;
 import fit.se.main.model.Supplier;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
-	List<Product> findByCategory(Category category);
-List<Product> findBySupplier(Supplier supplier);
-	
-	@Query(value = "select * from product where price >= ?1 and price <= ?2", nativeQuery = true)
-	List<Product> findByPrice(double pricemin, double pricemax);
-	
 	@Query(value = "select count(product_id) from product where category_id = ?1 group by category_id", nativeQuery = true)
 	Integer quanityByCategory(int category_id);
 	
@@ -26,6 +19,28 @@ List<Product> findBySupplier(Supplier supplier);
 	@Query(value = "select sum(quantity) from sale_order_detail where product_id = ?1 group by product_id", nativeQuery = true)
 	Integer quanityByProduct(int product_id);
 	
+	List<Product> findByCategory(Category category);
+<<<<<<< HEAD
+List<Product> findBySupplier(Supplier supplier);
+=======
+	List<Product> findBySupplier(Supplier Supplier);
+>>>>>>> vophan
+	
+	@Query(value = "select * from product where price >= ?1 and price <= ?2", nativeQuery = true)
+	List<Product> findByPrice(double pricemin, double pricemax);
+	
+<<<<<<< HEAD
+	@Query(value = "select count(product_id) from product where category_id = ?1 group by category_id", nativeQuery = true)
+	Integer quanityByCategory(int category_id);
+	
+	@Query(value = "select count(product_id) from product where supplier_id = ?1 group by supplier_id", nativeQuery = true)
+	Integer quanityBySupplier(int supplier_id);
+	
+	@Query(value = "select sum(quantity) from sale_order_detail where product_id = ?1 group by product_id", nativeQuery = true)
+	Integer quanityByProduct(int product_id);
+	
+=======
+>>>>>>> vophan
 	@Query(value = "select product_id from dbo.product where product_id not in(select product_id from dbo.sale_order_detail)", nativeQuery = true)
 	List<Integer> findByNoSale();
 	
@@ -41,6 +56,7 @@ List<Product> findBySupplier(Supplier supplier);
 	@Query(value = "select product_id from sale_order_detail s group by s.product_id having sum(quantity) >15", nativeQuery = true)
 	List<Integer> findByTopSale();
 	
+<<<<<<< HEAD
 	@Query(value = "select * from dbo.product where YEAR(modifiedDate) = YEAR(GETDATE())- 1 or  YEAR(modifiedDate) = YEAR(GETDATE())", nativeQuery = true)
 	List<Product> findByYear();
 	
@@ -48,5 +64,14 @@ List<Product> findBySupplier(Supplier supplier);
 	List<Product> findByMonth();
 	
 	@Query(value = "select * from dbo.product where datepart(WEEK,modifiedDate) = datepart(WEEK,GETDATE())- 1 or datepart(WEEK,modifiedDate) = datepart(WEEK,GETDATE())", nativeQuery = true)
+=======
+	@Query(value = "select * from dbo.product where YEAR(modified_date) = YEAR(GETDATE())- 1 or  YEAR(modified_date) = YEAR(GETDATE())", nativeQuery = true)
+	List<Product> findByYear();
+	
+	@Query(value = "select * from dbo.product where MONTH(modified_date) = MONTH(GETDATE())- 1 or MONTH(modified_date) = MONTH(GETDATE())", nativeQuery = true)
+	List<Product> findByMonth();
+	
+	@Query(value = "select * from dbo.product where datepart(WEEK,modified_date) = datepart(WEEK,GETDATE())- 1 or datepart(WEEK,modified_date) = datepart(WEEK,GETDATE())", nativeQuery = true)
+>>>>>>> vophan
 	List<Product> findByWeek();
 }

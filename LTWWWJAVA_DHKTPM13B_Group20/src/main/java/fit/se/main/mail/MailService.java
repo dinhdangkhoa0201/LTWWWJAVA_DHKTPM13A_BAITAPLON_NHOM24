@@ -44,4 +44,23 @@ public class MailService {
 		sender.send(message);
 		logger.info("Success send mail");
 	}
+	
+	public void sendMailOrder(Mail mail) throws MessagingException {
+		System.out.println("- Mail : " + mail);
+		MimeMessage message = sender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
+				StandardCharsets.UTF_8.name());
+
+		Context context = new Context();
+		context.setVariables(mail.getModel());
+		String html = templateEngine.process("email/verify-code-order", context);
+
+		helper.setFrom(mail.getFrom());
+		helper.setTo(mail.getTo());
+		helper.setSubject(mail.getSubject());
+		helper.setText(html, true);
+
+		sender.send(message);
+		logger.info("Success send mail");
+	}
 }
