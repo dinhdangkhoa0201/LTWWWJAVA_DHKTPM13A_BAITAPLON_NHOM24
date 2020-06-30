@@ -76,10 +76,11 @@ public class IndexController {
 				Account account = accountService.createAdmin(createDTO);
 				System.out.println("Admin : " + account);
 			}
-//			init();
+			init();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return "sign-in";
 	}
 
@@ -117,7 +118,7 @@ public class IndexController {
 	@Transactional
 	public void init() {		
 		try {
-			AccountCreateDTO accountMember = new AccountCreateDTO("ddk", "0937602105", "khoacyruss@gmail.com", "11111111", "11111111");
+			AccountCreateDTO accountMember = new AccountCreateDTO("ddk", "09376021052", "khoacyruss@gmail.com", "11111111", "11111111");
 			Account account = null;
 			if(!accountService.findByEmail(accountMember.getEmail()).isPresent()) {
 				account = accountService.createMember(accountMember);

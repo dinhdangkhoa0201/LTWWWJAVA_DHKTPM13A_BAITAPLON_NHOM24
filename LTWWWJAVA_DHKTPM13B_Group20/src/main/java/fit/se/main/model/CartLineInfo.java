@@ -10,7 +10,7 @@ public class CartLineInfo {
 	private double totalInCat;
 	private Supplier supplier;
 	private Category category;
-	private byte[] bImage;
+	private String bImage;
 	public int getIproductid() {
 		return iproductid;
 	}
@@ -41,15 +41,15 @@ public class CartLineInfo {
 	public void setTotalInCat(double totalInCat) {
 		this.totalInCat = totalInCat;
 	}
-	public byte[] getbImage() {
+	public String getbImage() {
 		return bImage;
 	}
-	public void setbImage(byte[] bImage) {
+	public void setbImage(String bImage) {
 		this.bImage = bImage;
 	}
 	
 	public CartLineInfo(int iproductid, String strProductName, double dbSellingPrice, int iQuantityinCart,
-			double totalInCat, Supplier supplier, Category category, byte[] bImage) {
+			double totalInCat, Supplier supplier, Category category, String bImage) {
 		super();
 		this.iproductid = iproductid;
 		this.strProductName = strProductName;
@@ -68,7 +68,7 @@ public class CartLineInfo {
 	public String toString() {
 		return "ProductCart [iproductid=" + iproductid + ", strProductName=" + strProductName + ", dbSellingPrice="
 				+ dbSellingPrice + ", iQuantityinCart=" + iQuantityinCart + ", totalInCat=" + totalInCat + ", bImage="
-				+ Arrays.toString(bImage) + "]";
+				+ bImage + "]";
 	}
 	public Supplier getSupplier() {
 		return supplier;

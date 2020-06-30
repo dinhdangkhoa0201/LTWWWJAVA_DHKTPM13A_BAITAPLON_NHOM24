@@ -1,7 +1,9 @@
 package fit.se.main.dto;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class ProductUpdateDTO {
-	private String productId;
+	private int productId;
 	
 	private String productName;
 	
@@ -9,7 +11,7 @@ public class ProductUpdateDTO {
 	
 	private double sellingPrice;
 	
-	private String quantity;
+	private int quantity;
 	
 	private int category;
 	
@@ -19,9 +21,9 @@ public class ProductUpdateDTO {
 	
 	private String note;
 	
-	private String image;
+	private CommonsMultipartFile image;
 
-	public String getProductId() {
+	public int getProductId() {
 		return productId;
 	}
 
@@ -37,7 +39,7 @@ public class ProductUpdateDTO {
 		return sellingPrice;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
@@ -57,11 +59,11 @@ public class ProductUpdateDTO {
 		return note;
 	}
 
-	public String getImage() {
+	public CommonsMultipartFile getImage() {
 		return image;
 	}
 
-	public void setProductId(String productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 
@@ -77,7 +79,7 @@ public class ProductUpdateDTO {
 		this.sellingPrice = sellingPrice;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
@@ -97,8 +99,17 @@ public class ProductUpdateDTO {
 		this.note = note;
 	}
 
-	public void setImage(String image) {
+	public void setImage(CommonsMultipartFile image) {
 		this.image = image;
 	}
+
+	@Override
+	public String toString() {
+		return "ProductUpdateDTO [productId=" + productId + ", productName=" + productName + ", price=" + price
+				+ ", sellingPrice=" + sellingPrice + ", quantity=" + quantity + ", category=" + category + ", supplier="
+				+ supplier + ", unitmeasure=" + unitmeasure + ", note=" + note + ", image=" + image + "]";
+	}
+	
+	
 	
 }

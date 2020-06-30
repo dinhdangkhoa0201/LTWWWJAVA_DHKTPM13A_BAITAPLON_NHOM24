@@ -1,28 +1,43 @@
 package fit.se.main.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.Servlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import fit.se.main.dto.AccountCreateDTO;
 import fit.se.main.dto.ProductCreateDTO;
+import fit.se.main.dto.ProductUpdateDTO;
 import fit.se.main.dto.SaleOrderHeaderCreateDTO;
 import fit.se.main.model.Account;
 import fit.se.main.model.Category;
@@ -66,6 +81,9 @@ public class AdminController {
 	@Autowired
 	private SaleOrderDetailService saleOrderDetailService;
 	
+	@Autowired
+	private HttpServletRequest request;
+	
 /* - Trang chủ Admin */
 	@GetMapping("/index")
 	public String dashboard(Model model) {
@@ -99,7 +117,7 @@ public class AdminController {
 		}
 		try {
 			Account temp = accountService.findById(account.getAccountId());
-
+			
 			temp.setAccountName(account.getAccountName());
 			temp.setBirthday(account.getBirthday());
 			temp.setGender(account.getGender());
@@ -168,7 +186,6 @@ public class AdminController {
 	public String thongTinSanPham(Model model, @RequestParam(name = "productId") int productId) {
 		Product product = productService.findById(productId);
 		if(product != null) {
-			System.out.println("- Thong tin san pham : " + product);
 			
 			List<Category> categories = categoryService.findAll();
 			List<UnitMeasure> unitMeasures = unitMeasureService.findAll();
@@ -177,6 +194,7 @@ public class AdminController {
 			int id = product.getProductId();
 			
 			model.addAttribute("product", product);
+			model.addAttribute("productUpdateDTO", new ProductUpdateDTO());
 			model.addAttribute("productId", id);
 			model.addAttribute("productImage", new ProductImage());
 			model.addAttribute("categories", categories);
@@ -186,7 +204,6 @@ public class AdminController {
 			model.addAttribute("suppliers", suppliers);
 			model.addAttribute("supplier", new Supplier(id));
 			return "/admin/thongtinsanpham";
-			
 		}
 		return "/admin/hanghoa";
 	}
@@ -307,11 +324,9 @@ public class AdminController {
 		categoryService.deleteById(categoryId);
 		return "redirect:/admin/themsanpham#modalDanhMucSanPhamTable";
 	}
-
 	/*
 	 * 	Don vi tinh
 	 */
-
 	@PostMapping("/themsanpham/themDonViTinhLuu")
 	public String themSanPham_themDonViTinhLuu(Model model, @ModelAttribute(name = "unitmeasure") UnitMeasure unitMeasure, BindingResult result) {
 		if(result.hasErrors()) {
@@ -344,11 +359,9 @@ public class AdminController {
 		unitMeasureService.deleteById(unitId);
 		return "redirect:/admin/themsanpham#modalDonViTinhTable";
 	}
-
 	/*
 	 * 	Nha san xuat
 	 */
-
 	@PostMapping("/themsanpham/themNhaSanXuatLuu")
 	public String themSanPham_themSanPhamLuu(Model model, @ModelAttribute(name = "supplier") Supplier supplier, BindingResult result) {
 		if(result.hasErrors()) {
@@ -512,30 +525,48 @@ public class AdminController {
 
 /* - Cập nhật sản phẩm - */
 	@PostMapping("/sanpham/capNhatSanPham")
-	public String capNhatSanPham(Model model, @ModelAttribute(name = "product") Product product, BindingResult result) {
+	public String capNhatSanPham(Model model, @ModelAttribute(name = "productUpdateDTO") ProductUpdateDTO productUpdateDTO, BindingResult result) {
 		if(result.hasErrors()) {
 			System.out.println("Lỗi cap nhat San pham ");
+			System.out.println(result);
 		}
-		System.out.println("Cap nhat Product : " + product);
-		System.out.println("Categpry : " + product.getCategory());
-		System.out.println("UnitMeasure : " + product.getUnitMeasure());
-		System.out.println("Supplier : " + product.getSupplier());
-		Product temp = productService.findById(product.getProductId());
-		temp.setProductName(product.getProductName());
-		temp.setPrice(product.getPrice());
-		temp.setSellingPrice(product.getSellingPrice());
-		temp.setQuantity(product.getQuantity());
-		temp.setCategory(product.getCategory());
-		temp.setSupplier(product.getSupplier());
-		temp.setUnitMeasure(product.getUnitMeasure());
-		temp.setNote(product.getNote());
-		temp.setImage(product.getImage());
-		temp.setModifiedDate(LocalDateTime.now());
 		
+		System.out.println("Cap nhat Product : " + productUpdateDTO);
+		System.out.println("Categpry : " + productUpdateDTO.getCategory());
+		System.out.println("UnitMeasure : " + productUpdateDTO.getUnitmeasure());
+		System.out.println("Supplier : " + productUpdateDTO.getSupplier());
+		Product temp = productService.findById(productUpdateDTO.getProductId());
+		
+		Category category = categoryService.findById(productUpdateDTO.getCategory());
+		UnitMeasure unitMeasure = unitMeasureService.findById(productUpdateDTO.getUnitmeasure());
+		Supplier supplier = supplierService.findById(productUpdateDTO.getSupplier());
+		
+		temp.setProductName(productUpdateDTO.getProductName());
+		temp.setPrice(productUpdateDTO.getPrice());
+		temp.setSellingPrice(productUpdateDTO.getSellingPrice());
+		temp.setQuantity(productUpdateDTO.getQuantity());
+		temp.setCategory(category);
+		temp.setSupplier(supplier);
+		temp.setUnitMeasure(unitMeasure);
+		temp.setNote(productUpdateDTO.getNote());
+		temp.setModifiedDate(LocalDateTime.now());
 		productService.updateProduct(temp);
-		return "redirect:/admin/sanpham/thongtinsanpham?productId=" + product.getProductId();
+		return "redirect:/admin/sanpham/thongtinsanpham?productId=" + productUpdateDTO.getProductId();
 	}
-
+	
+	@PostMapping("/sanpham/thongtinsanpham/capNhatAnhSanPham")
+	public String capNhatAnhSanPham(Model model, @ModelAttribute(name = "productUpdateDTO") ProductUpdateDTO productUpdateDTO, BindingResult result) {
+		if(result.hasErrors()) {
+			System.out.println(result);
+		}
+		Product product = productService.findById(productUpdateDTO.getProductId());
+		if(product != null) {
+			product.setImage(Base64.getEncoder().encodeToString(productUpdateDTO.getImage().getBytes()));
+			productService.updateProduct(product);
+		}
+		return "redirect:/admin/sanpham/thongtinsanpham?productId=" + productUpdateDTO.getProductId();
+	}
+	
 	@GetMapping("/banhang")
 	public String banHang(Model model) {
 		return "/admin/banhang";

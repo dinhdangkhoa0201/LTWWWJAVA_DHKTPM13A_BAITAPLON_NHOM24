@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="left-sidebar" class="left-sidebar bg-dark">
+    <nav class="navbar">
+      <div>
+        <img class="nav-brand" src="../../static/image/logo.jpg" width="50px" alt="">
+      </div>
+    </nav>
+
+    <ul class="list-group list-group-flush">
+      <li class="menu-title">Menu</li>
+      <li id="trangchu" class="list-group-item bg-dark">
+        <div>
+          <a th:href="@{/admin/index}" class="nav-link"> <i class="fa fa-tachometer fa-lg"></i> <span>Trang chủ</span>
+          </a>
+        </div>
+      </li>
+      <li id="banhang" class="list-group-item bg-dark">
+        <div>
+          <a href="#" id="linkBanHang" class="nav-link"> <i class="fa fa-clipboard fa-lg"></i> <span>Bán hàng</span>
+          </a>
+        </div>
+      </li>
+      <li id="hoadon" class="list-group-item bg-dark">
+        <div>
+          <a th:href="@{/admin/hoadon}" id="linkBanHang" class="nav-link"> <i class="fa fa-clipboard fa-lg"></i>
+            <span>Đơn hàng</span>
+          </a>
+        </div>
+      </li>
+      <li id="khohang" class="list-group-item bg-dark">
+        <div>
+          <a href="#" class="nav-link" data-toggle="collapse" data-target="#collapseKhoHang" aria-expanded="false"> <i
+              class="fa fa-shopping-cart fa-lg"></i>
+            <span>Kho hàng</span>
+          </a>
+        </div>
+        <div id="collapseKhoHang" class="collapse" data-parent="#left-sidebar">
+          <ul>
+            <li><a href="" class="nav-link"><span>Nhập kho -
+                  Mua hàng</span></a></li>
+            <li><a href="" class="nav-link"><span>Xuất kho -
+                  Bán hàng</span></a></li>
+            <li><a href="" class="nav-link"><span>Báo cáo
+                  Nhập - Xuất - Tồn</span></a></li>
+            <li><a href="" class="nav-link"><span>Sổ chi
+                  tiết Hàng hoá</span></a></li>
+            <li><a href="" class="nav-link"><span>Sổ chi
+                  tiết mua hàng</span></a></li>
+            <li><a href="" class="nav-link"><span>Sổ chi
+                  tiết bán hàng</span></a></li>
+          </ul>
+        </div>
+      </li>
+      <li id="thuchi" class="list-group-item bg-dark">
+        <div>
+          <a href="#" class="nav-link"> <i class="fa fa-dollar fa-lg"></i>
+            <span>Thu chi</span>
+          </a>
+        </div>
+      </li>
+      <li id="baocao-danhmuc" class="list-group-item bg-dark">
+        <div>
+          <a href="#" class="nav-link"> <i class="fa fa-cog"></i> <span>Báo
+              cáo - Thống kê</span>
+          </a>
+        </div>
+      </li>
+      <li id="danhmuc" class="list-group-item bg-dark">
+        <div>
+          <a href="#" class="nav-link" data-toggle="collapse" data-target="#collapseDanhMuc" aria-expanded="false"> <i
+              class="fa fa-clone fa-lg"></i> <span>Danh
+              mục</span>
+          </a>
+        </div>
+        <div id="collapseDanhMuc" class="collapse" data-parent="#left-sidebar">
+          <ul>
+            <li>
+              <a th:href="@{/admin/khachhang}" id="linkDMKhachHang" class="nav-link">
+                <span>DM Khách hàng</span>
+              </a>
+            </li>
+            <li><a th:href="@{#}" href="#" id="linkDMNhomHangHoa" class="nav-link"><span>DM Nhóm hàng
+									hoá</span></a></li>
+						<li><a th:href="@{/admin/hanghoa}" href="#" id="linkDMHangHoa" class="nav-link"><span>DM Hàng
+									hoá</span></a></li>
+						<li><a th:href="@{/admin/nhacungcap}" href="#" id="linkDMNhaCungCap" class="nav-link"><span>DM Nhà cung cấp</span></a></li>
+					</ul>
+				</div>
+			</li>
+			<li id="thietlap" class="list-group-item bg-dark">
+				<div>
+					<a href="#" class="nav-link"> <i class="fa fa-cog"></i> <span>Thiết lập</span>
+					</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>

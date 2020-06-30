@@ -3,6 +3,7 @@ package fit.se.main.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -74,8 +75,8 @@ public class Product implements Serializable{
 	private String note;
 
 	@Lob
-	@Column(name = "image", columnDefinition = "image")
-	private byte[] image;
+	@Column(name = "image", columnDefinition = "varchar(MAX)")
+	private String image;
 
 
 	private boolean enable;
@@ -213,11 +214,11 @@ public class Product implements Serializable{
 		return note;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -237,7 +238,7 @@ public class Product implements Serializable{
 	public String toString() {
 		return "{productId: " + productId + ", productName: \"" + productName + "\", price: " + price
 				+ ", sellingPrice: " + sellingPrice + ", quantity: " + quantity + ", note: \""
-				+ note + "\", image: \"" + Arrays.toString(image) + "\", enable: \"" + enable 
+				+ note + "\", image: \"" + image + "\", enable: \"" + enable 
 				+ "\", unitMeasure: \"" + unitMeasure + "\"}]";
 	}
 
