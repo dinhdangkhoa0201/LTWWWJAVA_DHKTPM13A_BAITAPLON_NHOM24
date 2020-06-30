@@ -37,7 +37,7 @@ public class SearchController {
 	
 	@Autowired
 	private SupplierService supplierService;
-	@GetMapping("/listProduct")
+	@GetMapping("/index")
 	public String loadDanhSachSanPham(Model model) {
 		List<Product> productsALL = productService.findAll();
 		List<Product> products = productService.findAll();
@@ -100,7 +100,7 @@ public class SearchController {
 		model.addAttribute("findByYear", findByYear);
 		model.addAttribute("findByMonth", findByMonth);
 		model.addAttribute("findByWeek", findByWeek);
-		return "listProduct";
+		return "index";
 	}
 	
 	public static String getCurrentUrl(HttpServletRequest request) throws URISyntaxException, MalformedURLException{
@@ -178,7 +178,7 @@ public class SearchController {
 		model.addAttribute("findByYear", findByYear);
 		model.addAttribute("findByMonth", findByMonth);
 		model.addAttribute("findByWeek", findByWeek);
-		return "listProduct";
+		return "index";
 	}
 	@GetMapping("/supplier")
 	public String loadDanhSachSanPhamBySupplier(Model model, @RequestParam(name = "supplier_id")int supplier_id) {
@@ -245,7 +245,7 @@ public class SearchController {
 		model.addAttribute("findByYear", findByYear);
 		model.addAttribute("findByMonth", findByMonth);
 		model.addAttribute("findByWeek", findByWeek);
-		return "listProduct";
+		return "index";
 	}
 	
 	@GetMapping("/price")
@@ -310,7 +310,7 @@ public class SearchController {
 		model.addAttribute("findByYear", findByYear);
 		model.addAttribute("findByMonth", findByMonth);
 		model.addAttribute("findByWeek", findByWeek);
-		return "listProduct";
+		return "index";
 	}
 	@GetMapping("/sale")
 	public String loadDanhSachSanPhamBySale(Model model, @RequestParam(name = "type")String type) {
@@ -402,7 +402,7 @@ public class SearchController {
 		model.addAttribute("findByYear", findByYear);
 		model.addAttribute("findByMonth", findByMonth);
 		model.addAttribute("findByWeek", findByWeek);
-		return "listProduct";
+		return "index";
 	}
 	@GetMapping("/date")
 	public String loadDanhSachSanPhamByDate(Model model, @RequestParam(name = "type")String type) {
@@ -479,6 +479,7 @@ public class SearchController {
 		model.addAttribute("findByYear", findByYear);
 		model.addAttribute("findByMonth", findByMonth);
 		model.addAttribute("findByWeek", findByWeek);
-		return "listProduct";
+		return "index";
 	}
+	
 }

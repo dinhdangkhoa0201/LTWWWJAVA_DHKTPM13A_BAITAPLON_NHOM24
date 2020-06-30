@@ -2,326 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Chi Tiết Sản Phẩm</title>
+<title>Shopping Cart</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-	crossorigin="anonymous">
-<link href="../css/sb-admin-2.min.css" rel="stylesheet">
-<link th:href="@{/resources/css/detailProduct.css}" rel="stylesheet"
-	href="../../../resources/css/detailProduct.css">
-<link th:href="@{/resources/css/search.css}" rel="stylesheet"
-	href="../../../resources/css/search.css">
-<script type="text/javascript"
-	th:src="@{/resources/js/detailProduct.js}"></script>
-<script type="text/javascript"
-	th:src="@{/resources/js/detailProduct.js}"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link  th:href="@{/resources/css/sb-admin-2.min.css}" rel="stylesheet">
 
 
-<style>
-.jFkAwY {
-	width: 1270px;
-	padding-left: 15px;
-	padding-right: 15px;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-html {
-	font-family: Roboto, Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	background-color: rgb(239, 239, 239);
-}
-
-html {
-	line-height: 1.15;
-	text-size-adjust: 100%;
-}
-
-*, ::before, ::after {
-	box-sizing: border-box;
-}
-
-.zCLHs .cart {
-	display: flex;
-	flex-wrap: nowrap;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-	padding-top: 20px;
-	margin-bottom: 100px;
-}
-
-.zCLHs .cart-inner {
-	width: 950px;
-}
-
-.McNPu .cart-products__title {
-	color: rgb(51, 51, 51);
-	font-size: 18px;
-	text-transform: uppercase;
-	font-weight: 400;
-	margin: 0px 0px 12px;
-}
-
-h2 {
-	display: block;
-	font-size: 1.5em;
-	margin-block-start: 0.83em;
-	margin-block-end: 0.83em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	font-weight: bold;
-}
-
-.McNPu .cart-products__count {
-	font-size: 14px;
-	text-transform: none;
-	font-weight: 300;
-}
-
-.McNPu .cart-products__title {
-	color: rgb(51, 51, 51);
-	font-size: 18px;
-	text-transform: uppercase;
-	font-weight: 400;
-	margin: 0px 0px 12px;
-}
-
-h2 {
-	font-size: 1.5em;
-	font-weight: bold;
-}
-
-.McNPu .cart-products-inner {
-	background: rgb(255, 255, 255);
-	margin: 0px;
-	border-radius: 4px;
-}
-
-.McNPu .cart-products__products {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
-}
-
-ul {
-	display: block;
-	list-style-type: disc;
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	padding-inline-start: 40px;
-}
-
-.McNPu .cart-products__product {
-	padding: 20px;
-}
-
-li {
-	display: list-item;
-	text-align: -webkit-match-parent;
-}
-
-.McNPu .cart-products__inner {
-	display: flex;
-	flex-wrap: nowrap;
-}
-
-a:-webkit-any-link {
-	color: -webkit-link;
-	cursor: pointer;
-	text-decoration: underline;
-}
-
-a {
-	background-color: transparent;
-}
-
-a {
-	color: rgb(0, 127, 240);
-	text-decoration: none;
-}
-
-.McNPu .cart-products__img {
-	width: 130px;
-	margin-right: 20px;
-}
-
-img {
-	border-style: none;
-}
-
-img {
-	max-width: 100%;
-}
-
-.McNPu .cart-products__content {
-	display: flex;
-	flex-wrap: nowrap;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-	width: calc(100% - 130px);
-}
-
-.McNPu .cart-products__desc {
-	width: 60%;
-}
-
-.McNPu .cart-products__name {
-	color: rgb(36, 36, 36);
-	font-weight: 400;
-	display: inline-block;
-	margin-bottom: 10px;
-}
-
-.McNPu .cart-products__seller {
-	font-size: 13px;
-	display: block;
-}
-
-.McNPu .cart-products__actions {
-	margin: 15px 0px 0px;
-}
-
-p {
-	display: block;
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-}
-
-.McNPu .cart-products__del {
-	color: rgb(27, 168, 255);
-	display: inline-block;
-	margin-right: 20px;
-	font-size: 13px;
-	cursor: pointer;
-}
-
-.McNPu .cart-products__details {
-	display: flex;
-	flex-wrap: nowrap;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-}
-
-.McNPu .cart-products__pricess {
-	text-align: right;
-	margin-right: 25px;
-}
-
-.McNPu .cart-products__real-prices {
-	font-size: 16px;
-	margin-bottom: 5px;
-	font-weight: 500;
-	display: inline-block;
-}
-
-.zCLHs .cart-total-prices {
-	width: calc(100% - 965px);
-	margin-top: 31px;
-}
-
-.zCLHs .cart-total-prices__inner {
-	position: sticky;
-	top: 30px;
-}
-
-.ENgjL .prices {
-	background: rgb(255, 255, 255);
-	border-radius: 4px;
-}
-
-.ENgjL .prices__items {
-	list-style: none;
-	margin: 0px;
-	padding: 17px 20px;
-	border-bottom: 1px solid rgb(244, 244, 244);
-}
-
-.ENgjL .prices__item {
-	display: flex;
-	flex-wrap: nowrap;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-	margin-bottom: 10px;
-}
-
-.ENgjL .prices__text {
-	font-weight: 300;
-	color: rgb(51, 51, 51);
-	display: inline-block;
-}
-
-.ENgjL .prices__total {
-
-	flex-wrap: nowrap;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-	padding: 17px 20px;
-	margin: 0px;
-}
-
-.ENgjL .prices__text {
-	font-weight: 300;
-	color: rgb(51, 51, 51);
-	display: inline-block;
-}
+   	<link th:href="@{/resources/css/shoppingcart.css}" rel="stylesheet" href="../../../resources/css/shoppingcart.css">
+	<script type="text/javascript" th:src="@{/resources/js/detailProduct.js}"></script>
 
 
 
-.ENgjL .prices__value--final i {
-	font-weight: 300;
-	font-style: normal;
-	display: block;
-	font-size: 10px;
-	color: rgb(51, 51, 51);
-	margin-top: 3px;
-	outline: none;
-	border:0;
-}
 
-.ENgjL .prices__value--final {
-	color: rgb(254, 56, 52);
-	font-size: 22px;
-	font-weight: 400;
-	text-align: center;
-	outline: none;
-	border:0;	
-}
-
-.zCLHs .cart__submit {
-	color: rgb(255, 255, 255);
-	text-align: center;
-	width: 100%;
-	display: block;
-	cursor: pointer;
-	background: rgb(255, 66, 78);
-	padding: 13px 10px;
-	border-radius: 4px;
-	border-width: initial;
-	border-style: none;
-	border-color: initial;
-	border-image: initial;
-	margin: 15px 0px;
-}
-</style>
-
-
-<script>  
-       
 
       
     </script>
@@ -331,68 +28,75 @@ p {
 <body>
 
 	<div class="header">
-
-		<nav
-			class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-			<!-- Topbar Search -->
-			<a href=""> <img src="../images/logo.png"></a>
-			<form
-				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-				<div class="input-group">
-					<input type="text" class="form-control bg-light border-0 small"
-						placeholder="Nhập từ khóa bạn muốn tìm kiếm">
-					<button class="btn btn-primary" type="button">
-						<i class="fas fa-search fa-sm"></i>
-					</button>
-				</div>
-			</form>
-
-			<!-- Topbar Navbar -->
-			<ul class="navbar-nav ml-auto">
-
-				<!-- Shopping Cart -->
-				<li class="nav-item dropdown no-arrow mx-1"><a
-					class="nav-link dropdown-toggle" href="#" role="button"
-					data-toggle="dropdown"> <i class="fa fa-cart-plus "
-						aria-hidden="true" style="font-size: 24px"></i> <!-- Counter - Messages -->
-						<span class="badge badge-danger badge-counter" th:text="${myCart.cartLineItem.size()}"></span>
-				</a></li>
-
-				<div class="topbar-divider d-none d-sm-block"></div>
-
-				<!-- Nav Item - User Information -->
-				<li class="nav-item dropdown no-arrow"><a
-					class="nav-link dropdown-toggle" href="#" role="button"
-					data-toggle="dropdown" aria-expanded="false"> <span
-						class="mr-2 d-none d-lg-inline text-gray-600 small">Lê Đình
-							huy</span> <i class="fa fa-user" aria-hidden="true"
-						style="font-size: 24px"></i>
-				</a> <!-- Dropdown - User Information -->
-					<div
-						class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-						a>
-						<a class="dropdown-item" href="#"> <i
-							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông Tin
-						</a> <a class="dropdown-item" href="#"> <i
-							class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Đăng Nhập
-						</a> <a class="dropdown-item" href="#"> <i
-							class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Tạo Tài
-							Khoản
-						</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#" data-toggle="modal"
-							data-target="#logoutModal"> <i
-							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-							Đăng Xuất
-						</a>
-					</div></li>
-
-			</ul>
-
-		</nav>
-		<!-- End of Topbar -->
+  
+		<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  <!-- Topbar Search -->
+  <a class="navlink" th:href="@{/index}"> <img th:src="@{/resources/images/logo.png}" style="width:66px;hieght:66px;"></a>
+	<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+	<div class="input-group">
+	  <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa bạn muốn tìm kiếm"  >
+		<button class="btn btn-primary" type="button">
+		  <i class="fas fa-search fa-sm" >Tìm Kiếm</i>
+		</button>
 	</div>
+  </form>
 
+  <!-- Topbar Navbar -->
+  <ul class="navbar-nav ml-auto">
+
+	<!-- Shopping Cart -->
+	<li class="nav-item dropdown no-arrow mx-1">
+	  <a class="nav-link dropdown-toggle" href="#">
+		<i class="fa fa-bell" aria-hidden="true" style="font-size:24px"></i>
+		<!-- Counter - Messages -->
+		<span> Đơn Hàng	</span>
+		<span class="badge badge-danger badge-counter" th:text="${myCart.getLineItemCount()}+'+'"></span>
+	  </a>
+	</li>
+	<li class="nav-item dropdown no-arrow mx-1">
+	  <a class="nav-link dropdown-toggle" th:href="@{/ShoppingCart}">
+		<i class="fa fa-cart-plus " aria-hidden="true" style="font-size:24px"></i>
+		<!-- Counter - Messages -->
+		<span> Giỏ Hàng</span>
+		<span class="badge badge-danger badge-counter" th:text="${myCart.getLineItemCount()}+'+'"></span>
+	  </a>
+	</li>
+
+	<div class="topbar-divider d-none d-sm-block"></div>
+
+	<!-- Nav Item - User Information -->
+	<li class="nav-item dropdown no-arrow">
+	  <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown"  aria-expanded="false">	
+		<i class="fa fa-user" aria-hidden="true" style="font-size:24px"></i>
+		<span >  Đăng nhập </span>
+	  </a>
+	  <!-- Dropdown - User Information -->
+	  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" a>
+		<a class="dropdown-item" href="#">
+		  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+		 Thông Tin
+		</a>
+		<a class="dropdown-item" href="#">
+		  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+		  Đăng Nhập
+		</a>
+		<a class="dropdown-item" href="#">
+		  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+		  Tạo Tài Khoản
+		</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+		  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+		  Đăng Xuất
+		</a>
+	  </div>
+	</li>
+
+  </ul>
+
+</nav>
+<!-- End of Topbar -->
+</div>
 
 
 	<!-- Main -->
@@ -408,13 +112,13 @@ p {
 							th:text="${myCart.cartLineItem.size()}"></span>
 
 						<div class="cart-products-inner"
-							th:each="item,itemIndex:${myCart.cartLineItem} "  th:style="${itemIndex.odd}? 'background-color: #ebebe0;'"
- 							 th:alt-title="${itemIndex.even}? 'even' : 'odd'">
+							th:each="item,itemIndex:${myCart.cartLineItem}"  th:style="${itemIndex.odd}? 'background-color: #ebebe0;'"
+ 							 th:alt-title="${itemIndex.even}? 'even' : 'Sản phẩm bạn đặt mua'">
 							<ui class="cart-products__products">
 							<li class="cart-products__product">
 								<div class="cart-products__inner">
 									<div class="cart-products__img">
-										<a href="#"> <img src="">
+										<a href="#"> <img th:src="@{/resources/images/logo.png}" style="width:200px"  >
 										</a>
 									</div>
 									<div class="cart-products__content">
@@ -438,9 +142,7 @@ p {
 											<div class="cart-products__qty">
 												<div class="buttons_added">
 												<a th:id="'btnMinus'+${itemIndex.index}" th:onclick="|buttonClickMinus(${itemIndex.index})|"><button class="minus is-form" >-</button></a>					
-													<input aria-label="quantity" class="input-qty" th:id="'inc'+${itemIndex.index}"
-														max="10" min="1" name="" type="number" 
-														th:value="${item.iQuantityinCart}">
+													<input aria-label="quantity" class="input-qty" th:id="'inc'+${itemIndex.index}" max="10" min="1" name="" type="number"  th:value="${item.iQuantityinCart}">
 												<a th:id="'btnPlus'+${itemIndex.index}" th:onclick="|buttonClicPlus(${itemIndex.index})|"><button class="plus is-form">+</button></a>
 													<input type="hidden" th:value="${item.iproductid}" th:id="'productid'+${itemIndex.index}">
 												</div>
@@ -470,8 +172,9 @@ p {
 								</p>
 							</div>
 						</div>
-						<button type="button" class="cart__submit">Tiến hành đặt
-							hàng</button>
+						<a th:href="@{Thongtindathang(myCart=${mycart})}">
+						<button  class="cart__submit" >Tiến hành đặt
+							hàng</button></a>
 					</div>
 				</div>
 

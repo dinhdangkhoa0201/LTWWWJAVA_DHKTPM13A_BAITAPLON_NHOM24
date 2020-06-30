@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import fit.se.main.dao.product.ProductDAO;
-import fit.se.main.model.CartInfo;
 import fit.se.main.model.Category;
 import fit.se.main.model.Product;
 import fit.se.main.model.Supplier;
-import fit.se.main.model.CartLineInfo;
 import fit.se.main.service.category.CategoryService;
 import fit.se.main.service.product.ProductService;
 import fit.se.main.service.supplier.SupplierService;
+import fit.se.main.session.CartInfo;
+import fit.se.main.session.CartLineInfo;
 
 @Controller
 public class ShoppingCartController {
@@ -69,13 +69,37 @@ public class ShoppingCartController {
 		}
 		CartLineInfo cartLineInfo;
 		cartLineInfo = new CartLineInfo(product.getProductId(), product.getProductName(), product.getPrice(), quatityby, quatityby*product.getPrice(),product.getSupplier(), product.getCategory() ,product.getImage());
-		cartInfo.addProduct(cartLineInfo);
+		cartInfo.addProduct(cartLineInfo,quatityby);
 		model.addAttribute("myCart",cartInfo);
+		model.addAttribute("product", product);
 		model.addAttribute("supplier",supplier);
-		return "ShoppingCart";
+		System.out.println("sao lai chay 2 lan            ");
+		return "detailProduct";
 
 	}
+	@GetMapping("/ShoppingCart/AddModel/LisProduct")
+	public String addToCartModelList(HttpServletRequest request , Model model, @RequestParam(name = "product_id") int product_id, @RequestParam(name = "quatityby") int quatityby) {
+		HttpSession session  = request.getSession();
+		CartInfo cartInfo = null  ;
+		Object objCartInfo = session.getAttribute("myCart");
+		Product product = productService.findById(product_id);
+		Supplier supplier = product.getSupplier();
+		if(objCartInfo !=null) {
+			cartInfo = (CartInfo) objCartInfo;
+		}else {
+			cartInfo = new CartInfo();
+			session.setAttribute("myCart",cartInfo);
+		}
+		CartLineInfo cartLineInfo;
+		cartLineInfo = new CartLineInfo(product.getProductId(), product.getProductName(), product.getPrice(), quatityby, quatityby*product.getPrice(),product.getSupplier(), product.getCategory() ,product.getImage());
+		cartInfo.addProduct(cartLineInfo,quatityby);
+		model.addAttribute("myCart",cartInfo);
+		model.addAttribute("product", product);
+		model.addAttribute("supplier",supplier);
+		System.out.println("sao lai chay 2 lan            ");
+		return "index";
 
+	}
 	@GetMapping("/ShoppingCart/Remove")
 	private String deleteCart(HttpServletRequest request, Model model, @RequestParam(name = "iproductid") int iproductid) throws ServletException,IOException  {
 		HttpSession session = request.getSession();
@@ -98,8 +122,6 @@ public class ShoppingCartController {
 	@GetMapping("/ShoppingCart/UpdateProduct")
 	private String PlusCart(HttpServletRequest request, Model model, @RequestParam(name = "iproductid") int iproductid, @RequestParam(name = "quantity") int quantity) throws ServletException,IOException  {
 		HttpSession session = request.getSession();
-		System.out.println("day la product idcccc"+iproductid);
-		System.out.println("day la quantityccc"+quantity);
 		Product product = productService.findById(iproductid);
 		CartInfo cartInfo = null;
 		Object objCartInfo = session.getAttribute("myCart");

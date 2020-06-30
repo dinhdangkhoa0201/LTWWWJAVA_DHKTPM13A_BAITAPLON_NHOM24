@@ -9,13 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import fit.se.main.model.CartInfo;
 import fit.se.main.model.Category;
 import fit.se.main.model.Product;
 import fit.se.main.model.Supplier;
 import fit.se.main.service.category.CategoryService;
 import fit.se.main.service.product.ProductService;
 import fit.se.main.service.supplier.SupplierService;
+import fit.se.main.session.CartInfo;
 
 @Controller
 public class DetailProductController {

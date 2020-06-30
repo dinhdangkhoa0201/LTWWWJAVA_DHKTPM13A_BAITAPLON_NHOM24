@@ -1,6 +1,9 @@
-package fit.se.main.model;
+package fit.se.main.session;
 
 import java.util.Arrays;
+
+import fit.se.main.model.Category;
+import fit.se.main.model.Supplier;
 
 public class CartLineInfo {
 	private int iproductid;
